@@ -1,0 +1,39 @@
+.icono-grande {
+  font-size: 2rem;
+}
+
+.custom-bg {
+    background-color: #dbece8;
+}
+
+
+
+.nav-link{
+    color: black;
+}
+
+.btn-custom {
+  background-color: #ffffff;
+  border-color: #77dbc3;
+}
+
+.btn-custom:hover {
+  background-color: #77dbc3; 
+  border-color: #77dbc3; 
+  color: #ffffff;
+}
+
+.btn-mn {
+  background-color: #ffffff;
+  border-color: #ffec9f;
+}
+
+.btn-mn:hover {
+  background-color: #ffec9f; 
+  border-color: #ffec9f; 
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
