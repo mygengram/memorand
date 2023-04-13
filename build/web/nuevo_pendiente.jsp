@@ -101,11 +101,11 @@
                                         <textarea class="form-control" id="descrip" rows="2"></textarea>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="fecha" class="form-label">Fecha</label>
+                                        <label for="fecha" class="form-label">Fecha limite</label>
                                         <input type="date" class="form-control" id="fecha" name="fecha" placeholder="dd/mm/aaaa" data-bs-toggle="tooltip" data-bs-placement="left" title="Selecciona una fecha">
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="hora" class="form-label">Hora</label>
+                                        <label for="hora" class="form-label">Hora limite</label>
                                         <input type="time" class="form-control" id="hora" placeholder="HH:MM" data-bs-toggle="tooltip" data-bs-placement="left" title="Selecciona una hora">
                                     </div>
                                     <p>Etiquetas</p>
@@ -140,7 +140,7 @@
                                     
 
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
                             </div>
@@ -239,7 +239,7 @@
                                         <input type="text" class="form-control" id="link">
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
                             </div>

@@ -54,7 +54,7 @@
                                     <div style="text-align: center;"><img src="imagenes/agregar-usuario.png" alt="plus"> </div>
                                 </a>
                                 <div class="card-body">
-                                    <div style="text-align: center;"><a href="#" class="btn btn-light btn-custom">Nuevo Agenda Comunitaria</a> </div>
+                                    <div style="text-align: center;"><a href="nueva_agenda.jsp" class="btn btn-light btn-custom">Nuevo Agenda Comunitaria</a> </div>
                                 </div>
                             </div>
                         </div>

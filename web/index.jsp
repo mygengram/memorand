@@ -42,7 +42,6 @@
         
         <title>Memorand</title>
     </head>
-    <body>
         <!-- Modal de inicio de sesión -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -68,7 +67,6 @@
                 </div>
               </div>
         </div>
-
         <!-- Modal de registro -->
         <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
@@ -91,6 +89,10 @@
                         <label for="apeM" class="form-label">Apellido Materno </label>
                         <input type="text" class="form-control" id="apeM">
                     </div>
+                     <div class="col-12">
+                        <label for="fecha" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" placeholder="dd/mm/aaaa" data-bs-toggle="tooltip" data-bs-placement="left" title="Selecciona una fecha">
+                    </div>
                     <div class="col-12 mb-3">
                         <label for="email" class="form-label">Nombre de usuario</label>
                         <input type="text" class="form-control" id="user">
@@ -108,8 +110,11 @@
             </div>
           </div>
         </div>
+    <body>
+
         
         <button onclick="location.href='menu_principal.jsp'">Menu principal</button>
 
     </body>
+    <jsp:include page="footer.jsp"/>
 </html>
