@@ -97,8 +97,12 @@
                         <label for="email" class="form-label">Nombre de usuario</label>
                         <input type="text" class="form-control" id="user">
                     </div>
-                    <div class="col-12 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="password" class="form-label">Confirmar contraseña</label>
                         <input type="password" class="form-control" id="password">
                     </div>
                     <div class="col-12">

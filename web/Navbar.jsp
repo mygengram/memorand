@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="imagenes/memorand2.png">
 <!-- Barra de navegación horizontal -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style=" width: 100%">
-    <button  type="button" class="btn " data-bs-toggle="collapse" data-bs-target="#contenido" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list icono-grande"></i></button>
+    <button  type="button" class="btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list icono-grande"></i></button>
     <div class="container-fluid">
         <a class="navbar-brand" href="menu_principal.jsp">
             <img src="imagenes/memorand2.png" alt="Logo de la empresa">
@@ -21,11 +21,6 @@
             <input class="form-control form-control-xl ms-20 me-1" type="search" placeholder="Buscar" aria-label="Buscar">
             <button class="btn btn-custom ms-20" type="submit">Buscar</button>
         </form>
-        
-        <!--<div class="d-flex align-items-center">
-        <form class="w-100 me-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>-->
             
         <ul class="navbar-nav  ms-auto">
             <li class="nav-item dropstart ">
@@ -64,9 +59,11 @@
     }
 </script>
 
-<!-- Clases de Bootstrap 5 -->
-<div class="collapse" id="contenido">
-  <div class="d-flex flex-column flex-shrink-0 p-3 custom-bg position-fixed h-100  col-sm-4 col-md-3" style="width: 240px;">
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1" aria-labelledby="offcanvas1Label"  style="width: 240px; background-color: #dbece8;"">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
     <ul class="nav nav-pills flex-column mb-auto" >
       <li class="nav-item">
         <a href="menu_principal.jsp" class="nav-link" aria-current="page">
@@ -76,7 +73,7 @@
       </li>
       <hr style="opacity: 100; background-color: black; height: 1px;">
       <li>
-        <a href="#" class="nav-link">
+        <a href="agenda_personal.jsp" class="nav-link">
           <i class="bi bi-person-fill"></i>
           Agenda Personal
         </a>
@@ -84,7 +81,7 @@
       <li>
         <a href="#" class="nav-link">
           <i class="bi bi-people-fill"></i>
-          Agenda Comunitaria
+          Agendas Comunitarias
         </a>
       </li>
       <li>
@@ -93,7 +90,24 @@
           Pendientes
         </a>
       </li>
+      <li>
+        <a href="nuevo_pendiente.jsp" class="nav-link">
+          <i class="bi bi-plus-circle-fill"></i>
+          Nuevo Pendiente
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link">
+          <i class="bi bi-plus-circle-fill"></i>
+          Nuevo Pendiente C
+        </a>
+      </li>
+      <li>
+        <a href="nueva_agenda.jsp" class="nav-link">
+          <i class="bi bi-file-plus-fill"></i>
+          Nuevo Agenda C
+        </a>
+      </li>
     </ul>
   </div>
 </div>
-

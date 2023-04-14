@@ -90,7 +90,7 @@
                                         <div class="d-grid"><button type="button" class="btn btn-light btn-sm mt-3"><input type="color" class="form-control form-control-color" id="ColorInput1" value="#77dbc3" title="Elige tu color"/></button></div>
                                     </div>
                                     <div class="col-md-5">
-                                         <label for="subtitulo" class="form-label">Subtitulo</label>
+                                        <label for="subtitulo" class="form-label">Subt&iacute;tulo</label>
                                          <input type="text" class="form-control" id="subtitulo">
                                     </div>
                                     <div class="col-md-1">
@@ -191,7 +191,7 @@
                                         <div class="d-grid"><button type="button" class="btn btn-light btn-sm mt-3"><input type="color" class="form-control form-control-color" id="ColorInput1" value="#77dbc3" title="Elige tu color"/></button></div>
                                     </div>
                                     <div class="col-md-5">
-                                         <label for="subtitulo" class="form-label">Subtitulo</label>
+                                        <label for="subtitulo" class="form-label">Subt&iacute;tulo</label>
                                          <input type="text" class="form-control" id="subtitulo">
                                     </div>
                                     <div class="col-md-1">
@@ -208,6 +208,18 @@
                                     <div class="col-md-6">
                                         <label for="hora" class="form-label">Hora</label>
                                         <input type="time" class="form-control" id="hora" placeholder="HH:MM" data-bs-toggle="tooltip" data-bs-placement="left" title="Selecciona una hora">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3 ">
+                                            <label for="etiqueta_opc" class="form-label">Asignado a</label>
+                                            <select id="etiqueta-opc" class="form-select">
+                                            <option selected>...</option>
+                                            <option>Usuario 1</option>
+                                            <option>Usuario 2</option>
+                                            <option>Usuario 3</option>
+                                            <option>...</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <p>Etiquetas</p>
                                     <div class="col-md-6">
