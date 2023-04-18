@@ -21,9 +21,9 @@
                     <i class="bi bi-bell icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5" aria-labelledby="notificaciones">
-                    <li><a class="dropdown-item" href="#">Notificación 1</a></li>
-                    <li><a class="dropdown-item" href="#">Notificación 2</a></li>
-                    <li><a class="dropdown-item" href="#">Notificación 3</a></li>
+                    <li><a class="dropdown-item" href="#">Notificacion 1</a></li>
+                    <li><a class="dropdown-item" href="#">Notificacion 2</a></li>
+                    <li><a class="dropdown-item" href="#">Notificacion 3</a></li>
                 </ul>
             </li>
             <li class="nav-item dropstart  ms-auto">
@@ -31,9 +31,9 @@
                     <i class="bi bi-person icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
-                    <li><a class="dropdown-item" href="#">Configuración</a></li>
+                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
                 </ul>
             </li>
         </ul>
