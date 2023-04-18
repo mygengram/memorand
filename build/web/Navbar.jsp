@@ -1,25 +1,18 @@
-<%-- 
-    Document   : Navbar
-    Created on : 7 abr 2023, 23:29:07
-    Author     : zunig
---%>
-
-<link rel="shortcut icon" href="imagenes/memorand2.png">
-<!-- Barra de navegaci髇 horizontal -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style=" width: 100%">
-    <button  type="button" class="btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list icono-grande"></i></button>
+<link rel="shortcut icon" href="images/me-logoP.png">
+<!-- Barra de navegacion horizontal -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style=" width: 100%">
+    <button  type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list"></i></button>
     <div class="container-fluid">
-        <a class="navbar-brand" href="menu_principal.jsp">
-            <img src="imagenes/memorand2.png" alt="Logo de la empresa">
+        <a class="navbar-brand" href="index.jsp">
+            <img src="images/me-logoEX.png" alt="Logo de la empresa" width="200">
         </a>
-        <a class="navbar-brand" href="menu_principal.jsp" style="color:#77dbc3;">Memorand</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse ms-auto"" id="navbarNav">
-        <form class="d-flex w-45 mt-3 align-items-center ms-auto">
-            <input class="form-control form-control-xl ms-20 me-1" type="search" placeholder="Buscar" aria-label="Buscar">
-            <button class="btn btn-custom ms-20" type="submit">Buscar</button>
+        <form class="d-flex w-40 mt-3 align-items-center ms-auto">
+            <input class="form-control form-control-xl ms-20 me-1" type="search" placeholder="Nombre de una agenda..." aria-label="Buscar">
+            <button class="btn btn-primary fs-6 text-white" type="submit">Buscar</button>
         </form>
             
         <ul class="navbar-nav  ms-auto">
@@ -28,9 +21,9 @@
                     <i class="bi bi-bell icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5" aria-labelledby="notificaciones">
-                    <li><a class="dropdown-item" href="#">Notificaci髇 1</a></li>
-                    <li><a class="dropdown-item" href="#">Notificaci髇 2</a></li>
-                    <li><a class="dropdown-item" href="#">Notificaci髇 3</a></li>
+                    <li><a class="dropdown-item" href="#">Notificaci贸n 1</a></li>
+                    <li><a class="dropdown-item" href="#">Notificaci贸n 2</a></li>
+                    <li><a class="dropdown-item" href="#">Notificaci贸n 3</a></li>
                 </ul>
             </li>
             <li class="nav-item dropstart  ms-auto">
@@ -38,9 +31,9 @@
                     <i class="bi bi-person icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
-                    <li><a class="dropdown-item" href="#">Configuraci髇</a></li>
+                    <li><a class="dropdown-item" href="#">Configuraci贸n</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesi髇</a></li>
+                    <li><a class="dropdown-item" href="#">Cerrar sesi贸n</a></li>
                 </ul>
             </li>
         </ul>
@@ -59,53 +52,29 @@
     }
 </script>
 
- <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1" aria-labelledby="offcanvas1Label"  style="width: 240px; background-color: #dbece8;"">
+ <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1" aria-labelledby="offcanvas1Label" style="width: 280px">
   <div class="offcanvas-header">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="margin-top:8%" ></button>
   </div>
-  <div class="offcanvas-body">
-    <ul class="nav nav-pills flex-column mb-auto" >
+  <div class="offcanvas-body" style="margin-top: 2%">
+    <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="menu_principal.jsp" class="nav-link" aria-current="page">
+        <a href="main.jsp" class="nav-link" aria-current="page">
           <i class="bi bi-house-door-fill"></i>
-          Home
+          Inicio
         </a>
       </li>
-      <hr style="opacity: 100; background-color: black; height: 1px;">
+      <hr style="opacity: 100; height: 2px;">
       <li>
         <a href="agenda_personal.jsp" class="nav-link">
           <i class="bi bi-person-fill"></i>
-          Agenda Personal
+          Mi agenda
         </a>
       </li>
       <li>
         <a href="#" class="nav-link">
           <i class="bi bi-people-fill"></i>
-          Agendas Comunitarias
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link">
-          <i class="bi bi-calendar2-range-fill"></i>
-          Pendientes
-        </a>
-      </li>
-      <li>
-        <a href="nuevo_pendiente.jsp" class="nav-link">
-          <i class="bi bi-plus-circle-fill"></i>
-          Nuevo Pendiente
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link">
-          <i class="bi bi-plus-circle-fill"></i>
-          Nuevo Pendiente C
-        </a>
-      </li>
-      <li>
-        <a href="nueva_agenda.jsp" class="nav-link">
-          <i class="bi bi-file-plus-fill"></i>
-          Nuevo Agenda C
+          Agendas comunitarias
         </a>
       </li>
     </ul>
