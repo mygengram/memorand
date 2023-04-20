@@ -1,16 +1,16 @@
 <link rel="shortcut icon" href="images/me-logoP.png">
 <!-- Barra de navegacion horizontal -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" style=" width: 100%">
-    <button  type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list"></i></button>
+    <button  type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()"><i class="bi bi-list icono-grande"></i></button>
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.jsp">
+        <a class="navbar-brand" href="main.jsp">
             <img src="images/me-logoEX.png" alt="Logo de la empresa" width="200">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     <div class="collapse navbar-collapse ms-auto"" id="navbarNav">
-        <form class="d-flex w-40 mt-3 align-items-center ms-auto">
+        <form class="d-flex w-45 mt-3 align-items-center ms-auto">
             <input class="form-control form-control-xl ms-20 me-1" type="search" placeholder="Nombre de una agenda..." aria-label="Buscar">
             <button class="btn btn-primary fs-6 text-white" type="submit">Buscar</button>
         </form>
@@ -21,9 +21,9 @@
                     <i class="bi bi-bell icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5" aria-labelledby="notificaciones">
-                    <li><a class="dropdown-item" href="#">Notificacion 1</a></li>
-                    <li><a class="dropdown-item" href="#">Notificacion 2</a></li>
-                    <li><a class="dropdown-item" href="#">Notificacion 3</a></li>
+                    <li><a class="dropdown-item" href="#">Notificación 1</a></li>
+                    <li><a class="dropdown-item" href="#">Notificación 2</a></li>
+                    <li><a class="dropdown-item" href="#">Notificación 3</a></li>
                 </ul>
             </li>
             <li class="nav-item dropstart  ms-auto">
@@ -31,9 +31,9 @@
                     <i class="bi bi-person icono-grande"></i>
                 </a>
                 <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
-                    <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                    <li><a class="dropdown-item" href="#">Configuración</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
                 </ul>
             </li>
         </ul>
@@ -72,7 +72,7 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link">
+        <a href="agendas_comunitarias.jsp" class="nav-link">
           <i class="bi bi-people-fill"></i>
           Agendas comunitarias
         </a>

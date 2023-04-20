@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="navbar.jsp"/>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Página Principal</title>
@@ -10,6 +10,7 @@
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/323dc2b1ab.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <script>
         function closeNav() {
@@ -39,7 +40,7 @@
                         </div>
                         <div class="col-sm-4 ">
                             <div class="card border-3 ms-4 mt-4 " style="width: 18rem;">
-                                <a class="navbar-brand" href="#">
+                                <a class="navbar-brand" href="nueva_agenda.jsp">
                                     <div style="text-align: center;"><img src="images/agregar-usuario.png" alt="plus"> </div>
                                 </a>
                                 <div class="card-body">
@@ -49,11 +50,11 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="card border-3 ms-4 mt-4" style="width: 18rem;">
-                                <a class="navbar-brand" href="#">
+                                <a class="navbar-brand" href="unirse_agenda.jsp">
                                     <div style="text-align: center;"><img src="images/usuario-de-grafico.png" alt="plus"> </div>
                                 </a>
                                 <div class="card-body">
-                                    <div style="text-align: center;"><a href="#" class="btn btn-light btn-custom">Unirse a una agenda</a> </div>
+                                    <div style="text-align: center;"><a href="unirse_agenda.jsp" class="btn btn-light btn-custom">Unirse a una agenda</a> </div>
                                 </div>
                             </div>
                         </div>

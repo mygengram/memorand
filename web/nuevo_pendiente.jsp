@@ -11,6 +11,7 @@
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/323dc2b1ab.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <script>
         function closeNav() {
