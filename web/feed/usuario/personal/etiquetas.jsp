@@ -1,5 +1,7 @@
 <%-- 
-    DevLogIn Memorand by Gengram © 2023
+    Document   : etiquetas
+    Created on : 19 may 2023, 08:39:23
+    Author     : alumno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

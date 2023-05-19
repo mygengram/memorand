@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/mymemorand"/>
+<Context path="/mymemorand">
+    <Realm>
+        className="org.apache.catalina.realm.JDBCRealm"
+        driverName="com.mysql.cj.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3308/memorand?user=root&amp;password=n0m3l0"
+        
+    </Realm>
+</Context>

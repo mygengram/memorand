@@ -12,7 +12,8 @@ create table Usuarios
     apellidoPat varchar(20),
     apellidoMat varchar(20),
     imgUsuario blob,
-    fechaNac date
+    fechaNac date,
+    rolUsuario varchar(20)
 );
 
 create table PendientesP
@@ -21,7 +22,8 @@ create table PendientesP
     nomPendP varchar(20),
     subPendP varchar(30),
     descPendP longtext,
-    fechaPendP datetime,
+    fechaInicioP datetime,
+    fechaFinalP datetime,
     imgPendP blob,
     colorPendP varchar(6),
     completadoP boolean
@@ -41,24 +43,12 @@ create table UsuariosPendientes
     foreign key (idPendP) references PendientesP (idPendP)
 );
 
-create table PendEtiqP
+create table UsuariosEtiquetas
 (
-	idPendP int,
+	idUsuario int,
     idEtiquetaP int,
-    foreign key (idPendP) references PendientesP (idPendP),
+    foreign key (idUsuario) references Usuarios (idUsuario),
     foreign key (idEtiquetaP) references EtiquetasP (idEtiquetaP)
-);
-
-create table Roles
-(
-	idRol int primary key not null,
-    nomRol varchar(20)
-);
-
-create table Favoritos
-(
-	idFavorito int primary key not null,
-    estadoFavorito varchar(10)
 );
 
 create table PendientesC
@@ -67,16 +57,11 @@ create table PendientesC
     nomPendC varchar(20),
     subPendC varchar(30),
     descPendC longtext,
-    fechaPendC datetime,
+    fechaInicioC datetime,
+    fechaFinalC datetime,
     imgPendC blob,
     colorPendC varchar(6),
     completadoC boolean
-);
-
-create table Autores
-(
-	idAutor int primary key not null,
-    estadoAutor varchar(15)
 );
 
 create table AgendasC
@@ -85,7 +70,8 @@ create table AgendasC
     nomAgenda varchar(20),
     descAgenda text,
     iconoAgenda blob,
-    colorAgenda varchar(6)
+    colorAgenda varchar(6),
+    codigoAgenda varchar(6)
 );
 
 create table EtiquetasC
@@ -96,29 +82,28 @@ create table EtiquetasC
 
 create table Llevan
 (
+	idLlevan int primary key not null,
 	idUsuario int,
     idAgenda int,
-    idRol int,
-    idFavorito int,
+    rolAgenda varchar(20),
+    favorito boolean,
     foreign key (idUsuario) references Usuarios (idUsuario),
-    foreign key (idAgenda) references AgendasC (idAgenda),
-    foreign key (idRol) references Roles (idRol),
-    foreign key (idFavorito) references Favoritos (idFavorito)
+    foreign key (idAgenda) references AgendasC (idAgenda)
 );
 
 create table Tienen
 (
+	idTienen int primary key not null,
 	idUsuario int,
     idAgenda int,
     idPendC int,
-    idAutor int,
+    autor varchar(20),
     foreign key (idUsuario) references Usuarios (idUsuario),
     foreign key (idAgenda) references AgendasC (idAgenda),
-    foreign key (idPendC) references PendientesC (idPendC),
-    foreign key (idAutor) references Autores (idAutor)
+    foreign key (idPendC) references PendientesC (idPendC)
 );
 
-create table AgendaEtiqC
+create table AgendaEtiquetas
 (
 	idAgenda int,
     idEtiquetaC int,
