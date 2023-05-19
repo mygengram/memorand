@@ -1,5 +1,5 @@
 package com.memorand.dao.service;
-// Memorand by Gengram © 2023 - Original by gerdoc (Germán Gutiérrez Galán).
+// Memorand by Gengram © 2023
 
 // IMPORTACIONES
 import java.io.Serializable;

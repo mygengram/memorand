@@ -1,5 +1,4 @@
 -- Memorand database
-
 create database Memorand;
 use Memorand;
 
@@ -12,10 +11,33 @@ create table Usuarios
     apellidoPat varchar(20),
     apellidoMat varchar(20),
     imgUsuario blob,
-    fechaNac date,
-    rolUsuario varchar(20)
+    fechaNac date
 );
 
+create table Roles
+(
+	rolUsuario varchar(20) primary key not null,
+    descripcion varchar(20)
+);
+
+create table Rol_Usuario
+(
+	idUsuario int not null,
+	rolUsuario varchar(20) not null,
+    PRIMARY KEY (idUsuario, rolUsuario),
+    INDEX `fk_Roles_has_Usuarios_idUsuario_idx` (`idUsuario` ASC) VISIBLE,
+    INDEX `fk_Roles_has_Usuarios_rolUsuario_idx` (`rolUsuario` ASC) VISIBLE,
+	CONSTRAINT `fk_Roles_has_Usuarios_rolUsuario`
+		FOREIGN KEY (`rolUsuario`)
+		REFERENCES `Memorand`.`Roles` (`rolUsuario`)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT,
+	CONSTRAINT `fk_Roles_has_Usuarios_idUsuario`
+		FOREIGN KEY (`idUsuario`)
+		REFERENCES `Memorand`.`Usuarios` (`idUsuario`)
+		ON DELETE RESTRICT
+		ON UPDATE RESTRICT
+);
 create table PendientesP
 (
 	idPendP int primary key not null,
