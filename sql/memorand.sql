@@ -10,7 +10,6 @@ create table Usuarios
     nomUsuario varchar(30),
     apellidoPat varchar(20),
     apellidoMat varchar(20),
-    imgUsuario blob,
     fechaNac date
 );
 
@@ -46,7 +45,6 @@ create table PendientesP
     descPendP longtext,
     fechaInicioP datetime,
     fechaFinalP datetime,
-    imgPendP blob,
     colorPendP varchar(6),
     completadoP boolean
 );
@@ -81,7 +79,6 @@ create table PendientesC
     descPendC longtext,
     fechaInicioC datetime,
     fechaFinalC datetime,
-    imgPendC blob,
     colorPendC varchar(6),
     completadoC boolean
 );
@@ -91,7 +88,6 @@ create table AgendasC
 	idAgenda int primary key not null,
     nomAgenda varchar(20),
     descAgenda text,
-    iconoAgenda blob,
     colorAgenda varchar(6),
     codigoAgenda varchar(6)
 );

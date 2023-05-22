@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Rol_Usuario.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/Helpers.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/RolHelper.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/UsuariosService.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/Rol_UsuarioHelper.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/Rol_UsuarioService.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/index.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/RolesService.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Usuarios.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/UsuariosHelper.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Roles.java</file>
+        </group>
     </open-files>
 </project-private>

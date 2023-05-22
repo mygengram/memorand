@@ -2,10 +2,11 @@ package com.memorand.dao;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario implements Serializable
+public class Usuarios implements Serializable
 {
     private int idUsuario;
     private String usuario;
@@ -14,10 +15,12 @@ public class Usuario implements Serializable
     private String apellidoPat;
     private String apellidoMat;
     private Date fechaNac;
-    private String rolUsuario;
     
-    public Usuario()
+    public Usuarios() {}
+    
+    public Usuarios(int usuario) 
     {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdUsuario() {
@@ -74,13 +77,5 @@ public class Usuario implements Serializable
 
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
-    }
-
-    public String getRolUsuario() {
-        return rolUsuario;
-    }
-
-    public void setRolUsuario(String rolUsuario) {
-        this.rolUsuario = rolUsuario;
     }
 }
