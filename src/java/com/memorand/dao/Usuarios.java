@@ -8,7 +8,6 @@ import java.util.Date;
 
 public class Usuarios implements Serializable
 {
-    private int idUsuario;
     private String usuario;
     private String contrasena;
     private String nomUsuario;
@@ -18,17 +17,9 @@ public class Usuarios implements Serializable
     
     public Usuarios() {}
     
-    public Usuarios(int usuario) 
+    public Usuarios(String usuario) 
     {
-        this.idUsuario = idUsuario;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+        this.usuario = usuario;
     }
 
     public String getUsuario() {

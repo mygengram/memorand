@@ -28,14 +28,11 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
     {
         usuariosService = new UsuariosService();
         t = new Usuarios();
-        int longitud = (usuariosService.getUsuariosList().size())-1;
-        int lastId = usuariosService.getUsuariosList().get(longitud).getIdUsuario();
-        t.setIdUsuario(lastId);
+
         t.setUsuario(getParameter("user"));
         t.setContrasena(getParameter("pass"));
         t.setNomUsuario(getParameter("name"));
         t.setApellidoPat(getParameter("ap"));
-        t.setApellidoMat(getParameter("am"));
         t.setApellidoMat(getParameter("am"));
         t.setFechaNac(string2Date( getParameter("fn")));
         
@@ -58,12 +55,10 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
     {
         usuariosService = new UsuariosService();
         t = new Usuarios();
-        t.setIdUsuario(Integer.parseInt(getParameter("idu")));
         t.setUsuario(getParameter("user"));
         t.setContrasena(getParameter("pass"));
         t.setNomUsuario(getParameter("name"));
         t.setApellidoPat(getParameter("ap"));
-        t.setApellidoMat(getParameter("am"));
         t.setApellidoMat(getParameter("am"));
         t.setFechaNac(string2Date( getParameter("fn")));
         if( isValidaCamposOk( ) )
@@ -78,8 +73,8 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
     {
         usuariosService = new UsuariosService();
         t = new Usuarios();
-        t.setIdUsuario(Integer.parseInt(getParameter("idu")));
-        if( t.getIdUsuario() < 0 )
+        t.setUsuario(getParameter("user"));
+        if( t.getUsuario() != null || t.getUsuario().length() > 0 )
         {
             return usuariosService.deleteUsuario(t);
         }
@@ -91,12 +86,12 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
     {
         String usuario = null;
         
-        usuario = getParameter("user" );
+        usuario = getParameter("user");
         if( usuario == null || usuario.length( ) <= 0 )
         {
             return null;
         }
-        usuariosService = new UsuariosService( );
+        usuariosService = new UsuariosService();
         return usuariosService.getUsuarioByUsuario(usuario);
     }
 }

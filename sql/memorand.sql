@@ -4,10 +4,9 @@ use Memorand;
 
 create table Usuarios
 (
-	idUsuario int primary key not null,
-    usuario varchar(20),
+    usuario varchar(20) primary key not null,
     contrasena varchar(20),
-    nomUsuario varchar(30),
+    nomUsuario varchar(40),
     apellidoPat varchar(20),
     apellidoMat varchar(20),
     fechaNac date
@@ -21,19 +20,19 @@ create table Roles
 
 create table Rol_Usuario
 (
-	idUsuario int not null,
+	usuario varchar(20) not null,
 	rolUsuario varchar(20) not null,
-    PRIMARY KEY (idUsuario, rolUsuario),
-    INDEX `fk_Roles_has_Usuarios_idUsuario_idx` (`idUsuario` ASC) VISIBLE,
+    PRIMARY KEY (usuario, rolUsuario),
+    INDEX `fk_Roles_has_Usuarios_usuario_idx` (`usuario` ASC) VISIBLE,
     INDEX `fk_Roles_has_Usuarios_rolUsuario_idx` (`rolUsuario` ASC) VISIBLE,
 	CONSTRAINT `fk_Roles_has_Usuarios_rolUsuario`
 		FOREIGN KEY (`rolUsuario`)
 		REFERENCES `Memorand`.`Roles` (`rolUsuario`)
 		ON DELETE RESTRICT
 		ON UPDATE RESTRICT,
-	CONSTRAINT `fk_Roles_has_Usuarios_idUsuario`
-		FOREIGN KEY (`idUsuario`)
-		REFERENCES `Memorand`.`Usuarios` (`idUsuario`)
+	CONSTRAINT `fk_Roles_has_Usuarios_usuario`
+		FOREIGN KEY (`usuario`)
+		REFERENCES `Memorand`.`Usuarios` (`usuario`)
 		ON DELETE RESTRICT
 		ON UPDATE RESTRICT
 );
@@ -57,17 +56,17 @@ create table EtiquetasP
 
 create table UsuariosPendientes
 (
-	idUsuario int,
+	usuario varchar(20),
     idPendP int,
-    foreign key (idUsuario) references Usuarios (idUsuario),
+    foreign key (usuario) references Usuarios (usuario),
     foreign key (idPendP) references PendientesP (idPendP)
 );
 
 create table UsuariosEtiquetas
 (
-	idUsuario int,
+	usuario varchar(20),
     idEtiquetaP int,
-    foreign key (idUsuario) references Usuarios (idUsuario),
+    foreign key (usuario) references Usuarios (usuario),
     foreign key (idEtiquetaP) references EtiquetasP (idEtiquetaP)
 );
 
@@ -101,22 +100,22 @@ create table EtiquetasC
 create table Llevan
 (
 	idLlevan int primary key not null,
-	idUsuario int,
+	usuario varchar(20),
     idAgenda int,
     rolAgenda varchar(20),
     favorito boolean,
-    foreign key (idUsuario) references Usuarios (idUsuario),
+    foreign key (usuario) references Usuarios (usuario),
     foreign key (idAgenda) references AgendasC (idAgenda)
 );
 
 create table Tienen
 (
 	idTienen int primary key not null,
-	idUsuario int,
+	usuario varchar(20),
     idAgenda int,
     idPendC int,
     autor varchar(20),
-    foreign key (idUsuario) references Usuarios (idUsuario),
+    foreign key (usuario) references Usuarios (usuario),
     foreign key (idAgenda) references AgendasC (idAgenda),
     foreign key (idPendC) references PendientesC (idPendC)
 );

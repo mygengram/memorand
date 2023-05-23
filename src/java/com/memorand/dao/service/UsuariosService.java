@@ -43,13 +43,12 @@ public class UsuariosService extends Connect<Usuarios>
             while (resultSet.next()) 
             {
                 usuario = new Usuarios();
-                usuario.setIdUsuario(resultSet.getInt(1 ));
-                usuario.setUsuario(resultSet.getString(2));
-                usuario.setContrasena(resultSet.getString(3));
-                usuario.setNomUsuario(resultSet.getString(4));
-                usuario.setApellidoPat(resultSet.getString(5));
-                usuario.setApellidoMat(resultSet.getString(6));
-                usuario.setFechaNac(resultSet.getDate(7));
+                usuario.setUsuario(resultSet.getString(1));
+                usuario.setContrasena(resultSet.getString(2));
+                usuario.setNomUsuario(resultSet.getString(3));
+                usuario.setApellidoPat(resultSet.getString(4));
+                usuario.setApellidoMat(resultSet.getString(5));
+                usuario.setFechaNac(resultSet.getDate(6));
                 usuariosList.add(usuario);
             }
             resultSet.close();
@@ -67,43 +66,7 @@ public class UsuariosService extends Connect<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO USUARIOS(IDUSUARIO,USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC)VALUES(?,?,?,?,?,?,?)";
-        int row = 0;
-        try 
-        {
-            connection = getConnection( );
-            if( connection == null )
-            {
-                return false;
-            }
-            preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
-                return false;
-            }
-            preparedStatement.setInt(1, usuario.getIdUsuario());
-            preparedStatement.setString(2, usuario.getUsuario());
-            preparedStatement.setString(3, usuario.getContrasena());
-            preparedStatement.setString(4, usuario.getNomUsuario());
-            preparedStatement.setString(5, usuario.getApellidoPat());
-            preparedStatement.setString(6, usuario.getApellidoMat());
-            preparedStatement.setDate(7, dateUtil2DateSql(usuario.getFechaNac()));
-            row = preparedStatement.executeUpdate();
-            closeConnection(connection);
-            return row == 1;
-        } 
-        catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-    
-    public boolean updateUsuario( Usuarios usuario )
-    {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        String sql = "UPDATE USUARIOS SET USUARIO = ?,CONTRASENA = ?,NOMUSUARIO = ?,APELLIDOPAT = ?,APELLIDOMAT = ?,FECHANAC = ? WHERE IDUSUARIO = ?";
+        String sql = "INSERT INTO USUARIOS(USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC)VALUES(?,?,?,?,?,?)";
         int row = 0;
         try 
         {
@@ -134,6 +97,40 @@ public class UsuariosService extends Connect<Usuarios>
         return false;
     }
     
+    public boolean updateUsuario( Usuarios usuario )
+    {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        String sql = "UPDATE USUARIOS SET CONTRASENA = ?,NOMUSUARIO = ?,APELLIDOPAT = ?,APELLIDOMAT = ?,FECHANAC = ? WHERE USUARIO = ?";
+        int row = 0;
+        try 
+        {
+            connection = getConnection( );
+            if( connection == null )
+            {
+                return false;
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            if( preparedStatement == null )
+            {
+                return false;
+            }
+            preparedStatement.setString(1, usuario.getContrasena());
+            preparedStatement.setString(2, usuario.getNomUsuario());
+            preparedStatement.setString(3, usuario.getApellidoPat());
+            preparedStatement.setString(4, usuario.getApellidoMat());
+            preparedStatement.setDate(5, dateUtil2DateSql(usuario.getFechaNac()));
+            row = preparedStatement.executeUpdate();
+            closeConnection(connection);
+            return row == 1;
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
     public boolean deleteUsuario( Usuarios usuario )
     {
         Connection connection = null;
@@ -152,7 +149,7 @@ public class UsuariosService extends Connect<Usuarios>
             {
                 return false;
             }
-            preparedStatement.setInt(1, usuario.getIdUsuario());
+            preparedStatement.setString(1, usuario.getUsuario());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -164,7 +161,7 @@ public class UsuariosService extends Connect<Usuarios>
         return false;
     }
     
-    public Usuarios getUsuarioByUsuario( String usuario) 
+    public Usuarios getUsuarioByUsuario(String usuario) 
     {
         Usuarios aux = null;
         Connection connection = null;
@@ -177,7 +174,7 @@ public class UsuariosService extends Connect<Usuarios>
             {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOS WHERE IDUSUARIO = ?");
+            preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOS WHERE USUARIO = ?");
             if (preparedStatement == null) 
             {
                 return null;
@@ -192,13 +189,12 @@ public class UsuariosService extends Connect<Usuarios>
             while (resultSet.next()) 
             {
                 aux = new Usuarios();
-                aux.setIdUsuario(resultSet.getInt(1 ));
-                aux.setUsuario(resultSet.getString(2));
-                aux.setContrasena(resultSet.getString(3));
-                aux.setNomUsuario(resultSet.getString(4));
-                aux.setApellidoPat(resultSet.getString(5));
-                aux.setApellidoMat(resultSet.getString(6));
-                aux.setFechaNac(resultSet.getDate(7));
+                aux.setUsuario(resultSet.getString(1));
+                aux.setContrasena(resultSet.getString(2));
+                aux.setNomUsuario(resultSet.getString(3));
+                aux.setApellidoPat(resultSet.getString(4));
+                aux.setApellidoMat(resultSet.getString(5));
+                aux.setFechaNac(resultSet.getDate(6));
             }
             resultSet.close();
             closeConnection(connection);

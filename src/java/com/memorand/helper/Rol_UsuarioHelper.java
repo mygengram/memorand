@@ -20,7 +20,7 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     {
         rol_usuarioService = new Rol_UsuarioService();
         t = new Rol_Usuario();
-        t.setUsuario(new Usuarios(Integer.parseInt(getParameter("user"))));
+        t.setUsuario(new Usuarios(getParameter("user")));
         t.setRol(new Roles(getParameter("rol")));
         
         return rol_usuarioService.addRol_Usuario(t);
@@ -44,9 +44,10 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     {
         rol_usuarioService = new Rol_UsuarioService();
         t = new Rol_Usuario();
-        t.setUsuario(new Usuarios(Integer.parseInt(getParameter("user"))));
+        t.setUsuario(new Usuarios(getParameter("user")));
         t.setRol(new Roles(getParameter("rol")));
-        if( t.getUsuario().getIdUsuario() < 0 && t.getRol().getRolUsuario() != null && t.getRol().getRolUsuario().length() > 0)
+        if( t.getUsuario().getUsuario() != null && t.getUsuario().getUsuario().length() > 0 &&
+            t.getRol().getRolUsuario() != null && t.getRol().getRolUsuario().length() > 0)
         {
             return rol_usuarioService.deleteRol_Usuario(t);
         }
@@ -56,13 +57,13 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     @Override
     public Rol_Usuario getTByKey() 
     {
-        int usuario;
+        String usuario = null;
         String rol = null;
         
-        usuario = Integer.parseInt(getParameter("user"));
+        usuario = getParameter("user");
         rol = getParameter("rol");
         
-        if( usuario < 0 || rol == null || rol.length( ) <= 0 )
+        if( usuario == null || usuario.length() <= 0 || rol == null || rol.length( ) <= 0)
         {
             return null;
         }
