@@ -3,38 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/Rol_UsuarioHelper.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/comunitaria/integrantes.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/RolesService.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/c.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/comunitaria/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/RolHelper.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/personal/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/Rol_UsuarioService.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/UsuariosHelper.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/comunitaria/etiquetas.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/LoginHelper.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Roles.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/n.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/personal/pper.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/UsuariosService.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/signup.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/login.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/error.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/Helpers.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Rol_Usuario.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/comunitaria/pcom.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/Conexion.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/personal/etiquetas.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/META-INF/context.xml</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/admin/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/cuenta/index.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Usuarios.java</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/admin/ver.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/u.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/src/java/com/memorand/dao/service/Conexion.java</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/web/login.jsp</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/src/java/com/memorand/dao/service/Rol_UsuarioService.java</file>
+            <file>file:/C:/Users/alumno/Desktop/memorand(PRE-23may)/src/java/com/memorand/helper/LoginHelper.java</file>
         </group>
     </open-files>
 </project-private>

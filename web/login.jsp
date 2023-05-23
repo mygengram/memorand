@@ -36,7 +36,7 @@
             
         %>
         
-        <form id="login" method="GET">
+        <form id="form1" method="GET">
             <table>
                 <tr>
                     <td>Usuario</td>
