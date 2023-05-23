@@ -6,15 +6,12 @@ import com.memorand.dao.Rol_Usuario;
 import com.memorand.dao.service.Rol_UsuarioService;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.html.HTML;
-import org.apache.catalina.Session;
 
 public class LoginHelper implements Serializable 
 {
@@ -33,16 +30,20 @@ public class LoginHelper implements Serializable
         this.httpServletResponse = httpServletResponse;
         usuario = httpServletRequest.getParameter("user");
         contrasena = httpServletRequest.getParameter("pass");
+        
         if( !isLoginOk( ) )
         {
             return false;
         }
+        
         rolUsuarioService = new Rol_UsuarioService();
         rolUsuario = rolUsuarioService.getRolUsuarioByUsuarioPassword(usuario, contrasena);
+        
         if( rolUsuario == null )
         {
             return false;
         }
+        
         httpServletRequest.getSession(true ).setAttribute("rol", rolUsuario);
         switch (rolUsuario.getRol().getRolUsuario()) 
         {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.memorand.dao.Roles;
 
-public class RolesService extends Connect<Roles>
+public class RolesService extends Conexion<Roles>
 {
     public RolesService() {}
     
@@ -62,7 +62,7 @@ public class RolesService extends Connect<Roles>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ROLES(ROLUSUARIO,DESCRIPCION)VALUES(?,?)";
+        String sql = "INSERT INTO ROLES(ROLUSUARIO,DESCRIPCION) VALUES (?,?)";
         int row = 0;
         try 
         {

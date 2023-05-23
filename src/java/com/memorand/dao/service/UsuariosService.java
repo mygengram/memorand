@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.memorand.dao.Usuarios;
 
-public class UsuariosService extends Connect<Usuarios>
+public class UsuariosService extends Conexion<Usuarios>
 {
     public UsuariosService() {}
     
@@ -66,7 +66,7 @@ public class UsuariosService extends Connect<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO USUARIOS(USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC)VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO USUARIOS (USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC) VALUES (?,?,?,?,?,?)";
         int row = 0;
         try 
         {

@@ -13,7 +13,7 @@ import com.memorand.dao.Rol_Usuario;
 import com.memorand.dao.Roles;
 import com.memorand.dao.Usuarios;
 
-public class Rol_UsuarioService extends Connect<Rol_Usuario>
+public class Rol_UsuarioService extends Conexion<Rol_Usuario>
 {
     public Rol_UsuarioService() {}
     
@@ -64,7 +64,7 @@ public class Rol_UsuarioService extends Connect<Rol_Usuario>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ROL_USUARIOS(USUARIO,ROLUSUARIO)VALUES(?,?)";
+        String sql = "INSERT INTO ROL_USUARIOS (USUARIO,ROLUSUARIO) VALUES (?,?)";
         int row = 0;
         try 
         {

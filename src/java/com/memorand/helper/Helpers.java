@@ -2,7 +2,6 @@ package com.memorand.helper;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
-import java.io.InputStream;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,11 +52,6 @@ public abstract class Helpers<T> implements Serializable
     public boolean isNotNullAndNotEmpty( String valor )
     {
         return valor != null && valor.length() > 0;
-    }
-    
-    public boolean isNotNullAndNotEmptyI( InputStream valor )
-    {
-        return valor != null;
     }
 
     public boolean isNotNull( Object valor )

@@ -2,7 +2,6 @@ package com.memorand.dao;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
 

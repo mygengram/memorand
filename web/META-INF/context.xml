@@ -3,12 +3,12 @@
     <Realm 
         className="org.apache.catalina.realm.JDBCRealm" 
         driverName="com.mysql.cj.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3308/Prueba?user=root&amp;password=n0m3l0"
+        connectionURL="jdbc:mysql://localhost:3306/memorand?user=root&amp;password=n0m3l0"
         roleNameCol="rolUsuario"
         userCredCol="contrasena"
         userNameCol="usuario"
         userRoleTable="Rol_Usuario" 
         userTable="Usuarios"
         debug="99" 
-        />
+    />
 </Context>
