@@ -1,7 +1,7 @@
 <%-- 
     Document   : etiquetas
-    Created on : 19 may 2023, 08:39:11
-    Author     : alumno
+    Created on : 23 may 2023, 22:21:53
+    Author     : nicojrz
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

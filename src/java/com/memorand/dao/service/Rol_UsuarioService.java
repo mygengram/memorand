@@ -184,8 +184,8 @@ public class Rol_UsuarioService extends Conexion<Rol_Usuario>
                 return null;
             }
             stringBuilder = new StringBuilder();
-            stringBuilder.append("SELECT ROL_USUARIO.ROLUSUARIO,ROL_USUARIO.USUARIO FROM ROL_USUARIO INNER JOIN USUARIOS ON ROL_USUARIO.USUARIO = USUARIOS.USUARIO");
-            stringBuilder.append( " WHERE USUARIOS.USUARIO = ? AND USUARIOS.CONTRASENA = ?");
+            stringBuilder.append("SELECT ROL_USUARIO.USUARIO, ROL_USUARIO.ROLUSUARIO FROM ROL_USUARIO INNER JOIN USUARIOS ON ROL_USUARIO.USUARIO = USUARIOS.USUARIO");
+            stringBuilder.append(" WHERE USUARIOS.USUARIO = ? AND USUARIOS.CONTRASENA = ?");
             System.out.println(stringBuilder.toString() );
             preparedStatement = connection.prepareStatement( stringBuilder.toString());
             if (preparedStatement == null) 

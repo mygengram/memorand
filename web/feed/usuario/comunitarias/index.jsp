@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
-    Created on : 19 may 2023, 08:12:30
-    Author     : alumno
+    Created on : 23 may 2023, 21:44:26
+    Author     : nicojrz
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,10 +11,10 @@
         <jsp:include page="../../../recursos/import.jsp"/>
         <link rel="shortcut icon" href="../../../images/logotypes/me-logoP.png">
         <link rel="stylesheet" href="../../../bootstrap/style.css">
-        <title>Mi Cuenta</title>
+        <title>Comunitarias</title>
     </head>
     <body>
-        <h1>Mi cuenta</h1>
+        <h1>Mis agendas comunitarias</h1>
         
         <a href="../index.jsp">MEMORAND</a> <br>
     </body>

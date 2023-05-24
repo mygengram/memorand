@@ -6,10 +6,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <jsp:include page="../../recursos/import.jsp"/>
+        <link rel="shortcut icon" href="../../images/logotypes/me-logoP.png">
+        <link rel="stylesheet" href="../../bootstrap/style.css">
+        <title>Memorand - Estad&iacute;sticas</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Estad&iacute;sticas</h1>
+        
+        <a href="index.jsp"> MEMORAND </a>
     </body>
 </html>

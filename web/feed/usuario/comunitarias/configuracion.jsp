@@ -1,7 +1,7 @@
 <%-- 
-    Document   : error
-    Created on : 19 may 2023, 13:33:47
-    Author     : alumno
+    Document   : configuracion
+    Created on : 23 may 2023, 22:21:35
+    Author     : nicojrz
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
