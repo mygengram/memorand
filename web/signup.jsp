@@ -20,9 +20,31 @@
         
     </head>
     <body>
+        <%
+            String accion = null;
+            UsuariosHelper helper = null;
+            boolean flag = false;
+            
+            accion = request.getParameter("accion");
+            if(accion != null && "registra".equals(accion))
+            {
+                helper = new UsuariosHelper();
+                flag = helper.addT();
+                
+                if(flag)
+                {
+        %>
+        <a href="login.jsp">
+            <button class="btn btn-primary fs-6 text-white" type="button" style="padding:2%;">Iniciar sesion</button>
+        </a>    
+        <%
+                }
+            }
+        %>
+        
         <h1>Registrarse</h1>
-
-        <form id="form2" method="POST" action="signup.jsp" onsubmit="return validateForm()">
+        
+        <form id="form2" method="GET" action="signup.jsp" onsubmit="return validateForm()">
             <table>
                 <tr>
                     <td>Nombre de usuario</td>
@@ -62,7 +84,7 @@
                 <tr>
                     <td>Fecha de nacimiento</td>
                     <td>
-                        <input type="date" id="fn" name="fn"/>
+                        <input type="text" id="fn" name="fn"/>
                         <span id="fnError" style="color:red"></span>
                     </td>
                 </tr>

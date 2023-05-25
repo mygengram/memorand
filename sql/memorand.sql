@@ -38,7 +38,7 @@ create table Rol_Usuario
 );
 create table PendientesP
 (
-	idPendP int primary key not null,
+	idPendP int primary key auto_increment not null,
     nomPendP varchar(20),
     subPendP varchar(30),
     descPendP longtext,
@@ -50,7 +50,7 @@ create table PendientesP
 
 create table EtiquetasP
 (
-	idEtiquetaP int primary key not null,
+	idEtiquetaP int primary key auto_increment not null,
     nomEtiquetaP varchar(15)
 );
 

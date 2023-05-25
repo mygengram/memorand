@@ -34,7 +34,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         t.setNomUsuario(getParameter("name"));
         t.setApellidoPat(getParameter("ap"));
         t.setApellidoMat(getParameter("am"));
-        t.setFechaNac(string2Date( getParameter("fn")));
+        t.setFechaNac(string2Date(getParameter("fn")));
         
         if( isValidaCamposOk( ) )
         {

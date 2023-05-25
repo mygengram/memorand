@@ -5,6 +5,8 @@ package com.memorand.helper;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -59,23 +61,20 @@ public abstract class Helpers<T> implements Serializable
         return valor != null;
     }
     
-    public Date string2Date( String fecha ) 
-    {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        try 
-        {
-            return simpleDateFormat.parse(fecha );
-        } 
-        catch (ParseException ex) 
-        {
-            Logger.getLogger(Helpers.class.getName()).log(Level.SEVERE, null, ex);
+    public static Date string2Date (String fecha) {
+        SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date fechaDate = formatoEntrada.parse(fecha);
+            return fechaDate;
+        } catch (ParseException e) {
+            System.out.println("Error al convertir la fecha: " + e.getMessage());
+            return null;
         }
-        return null;
     }
     
-    public String date2String( Date fecha ) 
-    {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        return simpleDateFormat.format(fecha );
+    public static String date2String(Date fecha) {
+        SimpleDateFormat formatoSalida = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaString = formatoSalida.format(fecha);
+        return fechaString;
     }
 }
