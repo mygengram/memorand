@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="mb-3">
                                   <label for="password" class="form-label">Contraseña</label>
-                                  <input type="password" class="form-control rounded-5 rounded-top-0 border-success" id="password"  placeholder="Contraseña">
+                                  <input type="password" class="form-control rounded-5 rounded-top-0 border-success" id="pass"  placeholder="Contraseña">
                                 </div>
                                 <button type="submit" class="btn btn-light btn-custom rounded-5 rounded-top-0" style="width: 250px;">Iniciar sesión</button>
                             </form>

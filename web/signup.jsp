@@ -101,32 +101,24 @@
                                     <span id="nameError" style="color:red"></span>
                                 </div>
                                 <div class="mb-3">
-                                        <td>Apellido paterno</td>
-                                        <td>
-                                            <input type="text" id="ap" name="ap"/>
-                                            <span id="apError" style="color:red"></span>
+                                    <label for="nmRe" class="form-label">Apellido paterno</label>
+                                    <input type="text" id="ap" name="ap"/>
+                                    <span id="apError" style="color:red"></span>
                                 </div>
-                                    <tr>
-                                        <td>Apellido materno</td>
-                                        <td>
-                                            <input type="text" id="am" name="am"/>
-                                            <span id="amError" style="color:red"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fecha de nacimiento</td>
-                                        <td>
-                                            <input type="text" id="fn" name="fn"/>
-                                            <span id="fnError" style="color:red"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <input type="submit" id="accion" name="accion" value="registra">
-                                        </td>
-                                    </tr>
-                                </table>
-                                </form>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Apellido materno</label>
+                                    <input type="text" id="am" name="am"/>
+                                    <span id="amError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Fecha de nacimiento</label>
+                                    <input type="text" id="fn" name="fn"/>
+                                    <span id="fnError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" id="accion" name="accion" value="registra">
+                                </div>
+                            </form>
                                 </div>
                             </div>
                         </div>
