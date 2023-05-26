@@ -1,5 +1,5 @@
 -- Memorand database
--- drop database if exists memorand; --
+drop database if exists memorand;
 
 create database Memorand;
 use Memorand;
@@ -11,7 +11,7 @@ create table Usuarios
     nomUsuario varchar(40),
     apellidoPat varchar(20),
     apellidoMat varchar(20),
-    fechaNac date default null
+    fechaNac date
 );
 
 create table Roles
@@ -20,13 +20,10 @@ create table Roles
     descripcion varchar(20)
 );
 
-insert into roles (rolUsuario, descripcion) values ("admin","rol admin");
-insert into roles (rolUsuario, descripcion) values ("usuario","rol usuario");
-
 create table Rol_Usuario
 (
 	usuario varchar(20) not null,
-	rolUsuario varchar(20) not null default("usuario"),
+	rolUsuario varchar(20) not null,
     primary key (usuario, rolUsuario),
     index `fk_Roles_has_Usuarios_usuario_idx` (`usuario` asc),
     index `fk_Roles_has_Usuarios_rolUsuario_idx` (`rolUsuario` asc),
@@ -51,7 +48,7 @@ create table PendientesP
     fechaInicioP datetime null,
     fechaFinalP datetime null,
     colorPendP varchar(6) null,
-    completadoP varchar(2) default ("no")
+    completadoP varchar(2)
 );
 
 create table EtiquetasP
@@ -84,7 +81,7 @@ create table PendientesC
     descPendC longtext null,
     fechaInicioC datetime null,
     fechaFinalC datetime null,
-    completadoC varchar(2) default ("no")
+    completadoC varchar(2)
 );
 
 create table AgendasC
@@ -107,7 +104,7 @@ create table Llevan
 	usuario varchar(20),
     idAgenda int,
     rolAgenda varchar(20),
-    favorito varchar(2) default ("no"),
+    favorito varchar(2),
     foreign key (usuario) references Usuarios (usuario),
     foreign key (idAgenda) references AgendasC (idAgenda)
 );
