@@ -17,8 +17,27 @@
         <link rel="shortcut icon" href="images/logotypes/me-logoP.png">
         <link rel="stylesheet" href="bootstrap/style.css">
         <title>Memorand - Registrarse</title>
-        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons/font/bootstrap-icons.css">
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/323dc2b1ab.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    
     </head>
+     <style>
+            .btn-custom {
+                background-color: #18988B;
+                border-color: #ffffff;
+                color: #ffffff;
+            }
+
+            .btn-custom:hover {
+              background-color: #ffffff; 
+              border-color: #18988B; 
+              color: #18988B;
+            }
+        </style>
     <body>
         <%
             String accion = null;
@@ -42,59 +61,72 @@
             }
         %>
         
-        <h1>Registrarse</h1>
-        
-        <form id="form2" method="GET" action="signup.jsp" onsubmit="return validateForm()">
-            <table>
-                <tr>
-                    <td>Nombre de usuario</td>
-                    <td>
-                        <input type="text" id="user" name="user"/>
-                        <span id="userError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Contrase&ntilde;a</td>
-                    <td>
-                        <input type="password" id="pass" name="pass"/>
-                        <span id="passError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nombre real</td>
-                    <td>
-                        <input type="text" id="name" name="name"/>
-                        <span id="nameError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Apellido paterno</td>
-                    <td>
-                        <input type="text" id="ap" name="ap"/>
-                        <span id="apError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Apellido materno</td>
-                    <td>
-                        <input type="text" id="am" name="am"/>
-                        <span id="amError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Fecha de nacimiento</td>
-                    <td>
-                        <input type="text" id="fn" name="fn"/>
-                        <span id="fnError" style="color:red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" id="accion" name="accion" value="registra">
-                    </td>
-                </tr>
-            </table>
-        </form>
+         <div class="container-fluid">
+            <div class="row ">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    <br><br><br><br><br><br>
+                    <div class="card">
+                        <div class="card-body overflow-auto">
+                    <div class="wrap d-md-flex">
+			<div class="text-wrap p-2 p-lg-5 text-center d-flex align-items-center order-md-last">
+                            
+                            <div class="text w-100">
+                                <h2 style="color: #18988B;">Bienvenido </h2><h4 style="color: #18988B;">Registrarse</h4>
+				<p>¿Ya tienes una cuenta?</p>
+                                <a href="login.jsp" class="btn btn-light btn-custom rounded rounded-top-0">Ingresa</a>
+                            </div>
+			</div>
+                        <div class="login-wrap p-4 p-lg-5">
+                            <div class="d-flex">
+                                <div class="w-100">
+                                    
+                                    <h3 class="mb-4" style="color: #75777B;">Registrate</h3>
+                                </div>
+                            </div>
+                            <form id="form2" method="GET" action="signup.jsp" onsubmit="return validateForm()">
+                                <div class="mb-3">
+                                    <label for="user" class="form-label">Nombre de usuario</label>
+                                    <input type="text" id="user" name="user"/>
+                                    <span id="userError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pasS" class="form-label">Contrase&ntilde;a</label>
+                                    <input type="password" id="pass" name="pass"/>
+                                    <span id="passError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Nombre real</label>
+                                    <input type="text" id="name" name="name"/>
+                                    <span id="nameError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Apellido paterno</label>
+                                    <input type="text" id="ap" name="ap"/>
+                                    <span id="apError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Apellido materno</label>
+                                    <input type="text" id="am" name="am"/>
+                                    <span id="amError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nmRe" class="form-label">Fecha de nacimiento</label>
+                                    <input type="text" id="fn" name="fn"/>
+                                    <span id="fnError" style="color:red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="submit" id="accion" name="accion" value="registra">
+                                </div>
+                            </form>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
 
         <script>
             <!--
