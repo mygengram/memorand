@@ -48,7 +48,7 @@ public class UsuariosService extends Conexion<Usuarios>
                 usuario.setNomUsuario(resultSet.getString(3));
                 usuario.setApellidoPat(resultSet.getString(4));
                 usuario.setApellidoMat(resultSet.getString(5));
-                usuario.setFechaNac(resultSet.getDate(6));
+                usuario.setFechaNac(resultSet.getString(6));
                 usuariosList.add(usuario);
             }
             resultSet.close();
@@ -85,7 +85,7 @@ public class UsuariosService extends Conexion<Usuarios>
             preparedStatement.setString(3, usuario.getNomUsuario());
             preparedStatement.setString(4, usuario.getApellidoPat());
             preparedStatement.setString(5, usuario.getApellidoMat());
-            preparedStatement.setDate(6, dateUtil2DateSql(usuario.getFechaNac()));
+            preparedStatement.setString(6, usuario.getFechaNac());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -119,7 +119,7 @@ public class UsuariosService extends Conexion<Usuarios>
             preparedStatement.setString(2, usuario.getNomUsuario());
             preparedStatement.setString(3, usuario.getApellidoPat());
             preparedStatement.setString(4, usuario.getApellidoMat());
-            preparedStatement.setDate(5, dateUtil2DateSql(usuario.getFechaNac()));
+            preparedStatement.setString(5, usuario.getFechaNac());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -194,7 +194,7 @@ public class UsuariosService extends Conexion<Usuarios>
                 aux.setNomUsuario(resultSet.getString(3));
                 aux.setApellidoPat(resultSet.getString(4));
                 aux.setApellidoMat(resultSet.getString(5));
-                aux.setFechaNac(resultSet.getDate(6));
+                aux.setFechaNac(resultSet.getString(6));
             }
             resultSet.close();
             closeConnection(connection);

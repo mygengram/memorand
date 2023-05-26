@@ -53,18 +53,19 @@
         %>
          <div class="container-fluid">
             <div class="row ">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6">
-                    <br><br><br><br><br><br>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <br><br><br>
                     <div class="card">
                         <div class="card-body overflow-auto">
                     <div class="wrap d-md-flex">
 			<div class="text-wrap p-2 p-lg-5 text-center d-flex align-items-center order-md-last">
                             
                             <div class="text w-100">
-                                <h2 style="color: #18988B;">Bienvenido </h2><h4 style="color: #18988B;">Inicia Sesi&oacute;n</h4>
+                                <h2 style="color: #18988B;">Bienvenido </h2>
 				<p>¿No tienes una cuenta?</p>
                                 <a href="signup.jsp" class="btn btn-light btn-custom rounded rounded-top-0">&Uacute;nete</a>
+                                <a href="index.jsp" class="btn btn-outline-secondary rounded rounded-top-0">Regresar</a>
                             </div>
 			</div>
                         <div class="login-wrap p-4 p-lg-5">
@@ -89,7 +90,7 @@
 		    </div>
 		    </div>
                 </div>
-                <div class="col-sm-3"></div>
+                <div class="col-sm-2"></div>
             </div>
         </div>
     </body>

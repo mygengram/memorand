@@ -12,10 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/recursos/navbar.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/UsuariosService.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/signup.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/login.jsp</file>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/index.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/Usuarios.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/UsuariosHelper.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/recursos/shortbar.jsp</file>
         </group>
     </open-files>

@@ -20,7 +20,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
                isNotNullAndNotEmpty( t.getNomUsuario()) &&
                isNotNullAndNotEmpty( t.getApellidoPat()) &&
                isNotNullAndNotEmpty( t.getApellidoMat()) &&
-               isNotNull(t.getFechaNac());
+               isNotNullAndNotEmpty(t.getFechaNac());
     }
 
     @Override
@@ -34,9 +34,9 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         t.setNomUsuario(getParameter("name"));
         t.setApellidoPat(getParameter("ap"));
         t.setApellidoMat(getParameter("am"));
-        t.setFechaNac(string2Date(getParameter("fn")));
+        t.setFechaNac(getParameter("fn"));
         
-        if( isValidaCamposOk( ) )
+        if(isValidaCamposOk())
         {
             return usuariosService.addUsuario(t );
         }
@@ -60,7 +60,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         t.setNomUsuario(getParameter("name"));
         t.setApellidoPat(getParameter("ap"));
         t.setApellidoMat(getParameter("am"));
-        t.setFechaNac(string2Date( getParameter("fn")));
+        t.setFechaNac(getParameter("fn"));
         if( isValidaCamposOk( ) )
         {
             return usuariosService.updateUsuario(t );

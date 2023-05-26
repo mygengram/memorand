@@ -12,7 +12,7 @@ public class Usuarios implements Serializable
     private String nomUsuario;
     private String apellidoPat;
     private String apellidoMat;
-    private Date fechaNac;
+    private String fechaNac;
     
     public Usuarios() {}
     
@@ -61,11 +61,11 @@ public class Usuarios implements Serializable
         this.apellidoMat = apellidoMat;
     }
 
-    public Date getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
 }
