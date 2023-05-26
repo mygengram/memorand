@@ -1,4 +1,6 @@
 -- Memorand database
+-- drop database if exists memorand; --
+
 create database Memorand;
 use Memorand;
 
@@ -9,7 +11,7 @@ create table Usuarios
     nomUsuario varchar(40),
     apellidoPat varchar(20),
     apellidoMat varchar(20),
-    fechaNac date
+    fechaNac date default null
 );
 
 create table Roles
@@ -18,43 +20,47 @@ create table Roles
     descripcion varchar(20)
 );
 
+insert into roles (rolUsuario, descripcion) values ("admin","rol admin");
+insert into roles (rolUsuario, descripcion) values ("usuario","rol usuario");
+
 create table Rol_Usuario
 (
 	usuario varchar(20) not null,
-	rolUsuario varchar(20) not null,
-    PRIMARY KEY (usuario, rolUsuario),
-    INDEX `fk_Roles_has_Usuarios_usuario_idx` (`usuario` ASC) VISIBLE,
-    INDEX `fk_Roles_has_Usuarios_rolUsuario_idx` (`rolUsuario` ASC) VISIBLE,
-	CONSTRAINT `fk_Roles_has_Usuarios_rolUsuario`
-		FOREIGN KEY (`rolUsuario`)
-		REFERENCES `Memorand`.`Roles` (`rolUsuario`)
-		ON DELETE RESTRICT
-		ON UPDATE RESTRICT,
-	CONSTRAINT `fk_Roles_has_Usuarios_usuario`
-		FOREIGN KEY (`usuario`)
-		REFERENCES `Memorand`.`Usuarios` (`usuario`)
-		ON DELETE RESTRICT
-		ON UPDATE RESTRICT
+	rolUsuario varchar(20) not null default("usuario"),
+    primary key (usuario, rolUsuario),
+    index `fk_Roles_has_Usuarios_usuario_idx` (`usuario` asc),
+    index `fk_Roles_has_Usuarios_rolUsuario_idx` (`rolUsuario` asc),
+	constraint `fk_Roles_has_Usuarios_rolUsuario`
+		foreign key (`rolUsuario`)
+		references `Memorand`.`Roles` (`rolUsuario`)
+		on delete restrict
+		on update restrict,
+	constraint `fk_Roles_has_Usuarios_usuario`
+		foreign key (`usuario`)
+		references `Memorand`.`Usuarios` (`usuario`)
+		on delete restrict
+		on update restrict
 );
+
 create table PendientesP
 (
-	idPendP int primary key auto_increment not null,
+	idPendP int primary key not null,
     nomPendP varchar(20),
     subPendP varchar(30),
-    descPendP longtext,
-    fechaInicioP datetime,
-    fechaFinalP datetime,
-    colorPendP varchar(6),
-    completadoP boolean
+    descPendP longtext null,
+    fechaInicioP datetime null,
+    fechaFinalP datetime null,
+    colorPendP varchar(6) null,
+    completadoP varchar(2) default ("no")
 );
 
 create table EtiquetasP
 (
-	idEtiquetaP int primary key auto_increment not null,
+	idEtiquetaP int primary key not null,
     nomEtiquetaP varchar(15)
 );
 
-create table UsuariosPendientes
+create table UsuariosPendientesP
 (
 	usuario varchar(20),
     idPendP int,
@@ -62,7 +68,7 @@ create table UsuariosPendientes
     foreign key (idPendP) references PendientesP (idPendP)
 );
 
-create table UsuariosEtiquetas
+create table UsuariosEtiquetasP
 (
 	usuario varchar(20),
     idEtiquetaP int,
@@ -75,19 +81,17 @@ create table PendientesC
 	idPendC int primary key not null,
     nomPendC varchar(20),
     subPendC varchar(30),
-    descPendC longtext,
-    fechaInicioC datetime,
-    fechaFinalC datetime,
-    colorPendC varchar(6),
-    completadoC boolean
+    descPendC longtext null,
+    fechaInicioC datetime null,
+    fechaFinalC datetime null,
+    completadoC varchar(2) default ("no")
 );
 
 create table AgendasC
 (
 	idAgenda int primary key not null,
     nomAgenda varchar(20),
-    descAgenda text,
-    colorAgenda varchar(6),
+    descAgenda text null,
     codigoAgenda varchar(6)
 );
 
@@ -103,7 +107,7 @@ create table Llevan
 	usuario varchar(20),
     idAgenda int,
     rolAgenda varchar(20),
-    favorito boolean,
+    favorito varchar(2) default ("no"),
     foreign key (usuario) references Usuarios (usuario),
     foreign key (idAgenda) references AgendasC (idAgenda)
 );
