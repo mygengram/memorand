@@ -70,20 +70,19 @@
                         <div class="login-wrap p-4 p-lg-5">
                             <div class="d-flex">
                                 <div class="w-100">
-                                    
                                     <h3 class="mb-4" style="color: #75777B;">Inicia Sesi&oacute;n</h3>
                                 </div>
                             </div>
-                            <form>
+                            <form id="form1" method="POST" action="login.jsp">
                                 <div class="mb-3">
                                   <label for="user" class="form-label">Nombre de usuario</label>
-                                  <input type="text" class="form-control rounded-5 rounded-top-0 border-success" id="user" placeholder="Usuario">
+                                  <input type="text" class="form-control rounded-5 rounded-top-0 border-success" id="user" name="user" placeholder="Usuario">
                                 </div>
                                 <div class="mb-3">
                                   <label for="password" class="form-label">Contraseña</label>
-                                  <input type="password" class="form-control rounded-5 rounded-top-0 border-success" id="pass"  placeholder="Contraseña">
+                                  <input type="password" class="form-control rounded-5 rounded-top-0 border-success" id="pass" name="pass"  placeholder="Contraseña">
                                 </div>
-                                <button type="submit" class="btn btn-light btn-custom rounded-5 rounded-top-0" style="width: 250px;">Iniciar sesión</button>
+                                <button type="submit" class="btn btn-light btn-custom rounded-5 rounded-top-0" style="width: 250px;" id="accion" name="accion" value="login">Iniciar sesión</button>
                             </form>
                         </div>
 		    </div>
@@ -94,5 +93,4 @@
             </div>
         </div>
     </body>
-    
 </html>

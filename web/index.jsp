@@ -22,7 +22,9 @@
                     <h1 style="padding:4%"><strong>Organiza tu día sin complicaciones</strong></h1>
                     <p style="margin-left: 6%; margin-right: 6%;">Memorand es tu espacio ideal para planear tu día a día en poco tiempo, permitíendote saber en todo momento lo que quieres hacer.</p>
         <!-- PRESENTATION <button class="btn btn-primary fs-6 text-white" data-bs-toggle="modal" data-bs-target="#loginModal" type="button" style="padding:2%;">Ir a Memorand</button> -->
-                    <button class="btn btn-primary fs-6 text-white" onclick="location.href='feed/usuario/index.jsp'" type="button" style="padding:2%;">Ir a Memorand</button>
+                    <a href="#">
+                        <button class="btn btn-primary fs-6 text-white" type="button" style="padding:2%;">Ir a Memorand</button>
+                    </a>
                     <br><br><br>
                 </div>
                 <div class="col">
