@@ -86,8 +86,74 @@
             </ul>
           </div>
         </div>
+        <br><br>
         
-        <h1>Hola usuario!</h1>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-1"></div>
+            
+            <%-- MAIN --%>
+            <div class="col-9">
+                <h1 class="text-secondary">Bienvenido</h1>
+                <h2 class="text-secondary">¿Qué deseas hacer hoy?</h2>
+                <br> <hr> <br> 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="card text-center mb-3 bg-body-secondary">
+                              <div class="card-body">
+                                  <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
+                                <a href="n.jsp" class="btn btn-primary text-white">Nuevo pendiente</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-center mb-3 bg-body-secondary">
+                              <div class="card-body">
+                                  <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
+                                <a href="n.jsp" class="btn btn-primary text-white">Crear una agenda</a>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card text-center mb-3 bg-body-secondary">
+                              <div class="card-body">
+                                  <h1 class="card-title text-secondary"><i class="bi bi-person-fill-add"></i></h1>
+                                <a href="n.jsp" class="btn btn-primary text-white">Unirse a una agenda</a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr> <br>
+                <h2 class="text-secondary">Pr&oacute;ximos pendientes</h2>
+                
+                <br>
+                <table class="table table-borderless" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Vencimiento</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pendiente 1</td>
+                      <td>2023-05-26</td>
+                      <td>
+                          <a href="#">
+                              <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            
+            <div class="col-1"></div>
+          </div>
+        </div>
         
         <%
             String action = null;
