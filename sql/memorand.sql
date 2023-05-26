@@ -1,4 +1,4 @@
--- Memorand database
+-- Memorand database --
 drop database if exists memorand;
 
 create database Memorand;
@@ -11,7 +11,7 @@ create table Usuarios
     nomUsuario varchar(40),
     apellidoPat varchar(20),
     apellidoMat varchar(20),
-    fechaNac date
+    fechaNac varchar(10)
 );
 
 create table Roles
@@ -45,8 +45,8 @@ create table PendientesP
     nomPendP varchar(20),
     subPendP varchar(30),
     descPendP longtext null,
-    fechaInicioP datetime null,
-    fechaFinalP datetime null,
+    fechaInicioP varchar(10) null,
+    fechaFinalP varchar(10) null,
     colorPendP varchar(6) null,
     completadoP varchar(2)
 );
@@ -79,8 +79,8 @@ create table PendientesC
     nomPendC varchar(20),
     subPendC varchar(30),
     descPendC longtext null,
-    fechaInicioC datetime null,
-    fechaFinalC datetime null,
+    fechaInicioC varchar(10) null,
+    fechaFinalC varchar(10) null,
     completadoC varchar(2)
 );
 
