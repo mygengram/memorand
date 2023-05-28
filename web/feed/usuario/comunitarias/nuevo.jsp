@@ -1,17 +1,14 @@
-<%-- 
-    Document   : nuevo
-    Created on : 23 may 2023, 22:23:21
-    Author     : nicojrz
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="../../../recursos/import.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <jsp:include page="../../../recursos/navbar.jsp"/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="../../../recursos/footer.jsp"/>
     </body>
 </html>

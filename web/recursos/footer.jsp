@@ -1,7 +1,6 @@
 <%-- 
     Footer Memorand by Gengram © 2023
 --%>
-
 <div class="container-fluid bg-body-tertiary" style="padding:5%;" id="contacto">
     <div class="row">
         <div class="col-4 text-center">
