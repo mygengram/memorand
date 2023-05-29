@@ -25,17 +25,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse ms-auto"" id="navbarNav" style="margin-right:15%;">
-                <ul class="navbar-nav  ms-auto">
+                <ul class="navbar-nav ms-auto">
                     <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas1" aria-expanded="false" aria-controls="contenido" onclick="toggleNav()">
                         <i class="bi bi-house-door-fill text-body-tertiary" style="font-size:20pt"></i>
                     </button>
-                    <li class="nav-item dropstart  ms-auto">
+                    <li class="nav-item dropstart ms-auto">
                         <a class="nav-link dropstart-toggle" href="#" id="usuario" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-person-fill text-body-tertiary" style="font-size:20pt"></i>
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="cuenta/index.jsp">Mi cuenta</a>
+                                <a class="dropdown-item" href="cuenta.jsp">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -51,7 +51,8 @@
         </nav>
 
         <script>
-            function toggleNav() {
+            function toggleNav()
+            {
                 var nav = document.getElementById("contenido");
                 if (nav.classList.contains("show")) {
                     nav.classList.remove("show");
@@ -61,7 +62,7 @@
             }
         </script>
 
-         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1" aria-labelledby="offcanvas1Label" style="width: 320px">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1" aria-labelledby="offcanvas1Label" style="width: 320px">
           <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" style="margin-top:8%" ></button>
           </div>
@@ -69,18 +70,18 @@
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a href="index.jsp" class="nav-link" aria-current="page">
-                  <i class="bi bi-house-door-fill" style="font-size:18pt">    Inicio</i>
+                  <i class="bi bi-house-door-fill" style="font-size:14pt">    Inicio</i>
                 </a>
               </li>
               <hr style="opacity: 100; height: 2px;">
               <li>
                 <a href="personal/index.jsp" class="nav-link">
-                  <i class="bi bi-person-fill" style="font-size:18pt">    Mi agenda</i>
+                  <i class="bi bi-person-fill" style="font-size:14pt">    Mi agenda</i>
                 </a>
               </li>
               <li>
                 <a href="comunitarias/index.jsp" class="nav-link">
-                  <i class="bi bi-people-fill" style="font-size:18pt">    Agendas comunitarias</i>
+                  <i class="bi bi-people-fill" style="font-size:14pt">    Agendas comunitarias</i>
                 </a>
               </li>
             </ul>
@@ -102,16 +103,16 @@
                         <div class="col-4">
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
-                                  <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
-                                <a href="n.jsp" class="btn btn-primary text-white">Nuevo pendiente</a>
+                                <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
+                                <a href="nuevo.jsp" class="btn btn-primary text-white">Nuevo pendiente</a>
                               </div>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
-                                  <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
-                                <a href="n.jsp" class="btn btn-primary text-white">Crear una agenda</a>
+                                <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
+                                <a href="crear.jsp" class="btn btn-primary text-white">Crear una agenda</a>
                               </div>
                             </div>
                         </div>
@@ -119,7 +120,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                   <h1 class="card-title text-secondary"><i class="bi bi-person-fill-add"></i></h1>
-                                <a href="n.jsp" class="btn btn-primary text-white">Unirse a una agenda</a>
+                                <a href="unirse.jsp" class="btn btn-primary text-white">Unirse a una agenda</a>
                               </div>
                             </div>
                         </div>
@@ -156,11 +157,11 @@
         </div>
         
         <%
-            String action = null;
+            String accion = null;
             LoginHelper loginHelper = null;
             
-            action = request.getParameter("accion");
-            if(action != null && "Salir".equals(action))
+            accion = request.getParameter("accion");
+            if(accion != null && "Salir".equals(accion))
             {
                 loginHelper = new LoginHelper();
                 if( !loginHelper.logout(session))
@@ -179,7 +180,6 @@
                     response.sendRedirect( request.getContextPath() );
                 }
             }
-            
         %>
     </body>
 </html>

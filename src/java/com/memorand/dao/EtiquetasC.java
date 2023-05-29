@@ -9,8 +9,7 @@ public class EtiquetasC implements Serializable
     private int idEtiquetaC;
     private String nomEtiquetaC;
 
-    public EtiquetasC() {
-    }
+    public EtiquetasC() {}
     
     public EtiquetasC(int idEtiquetaC) 
     {
@@ -32,6 +31,4 @@ public class EtiquetasC implements Serializable
     public void setNomEtiquetaC(String nomEtiquetaC) {
         this.nomEtiquetaC = nomEtiquetaC;
     }
-    
-    
 }

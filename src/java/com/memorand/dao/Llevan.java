@@ -10,7 +10,7 @@ public class Llevan implements Serializable
     private Usuarios usuario;
     private AgendasC idAgenda;
     private String rolAgenda;
-    private boolean favorito;
+    private String favorito;
 
     public Llevan() {
     }
@@ -47,12 +47,11 @@ public class Llevan implements Serializable
         this.rolAgenda = rolAgenda;
     }
 
-    public boolean isFavorito() {
+    public String getFavorito() {
         return favorito;
     }
 
-    public void setFavorito(boolean favorito) {
+    public void setFavorito(String favorito) {
         this.favorito = favorito;
     }
-    
 }

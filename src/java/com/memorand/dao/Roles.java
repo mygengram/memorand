@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class Roles implements Serializable
 {
     private String rolUsuario;
-    private String descripcion;
     
     public Roles() {}
     
@@ -22,13 +21,5 @@ public class Roles implements Serializable
 
     public void setRolUsuario(String rolUsuario) {
         this.rolUsuario = rolUsuario;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 }

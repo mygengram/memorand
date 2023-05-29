@@ -15,7 +15,6 @@ import java.util.List;
 
 public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
 {
-
     public UsuariosEtiquetasService() {}
     
     public List<UsuariosEtiquetas> getUsuariosEtiquetasList() 
@@ -26,20 +25,17 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
         ResultSet resultSet = null;
         UsuariosEtiquetas usuariosEtiquetas = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM USUARIOSETIQUETAS");
-            if (resultSet == null) 
-            {
+            resultSet = statement.executeQuery("SELECT * FROM USUARIOSETIQUETASP");
+            if (resultSet == null) {
                 return null;
             }
             usuariosEtiquetasList = new ArrayList<>();
@@ -54,8 +50,7 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
             closeConnection(connection);
             return usuariosEtiquetasList;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
@@ -65,18 +60,15 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO USUARIOSETIQUETAS (USUARIO,IDETIQUETAP) VALUES (?,?)";
+        String sql = "INSERT INTO USUARIOSETIQUETASP (USUARIO,IDETIQUETAP) VALUES (?,?)";
         int row = 0;
-        try 
-        {
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
             preparedStatement.setString(1, usuariosEtiquetas.getUsuario().getUsuario());
@@ -85,15 +77,9 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return false;
-    }
-    
-    public boolean updateUsuariosEtiquetas ( UsuariosEtiquetas usuariosEtiquetas )
-    {
         return false;
     }
     
@@ -101,10 +87,10 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM USUARIOSETIQUETAS WHERE USUARIO = ? AND IDETIQUETAP = ?";
+        String sql = "DELETE FROM USUARIOSETIQUETASP IDETIQUETAP = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
             if( connection == null )
             {
@@ -134,28 +120,24 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try 
-        {
+        
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOSETIQUETAS WHERE USUARIO = ? AND IDETIQUETAP = ?");
-            if (preparedStatement == null) 
-            {
+            if (preparedStatement == null) {
                 return null;
             }
             preparedStatement.setString(1, usuario);
             preparedStatement.setInt(2, idEtiquetaP);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             aux = new UsuariosEtiquetas();
-            while (resultSet.next()) 
-            {
+            while (resultSet.next()) {
                 aux.setUsuario( new Usuarios( resultSet.getString(1)));
                 aux.setIdEtiquetaP(new EtiquetasP( resultSet.getInt(2)));
             }
@@ -163,53 +145,6 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
             closeConnection(connection);
             return aux;
         } 
-        catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
-        return null;
-    }
-    
-    public UsuariosEtiquetas getUsuariosEtiquetasByUsuarioIdEtiquetaP (String usuario, int idEtiquetaP) 
-    {
-        UsuariosEtiquetas aux = null;
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        StringBuilder stringBuilder = null;
-        try 
-        {
-            connection = getConnection();
-            if (connection == null) 
-            {
-                return null;
-            }
-            stringBuilder = new StringBuilder();
-            stringBuilder.append("SELECT USUARIOSETIQUETAS.USUARIO,USUARIOSETIQUETAS.IDETIQUETAP FROM USUARIOSETIQUETAS INNER JOIN USUARIOS ON USUARIOSETIQUETAS.USUARIO = USUARIOS.USUARIO");
-            stringBuilder.append( " WHERE USUARIOS.USUARIO = ? AND USUARIOS.CONTRASENA = ?");
-            System.out.println(stringBuilder.toString() );
-            preparedStatement = connection.prepareStatement( stringBuilder.toString());
-            if (preparedStatement == null) 
-            {
-                return null;
-            }
-            preparedStatement.setString(1, usuario);
-            preparedStatement.setInt(2, idEtiquetaP);
-            resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
-                return null;
-            }
-            aux = new UsuariosEtiquetas();
-            while (resultSet.next()) 
-            {
-                aux.setUsuario(new Usuarios( resultSet.getString(1)));
-                aux.setIdEtiquetaP(new EtiquetasP( resultSet.getInt(2)));
-            }
-            resultSet.close();
-            closeConnection(connection);
-            return aux;
-        }   
         catch (SQLException ex) 
         {
             ex.printStackTrace();

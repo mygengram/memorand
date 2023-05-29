@@ -26,11 +26,9 @@ public class AgendaEtiquetasService extends Conexion<AgendaEtiquetas>
         ResultSet resultSet = null;
         AgendaEtiquetas agendaEtiquetas = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
@@ -38,13 +36,11 @@ public class AgendaEtiquetasService extends Conexion<AgendaEtiquetas>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM AGENDAETIQUETAS");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             agendaEtiquetasList = new ArrayList<>();
-            while (resultSet.next()) 
-            {
+            while (resultSet.next()) {
                 agendaEtiquetas = new AgendaEtiquetas();
                 agendaEtiquetas.setIdAgenda(new AgendasC( resultSet.getInt(1) ) );
                 agendaEtiquetas.setIdEtiquetaC(new EtiquetasC( resultSet.getInt(2) ) );
@@ -89,11 +85,6 @@ public class AgendaEtiquetasService extends Conexion<AgendaEtiquetas>
         {
             ex.printStackTrace();
         }
-        return false;
-    }
-    
-    public boolean updateAgendaEtiquetas ( AgendaEtiquetas agendaEtiquetas )
-    {
         return false;
     }
     

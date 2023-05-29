@@ -3,7 +3,6 @@ package com.memorand.dao;
 
 // IMPORTACIONES
 import java.io.Serializable;
-import java.util.Date;
 
 public class Usuarios implements Serializable
 {

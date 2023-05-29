@@ -13,7 +13,6 @@ import java.util.List;
 
 public class EtiquetasCService extends Conexion<EtiquetasC>
 {
-
     public EtiquetasCService() {}
     
     public List<EtiquetasC> getEtiquetasCList() 
@@ -24,11 +23,9 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
         ResultSet resultSet = null;
         EtiquetasC etiquetasC = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
@@ -36,11 +33,11 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM ETIQUETASC");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             etiquetasCList = new ArrayList<>();
+            
             while (resultSet.next()) 
             {
                 etiquetasC = new EtiquetasC();
@@ -52,30 +49,41 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
             closeConnection(connection);
             return etiquetasCList;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
     
-    public boolean addEtiquetasC (EtiquetasC etiquetasC )
+    public boolean addEtiquetasC (EtiquetasC etiquetasC)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO ETIQUETASC (IDETIQUETAC,NOMETIQUETAC) VALUES (?,?)";
-        int row = 0;
-        try 
-        {
+        int row;
+        int size;
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
+            }
+            
+            size = getEtiquetasCList().size();
+            if(size < 0) {
+                return false;
+            }
+            else {
+                if(size == 0) {
+                    preparedStatement.setInt(1,1);
+                }
+                else {
+                    preparedStatement.setInt(1,(getEtiquetasCList().get(size-1).getIdEtiquetaC())+1);
+                }
             }
             preparedStatement.setInt(1, etiquetasC.getIdEtiquetaC());
             preparedStatement.setString(2, etiquetasC.getNomEtiquetaC());
@@ -83,8 +91,7 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -96,16 +103,14 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
         PreparedStatement preparedStatement = null;
         String sql = "UPDATE ETIQUETASC SET IDETIQUETAC = ?,NOMETIQUETAC = ? WHERE IDETIQUETAC = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
             preparedStatement.setInt(1, etiquetasC.getIdEtiquetaC());
@@ -114,8 +119,7 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -125,28 +129,24 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM ETIQUETASC WHERE IDETIQUETAC = ? AND NOMETIQUETAC = ?";
+        String sql = "DELETE FROM ETIQUETASC WHERE IDETIQUETAC = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
             preparedStatement.setInt(1, etiquetasC.getIdEtiquetaC());
-            preparedStatement.setString(2, etiquetasC.getNomEtiquetaC());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -158,24 +158,22 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try 
-        {
+        
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             preparedStatement = connection.prepareStatement("SELECT * FROM ETIQUETASC WHERE IDETIQUETAC = ?");
-            if (preparedStatement == null) 
-            {
+            if (preparedStatement == null) {
                 return null;
             }
             preparedStatement.setInt(1, idEtiquetaC );
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
+            
             aux = new EtiquetasC ( );
             while (resultSet.next()) 
             {
@@ -187,8 +185,7 @@ public class EtiquetasCService extends Conexion<EtiquetasC>
             closeConnection(connection);
             return aux;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;

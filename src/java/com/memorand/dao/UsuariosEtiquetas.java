@@ -9,8 +9,7 @@ public class UsuariosEtiquetas implements Serializable
     private Usuarios usuario;
     private EtiquetasP idEtiquetaP;
 
-    public UsuariosEtiquetas() {
-    }
+    public UsuariosEtiquetas() {}
 
     public Usuarios getUsuario() {
         return usuario;
@@ -27,5 +26,4 @@ public class UsuariosEtiquetas implements Serializable
     public void setIdEtiquetaP(EtiquetasP idEtiquetaP) {
         this.idEtiquetaP = idEtiquetaP;
     }
-    
 }

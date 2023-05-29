@@ -9,8 +9,7 @@ public class AgendaEtiquetas implements Serializable
     private AgendasC idAgenda;
     private EtiquetasC idEtiquetaC;
 
-    public AgendaEtiquetas() {
-    }
+    public AgendaEtiquetas() {}
 
     public AgendasC getIdAgenda() {
         return idAgenda;
@@ -27,6 +26,4 @@ public class AgendaEtiquetas implements Serializable
     public void setIdEtiquetaC(EtiquetasC idEtiquetaC) {
         this.idEtiquetaC = idEtiquetaC;
     }
-    
-    
 }

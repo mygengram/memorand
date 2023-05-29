@@ -3,7 +3,6 @@ package com.memorand.dao;
 
 // IMPORTACIONES
 import java.io.Serializable;
-import java.util.Date;
 
 public class PendientesC implements Serializable
 {
@@ -11,18 +10,10 @@ public class PendientesC implements Serializable
     private String nomPendC;
     private String subPendC;
     private String descPendC;
-    private Date fechaInicioC;
-    private Date fechaFinalC;
-    private String colorPendC;
-    private boolean completadoC;
+    private String fechaFinalC;
+    private String completadoC;
 
-    public PendientesC() {
-    }
-    
-    public PendientesC(int idPendC) 
-    {
-        this.idPendC = idPendC;
-    }
+    public PendientesC() {}
 
     public int getIdPendC() {
         return idPendC;
@@ -56,37 +47,19 @@ public class PendientesC implements Serializable
         this.descPendC = descPendC;
     }
 
-    public Date getFechaInicioC() {
-        return fechaInicioC;
-    }
-
-    public void setFechaInicioC(Date fechaInicioC) {
-        this.fechaInicioC = fechaInicioC;
-    }
-
-    public Date getFechaFinalC() {
+    public String getFechaFinalC() {
         return fechaFinalC;
     }
 
-    public void setFechaFinalC(Date fechaFinalC) {
+    public void setFechaFinalC(String fechaFinalC) {
         this.fechaFinalC = fechaFinalC;
     }
-
-    public String getColorPendC() {
-        return colorPendC;
-    }
-
-    public void setColorPendC(String colorPendC) {
-        this.colorPendC = colorPendC;
-    }
-
-    public boolean isCompletadoC() {
+    
+    public String getCompletadoC() {
         return completadoC;
     }
 
-    public void setCompletadoC(boolean completadoC) {
+    public void setCompletadoC(String completadoC) {
         this.completadoC = completadoC;
     }
-    
-    
 }

@@ -4,22 +4,22 @@ package com.memorand.helper;
 // IMPORTACIONES
 import java.util.List;
 import java.io.Serializable;
-import com.memorand.dao.Rol_Usuario;
+import com.memorand.dao.RolUsuario;
 import com.memorand.dao.Roles;
 import com.memorand.dao.Usuarios;
-import com.memorand.dao.service.Rol_UsuarioService;
+import com.memorand.dao.service.RolUsuarioService;
 
-public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializable
+public class Rol_UsuarioHelper extends Helpers<RolUsuario> implements Serializable
 {
-    private Rol_UsuarioService rol_usuarioService;
+    private RolUsuarioService rol_usuarioService;
     
     public Rol_UsuarioHelper() {}
 
     @Override
     public boolean addT() 
     {
-        rol_usuarioService = new Rol_UsuarioService();
-        t = new Rol_Usuario();
+        rol_usuarioService = new RolUsuarioService();
+        t = new RolUsuario();
         t.setUsuario(new Usuarios(getParameter("user")));
         t.setRol(new Roles(getParameter("rol")));
         
@@ -27,9 +27,9 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     }
 
     @Override
-    public List<Rol_Usuario> getListT() 
+    public List<RolUsuario> getListT() 
     {
-        rol_usuarioService = new Rol_UsuarioService();
+        rol_usuarioService = new RolUsuarioService();
         return rol_usuarioService.getRol_UsuarioList();
     }
 
@@ -42,8 +42,8 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     @Override
     public boolean deleteT() 
     {
-        rol_usuarioService = new Rol_UsuarioService();
-        t = new Rol_Usuario();
+        rol_usuarioService = new RolUsuarioService();
+        t = new RolUsuario();
         t.setUsuario(new Usuarios(getParameter("user")));
         t.setRol(new Roles(getParameter("rol")));
         if( t.getUsuario().getUsuario() != null && t.getUsuario().getUsuario().length() > 0 &&
@@ -55,7 +55,7 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
     }
     
     @Override
-    public Rol_Usuario getTByKey() 
+    public RolUsuario getTByKey() 
     {
         String usuario = null;
         String rol = null;
@@ -68,7 +68,7 @@ public class Rol_UsuarioHelper extends Helpers<Rol_Usuario> implements Serializa
             return null;
         }
    
-        rol_usuarioService = new Rol_UsuarioService();
+        rol_usuarioService = new RolUsuarioService();
         return rol_usuarioService.getRol_UsuarioByRol_Usuario(rol, usuario);
     }
 }

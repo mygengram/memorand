@@ -12,8 +12,7 @@ public class Tienen implements Serializable
     private PendientesC idPendC;
     private String autor;
 
-    public Tienen() {
-    }
+    public Tienen() {}
     
     public Tienen(int idTienen) 
     {
@@ -59,6 +58,4 @@ public class Tienen implements Serializable
     public void setAutor(String autor) {
         this.autor = autor;
     }
-    
-    
 }

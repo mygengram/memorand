@@ -2,8 +2,8 @@ package com.memorand.helper;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
-import com.memorand.dao.Rol_Usuario;
-import com.memorand.dao.service.Rol_UsuarioService;
+import com.memorand.dao.RolUsuario;
+import com.memorand.dao.service.RolUsuarioService;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -22,8 +22,8 @@ public class LoginHelper implements Serializable
     
     public boolean login( HttpServletRequest httpServletRequest , HttpServletResponse httpServletResponse )
     {
-        Rol_UsuarioService rolUsuarioService = null;
-        Rol_Usuario rolUsuario = null;
+        RolUsuarioService rolUsuarioService = null;
+        RolUsuario rolUsuario = null;
         String page = null;
         
         this.httpServletRequest = httpServletRequest;
@@ -36,7 +36,7 @@ public class LoginHelper implements Serializable
             return false;
         }
         
-        rolUsuarioService = new Rol_UsuarioService();
+        rolUsuarioService = new RolUsuarioService();
         rolUsuario = rolUsuarioService.getRolUsuarioByUsuarioPassword(usuario, contrasena);
         
         if( rolUsuario == null )

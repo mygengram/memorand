@@ -4,12 +4,12 @@ package com.memorand.dao;
 // IMPORTACIONES
 import java.io.Serializable;
 
-public class Rol_Usuario implements Serializable
+public class RolUsuario implements Serializable
 {
     private Usuarios usuario;
     private Roles rol;
     
-    public Rol_Usuario() {}
+    public RolUsuario() {}
 
     public Usuarios getUsuario() {
         return usuario;

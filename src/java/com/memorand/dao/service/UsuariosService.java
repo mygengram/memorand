@@ -23,11 +23,9 @@ public class UsuariosService extends Conexion<Usuarios>
         ResultSet resultSet = null;
         Usuarios usuario = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
@@ -35,11 +33,10 @@ public class UsuariosService extends Conexion<Usuarios>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM USUARIOS");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
-            usuariosList = new ArrayList<>();
+            usuariosList = new ArrayList<> ();
             while (resultSet.next()) 
             {
                 usuario = new Usuarios();
@@ -55,8 +52,7 @@ public class UsuariosService extends Conexion<Usuarios>
             closeConnection(connection);
             return usuariosList;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
@@ -68,16 +64,14 @@ public class UsuariosService extends Conexion<Usuarios>
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO USUARIOS (USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC) VALUES (?,?,?,?,?,?)";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if(connection == null) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if(preparedStatement == null) {
                 return false;
             }
             preparedStatement.setString(1, usuario.getUsuario());
@@ -90,8 +84,7 @@ public class UsuariosService extends Conexion<Usuarios>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -101,18 +94,16 @@ public class UsuariosService extends Conexion<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE USUARIOS SET CONTRASENA = ?,NOMUSUARIO = ?,APELLIDOPAT = ?,APELLIDOMAT = ?,FECHANAC = ? WHERE USUARIO = ?";
+        String sql = "UPDATE USUARIOS SET CONTRASENA = ?, NOMUSUARIO = ?, APELLIDOPAT = ?, APELLIDOMAT = ?, FECHANAC = ? WHERE USUARIO = ?";
         int row = 0;
-        try 
-        {
-            connection = getConnection( );
-            if( connection == null )
-            {
+        
+        try {
+            connection = getConnection();
+            if(connection == null) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if(preparedStatement == null) {
                 return false;
             }
             preparedStatement.setString(1, usuario.getContrasena());
@@ -124,8 +115,7 @@ public class UsuariosService extends Conexion<Usuarios>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -137,16 +127,14 @@ public class UsuariosService extends Conexion<Usuarios>
         PreparedStatement preparedStatement = null;
         String sql = "DELETE FROM USUARIO WHERE USUARIO = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if(connection == null) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if(preparedStatement == null) {
                 return false;
             }
             preparedStatement.setString(1, usuario.getUsuario());
@@ -154,38 +142,35 @@ public class UsuariosService extends Conexion<Usuarios>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
     }
     
-    public Usuarios getUsuarioByUsuario(String usuario) 
+    public Usuarios getUsuarioByUsuario (String usuario) 
     {
         Usuarios aux = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try 
-        {
+        
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOS WHERE USUARIO = ?");
-            if (preparedStatement == null) 
-            {
+            if (preparedStatement == null) {
                 return null;
             }
             preparedStatement.setString(1, usuario );
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
-            aux = new Usuarios ( );
+            aux = new Usuarios();
+            
             while (resultSet.next()) 
             {
                 aux = new Usuarios();
@@ -196,12 +181,12 @@ public class UsuariosService extends Conexion<Usuarios>
                 aux.setApellidoMat(resultSet.getString(5));
                 aux.setFechaNac(resultSet.getString(6));
             }
+            
             resultSet.close();
             closeConnection(connection);
             return aux;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;

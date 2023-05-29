@@ -23,11 +23,9 @@ public class RolesService extends Conexion<Roles>
         ResultSet resultSet = null;
         Roles rol = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
@@ -35,118 +33,26 @@ public class RolesService extends Conexion<Roles>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM ROLES");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             rolesList = new ArrayList<>();
+            
             while (resultSet.next()) 
             {
                 rol = new Roles();
                 rol.setRolUsuario(resultSet.getString(1));
-                rol.setDescripcion(resultSet.getString(2));
                 rolesList.add(rol);
             }
+            
             resultSet.close();
             closeConnection(connection);
             return rolesList;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
-    }
-    
-    public boolean addRol (Roles rol )
-    {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ROLES(ROLUSUARIO,DESCRIPCION) VALUES (?,?)";
-        int row = 0;
-        try 
-        {
-            connection = getConnection( );
-            if( connection == null )
-            {
-                return false;
-            }
-            preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
-                return false;
-            }
-            preparedStatement.setString(1, rol.getRolUsuario());
-            preparedStatement.setString(2, rol.getDescripcion());
-            row = preparedStatement.executeUpdate();
-            closeConnection(connection);
-            return row == 1;
-        } 
-        catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-    
-    public boolean updateRol( Roles rol )
-    {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        String sql = "UPDATE ROL SET DESCRIPCION = ? WHERE ROLUSUARIO = ?";
-        int row = 0;
-        try 
-        {
-            connection = getConnection( );
-            if( connection == null )
-            {
-                return false;
-            }
-            preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
-                return false;
-            }
-            preparedStatement.setString(1, rol.getDescripcion());
-            row = preparedStatement.executeUpdate();
-            closeConnection(connection);
-            return row == 1;
-        } 
-        catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
-        return false;
-    }
-    
-    public boolean deleteRol( Roles rol )
-    {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM ROLES WHERE ROLUSUARIO = ?";
-        int row = 0;
-        try 
-        {
-            connection = getConnection( );
-            if( connection == null )
-            {
-                return false;
-            }
-            preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
-                return false;
-            }
-            preparedStatement.setString(1, rol.getRolUsuario());
-            row = preparedStatement.executeUpdate();
-            closeConnection(connection);
-            return row == 1;
-        } 
-        catch (SQLException ex) 
-        {
-            ex.printStackTrace();
-        }
-        return false;
     }
     
     public Roles getRolByRol (String rol) 
@@ -155,37 +61,34 @@ public class RolesService extends Conexion<Roles>
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try 
-        {
+        
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             preparedStatement = connection.prepareStatement("SELECT * FROM ROLES WHERE ROLUSUARIO = ?");
-            if (preparedStatement == null) 
-            {
+            if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setString(1, rol );
+            preparedStatement.setString(1, rol);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
-            aux = new Roles ( );
+            aux = new Roles();
+            
             while (resultSet.next()) 
             {
                 aux = new Roles();
                 aux.setRolUsuario(resultSet.getString(1));
-                aux.setDescripcion(resultSet.getString(2));
             }
+            
             resultSet.close();
             closeConnection(connection);
             return aux;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;

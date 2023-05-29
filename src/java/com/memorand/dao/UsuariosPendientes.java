@@ -26,6 +26,4 @@ public class UsuariosPendientes implements Serializable
     public void setIdPendP(PendientesP idPendP) {
         this.idPendP = idPendP;
     }
-    
-    
 }

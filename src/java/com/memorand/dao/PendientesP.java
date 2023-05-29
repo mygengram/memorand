@@ -3,7 +3,6 @@ package com.memorand.dao;
 
 // IMPORTACIONES
 import java.io.Serializable;
-import java.util.Date;
 
 public class PendientesP implements Serializable
 {
@@ -11,24 +10,21 @@ public class PendientesP implements Serializable
     private String nomPendP;
     private String subPendP;
     private String descPendP;
-    private Date fechaInicioP;
-    private Date fechaFinalP;
-    private String colorPendP;
-    private boolean completadoP;
+    private String fechaFinalP;
+    private String completadoP;
 
-    public PendientesP() {
-    }
+    public PendientesP() {}
     
     public PendientesP(int idPendP) 
     {
         this.idPendP = idPendP;
     }
 
-    public int getIdPendP() {
+    public Integer getIdPendP() {
         return idPendP;
     }
 
-    public void setIdPendP(int idPendP) {
+    public void setIdPendP(Integer idPendP) {
         this.idPendP = idPendP;
     }
 
@@ -56,36 +52,19 @@ public class PendientesP implements Serializable
         this.descPendP = descPendP;
     }
 
-    public Date getFechaInicioP() {
-        return fechaInicioP;
-    }
-
-    public void setFechaInicioP(Date fechaInicioP) {
-        this.fechaInicioP = fechaInicioP;
-    }
-
-    public Date getFechaFinalP() {
+    public String getFechaFinalP() {
         return fechaFinalP;
     }
 
-    public void setFehcFinalP(Date fechaFinalP) {
+    public void setFechaFinalP(String fechaFinalP) {
         this.fechaFinalP = fechaFinalP;
     }
 
-    public String getColorPendP() {
-        return colorPendP;
-    }
-
-    public void setColorPendP(String colorPendP) {
-        this.colorPendP = colorPendP;
-    }
-
-    public boolean isCompletadoP() {
+    public String getCompletadoP() {
         return completadoP;
     }
 
-    public void setCompletadoP(boolean completadoP) {
+    public void setCompletadoP(String completadoP) {
         this.completadoP = completadoP;
     }
-    
 }

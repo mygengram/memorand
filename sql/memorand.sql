@@ -16,8 +16,7 @@ create table Usuarios
 
 create table Roles
 (
-	rolUsuario varchar(20) primary key not null,
-    descripcion varchar(20)
+	rolUsuario varchar(20) primary key not null
 );
 
 create table Rol_Usuario
@@ -44,10 +43,9 @@ create table PendientesP
 	idPendP int primary key not null,
     nomPendP varchar(20),
     subPendP varchar(30),
-    descPendP longtext null,
-    fechaInicioP varchar(10) null,
-    fechaFinalP varchar(10) null,
-    colorPendP varchar(6) null,
+    descPendP longtext,
+    fechaFinalP varchar(10),
+    colorPendP varchar(6),
     completadoP varchar(2)
 );
 
@@ -79,8 +77,7 @@ create table PendientesC
     nomPendC varchar(20),
     subPendC varchar(30),
     descPendC longtext null,
-    fechaInicioC varchar(10) null,
-    fechaFinalC varchar(10) null,
+    fechaFinalC varchar(10),
     completadoC varchar(2)
 );
 
@@ -88,7 +85,7 @@ create table AgendasC
 (
 	idAgenda int primary key not null,
     nomAgenda varchar(20),
-    descAgenda text null,
+    descAgenda text,
     codigoAgenda varchar(6)
 );
 

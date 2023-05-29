@@ -9,7 +9,6 @@ public class AgendasC implements Serializable
     private int idAgenda;
     private String nomAgenda;
     private String descAgenda;
-    private String colorAgenda;
     private String codigoAgenda;
 
     public AgendasC() {}
@@ -43,14 +42,6 @@ public class AgendasC implements Serializable
         this.descAgenda = descAgenda;
     }
 
-    public String getColorAgenda() {
-        return colorAgenda;
-    }
-
-    public void setColorAgenda(String colorAgenda) {
-        this.colorAgenda = colorAgenda;
-    }
-
     public String getCodigoAgenda() {
         return codigoAgenda;
     }
@@ -58,6 +49,4 @@ public class AgendasC implements Serializable
     public void setCodigoAgenda(String codigoAgenda) {
         this.codigoAgenda = codigoAgenda;
     }
-    
-    
 }

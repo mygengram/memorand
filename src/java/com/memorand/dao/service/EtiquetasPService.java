@@ -24,11 +24,9 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
         ResultSet resultSet = null;
         EtiquetasP etiquetasP = null;
 
-        try 
-        {
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             statement = connection.createStatement();
@@ -36,11 +34,11 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM ETIQUETASP");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             etiquetasPList = new ArrayList<>();
+            
             while (resultSet.next()) 
             {
                 etiquetasP = new EtiquetasP();
@@ -52,60 +50,68 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             closeConnection(connection);
             return etiquetasPList;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
     
-    public boolean addEtiquetasP (EtiquetasP etiquetasP )
+    public boolean addEtiquetasP (EtiquetasP etiquetasP)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO ETIQUETASP (IDETIQUETAP,NOMETIQUETAP) VALUES (?,?)";
-        int row = 0;
-        try 
-        {
+        int row;
+        int size;
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, etiquetasP.getIdEtiquetaP());
-            preparedStatement.setString(2, etiquetasP.getNomEtiquetaP());
+            
+            size = getEtiquetasPList().size();
+            if(size < 0) {
+                return false;
+            }
+            else {
+                if(size == 0) {
+                    preparedStatement.setInt(1,1);
+                }
+                else {
+                    preparedStatement.setInt(1,(getEtiquetasPList().get(size-1).getIdEtiquetaP())+1);
+                }
+            }
+            preparedStatement.setInt(1,etiquetasP.getIdEtiquetaP());
+            preparedStatement.setString(2,etiquetasP.getNomEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
     }
     
-    public boolean updateEtiquetasP ( EtiquetasP etiquetasP )
+    public boolean updateEtiquetasP (EtiquetasP etiquetasP)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE ETIQUETASP SET IDETIQUETAP = ?,NOMETIQUETAP = ? WHERE IDETIQUETAP = ?";
+        String sql = "UPDATE ETIQUETASP SET NOMETIQUETAP = ? WHERE IDETIQUETAP = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
             preparedStatement.setInt(1, etiquetasP.getIdEtiquetaP());
@@ -114,39 +120,34 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
     }
     
-    public boolean deleteEtiquetasP ( EtiquetasP etiquetasP )
+    public boolean deleteEtiquetasP (EtiquetasP etiquetasP)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM ETIQUETASP WHERE IDETIQUETAP = ? AND NOMETIQUETAP = ?";
+        String sql = "DELETE FROM ETIQUETASP WHERE IDETIQUETAP = ?";
         int row = 0;
-        try 
-        {
+        
+        try {
             connection = getConnection( );
-            if( connection == null )
-            {
+            if( connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if( preparedStatement == null ) {
                 return false;
             }
             preparedStatement.setInt(1, etiquetasP.getIdEtiquetaP());
-            preparedStatement.setString(2, etiquetasP.getNomEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
@@ -158,25 +159,23 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        try 
-        {
+        
+        try {
             connection = getConnection();
-            if (connection == null) 
-            {
+            if (connection == null) {
                 return null;
             }
             preparedStatement = connection.prepareStatement("SELECT * FROM ETIQUETASP WHERE IDETIQUETAP = ?");
-            if (preparedStatement == null) 
-            {
+            if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1, idEtiquetaP );
+            preparedStatement.setInt(1,idEtiquetaP);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
-            aux = new EtiquetasP ( );
+            
+            aux = new EtiquetasP ();
             while (resultSet.next()) 
             {
                 aux = new EtiquetasP();
@@ -187,8 +186,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             closeConnection(connection);
             return aux;
         } 
-        catch (SQLException ex) 
-        {
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
