@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pper
-    Created on : 19 may 2023, 08:38:41
-    Author     : alumno
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

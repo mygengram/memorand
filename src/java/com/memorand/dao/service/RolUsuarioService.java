@@ -176,8 +176,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             preparedStatement.setString(1, usuario);
             preparedStatement.setString(2, contrasena);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             aux = new RolUsuario();

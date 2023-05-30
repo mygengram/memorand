@@ -1,9 +1,7 @@
-<%-- 
-    Document   : index
-    Created on : 19 may 2023, 08:11:48
-    Author     : alumno
---%>
-
+<%@page import="com.memorand.dao.PendientesP"%>
+<%@page import="com.memorand.dao.UsuariosPendientes"%>
+<%@page import="java.util.List"%>
+<%@page import="com.memorand.dao.service.UsuariosPendientesService"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -121,9 +119,9 @@
             <div class="col-9">
                 <%  
                 String usuario = request.getParameter("user");
-                UsuariosService usuarioService = new UsuariosService();
+                UsuariosService usuariosService = new UsuariosService();
                 %>
-                <h1 class="text-secondary">Bienvenido <%=usuarioService.getUsuarioByUsuario(usuario).getUsuario()%></h1>
+                <h1 class="text-secondary">Bienvenido <%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%></h1>
                 <h2 class="text-secondary">¿Qué deseas hacer hoy?</h2>
                 <br> <hr> <br> 
                 <div class="container">
@@ -132,7 +130,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
-                                <a href="nuevo.jsp?user=<%=usuarioService.getUsuarioByUsuario(usuario).getUsuario()%>" class="btn btn-primary text-white">Nuevo pendiente</a>
+                                <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">Nuevo pendiente</a>
                               </div>
                             </div>
                         </div>
@@ -140,7 +138,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
-                                <a href="crear.jsp?user=<%=usuarioService.getUsuarioByUsuario(usuario).getUsuario()%>&rolag=lider" class="btn btn-primary text-white">Crear una agenda</a>
+                                <a href="crear.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&rolag=lider" class="btn btn-primary text-white">Crear una agenda</a>
                               </div>
                             </div>
                         </div>
@@ -157,6 +155,13 @@
                 <hr> <br>
                 <h2 class="text-secondary">Mis pr&oacute;ximos pendientes</h2>
                 
+                <%  
+                UsuariosPendientesService usuariosPendientesService = new UsuariosPendientesService();
+                List<PendientesP> lista = usuariosPendientesService.getPendientesListByUsuario(usuario);
+                
+                if(!(lista.size() <= 0))
+                {
+                %>
                 <br>
                 <table class="table table-borderless" style="width:100%">
                   <thead>
@@ -168,16 +173,32 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>Pendiente 1</td>
-                      <td>2023-05-26</td>
+                <%  
+                    for (int i = 0; i < lista.size(); i++) {
+                %>
+                      <td><%= lista.get(i).getNomPendP()%></td>
+                      <td><%= lista.get(i).getFechaFinalP()%></td>
                       <td>
-                          <a href="#">
+                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpendp=<%=lista.get(i).getIdPendP()%>">
                               <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
                           </a>
                       </td>
+                <%  
+                    }
+                %>
                     </tr>
                   </tbody>
                 </table>
+                <%  
+                }
+                else
+                {
+                %>
+                <br>
+                <h4 class="text-tertiary text-center">Sin pendientes</h4>
+                <%  
+                }
+                %>
             </div>
             
             <div class="col-1"></div>

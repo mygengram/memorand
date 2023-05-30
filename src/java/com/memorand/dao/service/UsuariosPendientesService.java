@@ -57,6 +57,60 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
         return null;
     }
     
+    public List<PendientesP> getPendientesListByUsuario(String usuario) 
+    {
+        List<PendientesP> PendientesPList = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        StringBuilder stringBuilder = null;
+        PendientesP pendientes = null;
+
+        try {
+            connection = getConnection();
+            if (connection == null) {
+                return null;
+            }
+            
+            stringBuilder = new StringBuilder();
+            stringBuilder.append("SELECT * FROM PENDIENTESP INNER JOIN USUARIOSPENDIENTESP ON USUARIOSPENDIENTESP.IDPENDP = PENDIENTESP.IDPENDP");
+            stringBuilder.append(" WHERE USUARIO = ?");
+            
+            preparedStatement = connection.prepareStatement(stringBuilder.toString());
+            if (preparedStatement == null) {
+                return null;
+            }
+            
+            preparedStatement.setString(1,usuario);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return null;
+            }
+            
+            PendientesPList = new ArrayList<>();
+            while (resultSet.next()) 
+            {
+                pendientes = new PendientesP();
+                pendientes.setIdPendP(resultSet.getString(1));
+                pendientes.setNomPendP(resultSet.getString(2));
+                pendientes.setSubPendP(resultSet.getString(3));
+                pendientes.setDescPendP(resultSet.getString(4));
+                pendientes.setFechaFinalP(resultSet.getString(5));
+                pendientes.setCompletadoP(resultSet.getString(6));
+                PendientesPList.add(pendientes);
+            }
+            
+            resultSet.close();
+            closeConnection(connection);
+            return PendientesPList;
+        } 
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
     public boolean addUsuariosPendientes (UsuariosPendientes usuariosPendientes)
     {
         Connection connection = null;
