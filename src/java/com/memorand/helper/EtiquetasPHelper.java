@@ -15,8 +15,8 @@ public class EtiquetasPHelper extends Helpers<EtiquetasP> implements Serializabl
     
     public boolean isValidaCamposOk( )
     {
-        return isNotNull( t.getIdEtiquetaP() ) &&
-               isNotNullAndNotEmpty( t.getNomEtiquetaP() );
+        return isNotNullAndNotEmpty(t.getIdEtiquetaP()) &&
+               isNotNullAndNotEmpty(t.getNomEtiquetaP());
     }
 
     @Override
@@ -24,12 +24,11 @@ public class EtiquetasPHelper extends Helpers<EtiquetasP> implements Serializabl
         etiquetasPService = new EtiquetasPService();
         t = new EtiquetasP();
 
-        t.setIdEtiquetaP(Integer.parseInt((getParameter("idEtiquetaP"))));
+        t.setIdEtiquetaP(codigoAleatorio12());
         t.setNomEtiquetaP(getParameter("nomEtiquetaP"));
         
-        if( isValidaCamposOk( ) )
-        {
-            return etiquetasPService.addEtiquetasP(t );
+        if( isValidaCamposOk()) {
+            return etiquetasPService.addEtiquetasP(t);
         }
         return false;
     }
@@ -44,7 +43,7 @@ public class EtiquetasPHelper extends Helpers<EtiquetasP> implements Serializabl
     public boolean updateT() {
         etiquetasPService = new EtiquetasPService();
         t = new EtiquetasP();
-        t.setIdEtiquetaP(Integer.parseInt(getParameter("idEtiquetaP")));
+        t.setIdEtiquetaP(getParameter("idEtiquetaP"));
         t.setNomEtiquetaP(getParameter("nomEtiquetaP"));
         if( isValidaCamposOk( ) )
         {
@@ -57,30 +56,17 @@ public class EtiquetasPHelper extends Helpers<EtiquetasP> implements Serializabl
     public boolean deleteT() {
         etiquetasPService = new EtiquetasPService();
         t = new EtiquetasP();
-        
-        t.setIdEtiquetaP(Integer.parseInt(getParameter("idEtiquetaP")));
-        int idEtiquetaP = t.getIdEtiquetaP();
-        String idEtiquetaPString = String.valueOf(idEtiquetaP);
-        
-        if( idEtiquetaPString != null || idEtiquetaPString.length() > 0 )
-        {
-            return etiquetasPService.deleteEtiquetasP(t);
-        }
-        return false;
+        t.setIdEtiquetaP(getParameter("idEtiquetaP"));
+        return etiquetasPService.deleteEtiquetasP(t);
     }
 
     @Override
     public EtiquetasP getTByKey() {
-        String idEtiquetaP = null;
-        idEtiquetaP = getParameter("idEtiquetaP");
-        
-        if( idEtiquetaP == null || idEtiquetaP.length() <= 0 )
-        {
+        String idEtiquetaP = getParameter("idEtiquetaP");
+        if( idEtiquetaP == null || idEtiquetaP.length() <= 0 ) {
             return null;
         }
-        
-        int idEtiquetaPI = Integer.parseInt(idEtiquetaP);
         etiquetasPService = new EtiquetasPService();
-        return etiquetasPService.getEtiquetasPByEtiquetasP(idEtiquetaPI);
+        return etiquetasPService.getEtiquetasPByEtiquetasP(idEtiquetaP);
     }
 }

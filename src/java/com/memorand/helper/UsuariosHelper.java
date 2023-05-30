@@ -13,7 +13,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
     
     public UsuariosHelper() {}
     
-    public boolean isValidaCamposOk( )
+    public boolean isValidaCamposOk()
     {
         return isNotNullAndNotEmpty( t.getUsuario()) &&
                isNotNullAndNotEmpty( t.getContrasena()) &&
@@ -21,6 +21,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
                isNotNullAndNotEmpty( t.getApellidoPat()) &&
                isNotNullAndNotEmpty( t.getApellidoMat()) &&
                isNotNullAndNotEmpty(t.getFechaNac());
+        
     }
 
     @Override
@@ -36,9 +37,8 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         t.setApellidoMat(getParameter("am"));
         t.setFechaNac(getParameter("fn"));
         
-        if(isValidaCamposOk())
-        {
-            return usuariosService.addUsuario(t );
+        if(isValidaCamposOk()) {
+            return usuariosService.addUsuario(t);
         }
         return false;
     }
@@ -61,9 +61,9 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         t.setApellidoPat(getParameter("ap"));
         t.setApellidoMat(getParameter("am"));
         t.setFechaNac(getParameter("fn"));
-        if( isValidaCamposOk( ) )
-        {
-            return usuariosService.updateUsuario(t );
+        
+        if( isValidaCamposOk( ) ) {
+            return usuariosService.updateUsuario(t);
         }
         return false;
     }
@@ -74,8 +74,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         usuariosService = new UsuariosService();
         t = new Usuarios();
         t.setUsuario(getParameter("user"));
-        if( t.getUsuario() != null || t.getUsuario().length() > 0 )
-        {
+        if( t.getUsuario() != null || t.getUsuario().length() > 0 ) {
             return usuariosService.deleteUsuario(t);
         }
         return false;
@@ -87,8 +86,7 @@ public class UsuariosHelper extends Helpers<Usuarios> implements Serializable
         String usuario = null;
         
         usuario = getParameter("user");
-        if( usuario == null || usuario.length( ) <= 0 )
-        {
+        if(usuario == null || usuario.length( ) <= 0) {
             return null;
         }
         usuariosService = new UsuariosService();

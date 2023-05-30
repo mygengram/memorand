@@ -43,8 +43,8 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             while (resultSet.next()) 
             {
                 rol_Usuario = new RolUsuario();
-                rol_Usuario.setUsuario( new Usuarios( resultSet.getString(1) ) );
-                rol_Usuario.setRol( new Roles( resultSet.getString(2) ) );
+                rol_Usuario.setUsuario(new Usuarios(resultSet.getString(1)));
+                rol_Usuario.setRol(new Roles(resultSet.getString(2)));
                 rolUsuarioList.add(rol_Usuario);
             }
             
@@ -58,11 +58,11 @@ public class RolUsuarioService extends Conexion<RolUsuario>
         return null;
     }
     
-    public boolean addRolUsuario (RolUsuario rolUsuario )
+    public boolean addRolUsuario (RolUsuario rolUsuario)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ROL_USUARIOS (USUARIO,ROLUSUARIO) VALUES (?,?)";
+        String sql = "INSERT INTO ROL_USUARIO (USUARIO,ROLUSUARIO) VALUES (?,?)";
         int row = 0;
         
         try {
@@ -74,8 +74,8 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1, rolUsuario.getUsuario().getUsuario());
-            preparedStatement.setString(2, "usuario");
+            preparedStatement.setString(1, rolUsuario.getUsuario());
+            preparedStatement.setString(2, rolUsuario.getRol());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -102,7 +102,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1, rol_Usuario.getUsuario().getUsuario());
+            preparedStatement.setString(1, rol_Usuario.getUsuario());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -113,7 +113,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
         return false;
     }
     
-    public RolUsuario getRolUsuarioByUsuario (String rolUsuario, String usuario) 
+    public RolUsuario getRolUsuarioByUsuario (String usuario) 
     {
         RolUsuario aux = null;
         Connection connection = null;

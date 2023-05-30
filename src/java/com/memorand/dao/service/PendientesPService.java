@@ -41,7 +41,7 @@ public class PendientesPService extends Conexion<PendientesP>
             while (resultSet.next()) 
             {
                 pendientesP = new PendientesP();
-                pendientesP.setIdPendP(resultSet.getInt(1));
+                pendientesP.setIdPendP(resultSet.getString(1));
                 pendientesP.setNomPendP(resultSet.getString(2));
                 pendientesP.setSubPendP(resultSet.getString(3));
                 pendientesP.setDescPendP(resultSet.getString(4));
@@ -87,7 +87,7 @@ public class PendientesPService extends Conexion<PendientesP>
             while (resultSet.next()) 
             {
                 pendientesP = new PendientesP();
-                pendientesP.setIdPendP(resultSet.getInt(1));
+                pendientesP.setIdPendP(resultSet.getString(1));
                 pendientesP.setNomPendP(resultSet.getString(2));
                 pendientesP.setSubPendP(resultSet.getString(3));
                 pendientesP.setDescPendP(resultSet.getString(4));
@@ -133,7 +133,7 @@ public class PendientesPService extends Conexion<PendientesP>
             while (resultSet.next()) 
             {
                 pendientesP = new PendientesP();
-                pendientesP.setIdPendP(resultSet.getInt(1));
+                pendientesP.setIdPendP(resultSet.getString(1));
                 pendientesP.setNomPendP(resultSet.getString(2));
                 pendientesP.setSubPendP(resultSet.getString(3));
                 pendientesP.setDescPendP(resultSet.getString(4));
@@ -159,7 +159,6 @@ public class PendientesPService extends Conexion<PendientesP>
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO PENDIENTESP (IDPENDP, NOMPENDP, SUBPENDP, DESCPENDP, FECHAFINALP, COMPLETADOP) VALUES (?,?,?,?,?,?)";
         int row;
-        int size;
         
         try {
             connection = getConnection();
@@ -170,24 +169,12 @@ public class PendientesPService extends Conexion<PendientesP>
             if(preparedStatement == null ) {
                 return false;
             }
-            
-            size = getPendientesPList().size();
-            if(size < 0) {
-                return false;
-            }
-            else {
-                if(size == 0) {
-                    preparedStatement.setInt(1, 1);
-                }
-                else {
-                    preparedStatement.setInt(1, (getPendientesPList().get(size-1).getIdPendP())+1);
-                }
-            }
+            preparedStatement.setString(1, pendientesP.getIdPendP());
             preparedStatement.setString(2, pendientesP.getNomPendP());
             preparedStatement.setString(3, pendientesP.getSubPendP());
             preparedStatement.setString(4, pendientesP.getDescPendP());
             preparedStatement.setString(5, pendientesP.getFechaFinalP());
-            preparedStatement.setString(6, "no");
+            preparedStatement.setString(6, pendientesP.getCompletadoP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -245,7 +232,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, pendientesP.getIdPendP());
+            preparedStatement.setString(1, pendientesP.getIdPendP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -256,7 +243,7 @@ public class PendientesPService extends Conexion<PendientesP>
         return false;
     }
     
-    public PendientesP getPendientesPByPendientesP (int idPendP) 
+    public PendientesP getPendientesPByPendientesP (String idPendP) 
     {
         PendientesP aux = null;
         Connection connection = null;
@@ -272,7 +259,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1, idPendP);
+            preparedStatement.setString(1,idPendP);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
@@ -282,7 +269,7 @@ public class PendientesPService extends Conexion<PendientesP>
             while (resultSet.next()) 
             {
                 aux = new PendientesP();
-                aux.setIdPendP(resultSet.getInt(1));
+                aux.setIdPendP(resultSet.getString(1));
                 aux.setNomPendP(resultSet.getString(2));
                 aux.setSubPendP(resultSet.getString(3));
                 aux.setDescPendP(resultSet.getString(4));

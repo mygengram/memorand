@@ -44,6 +44,7 @@
           cursor: pointer;
         }
     </style>
+
     <script>
         function showCustomAlert() {
           var alertContainer = document.createElement('div');
@@ -67,9 +68,27 @@
           document.body.appendChild(alertContainer);
         }
     </script>
-
+    
     <body>
-        
+        <%
+            String accion = null;
+            LoginHelper loginHelper = null;
+            
+            accion = request.getParameter("accion");
+            if(accion != null && "login".equals(accion))
+            {
+                loginHelper = new LoginHelper();
+                if(!loginHelper.login(request,response))
+                {
+        %>
+        <script>
+            showCustomAlert();
+        </script>
+        <%
+                }
+            }
+            
+        %>
         <!-- Botón regresar -->
         <div class="text-start">
             <a href="index.jsp"><button class="btn btn-light btn-custom border-success rounded-circle shadow mt-3 mx-3"><i class="bi bi-arrow-return-left"></i></button></a>

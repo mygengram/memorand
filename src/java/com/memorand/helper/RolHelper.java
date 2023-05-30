@@ -15,14 +15,7 @@ public class RolHelper extends Helpers<Roles> implements Serializable
 
     @Override
     public boolean addT() 
-    {
-        rolesService = new RolesService();
-        t = new Roles();
-        t.setRolUsuario("usuario");
-        t.setDescripcion("Rol usuario");
-        
-        return rolesService.addRol(t);
-    }
+    { return false; }
 
     @Override
     public List<Roles> getListT() 
@@ -33,24 +26,18 @@ public class RolHelper extends Helpers<Roles> implements Serializable
 
     @Override
     public boolean updateT() 
-    {
-        return false;
-    }
+    { return false; }
 
     @Override
     public boolean deleteT() 
-    {
-        return false;
-    }
+    { return false; }
     
     @Override
     public Roles getTByKey() 
     {
         String rol = null;
-        
         rol = "usuario";
-        if( rol == null || rol.length( ) <= 0 )
-        {
+        if( rol == null || rol.length( ) <= 0 ) {
             return null;
         }
         rolesService = new RolesService( );

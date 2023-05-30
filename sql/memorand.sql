@@ -1,6 +1,6 @@
 -- Memorand database --
-drop database if exists memorand;
 
+drop database if exists memorand;
 create database Memorand;
 use Memorand;
 
@@ -40,25 +40,24 @@ create table Rol_Usuario
 
 create table PendientesP
 (
-	idPendP int primary key not null,
+	idPendP varchar(12) primary key not null,
     nomPendP varchar(20),
     subPendP varchar(30),
     descPendP longtext,
     fechaFinalP varchar(10),
-    colorPendP varchar(6),
     completadoP varchar(2)
 );
 
 create table EtiquetasP
 (
-	idEtiquetaP int primary key not null,
+	idEtiquetaP varchar(12) primary key not null,
     nomEtiquetaP varchar(15)
 );
 
 create table UsuariosPendientesP
 (
 	usuario varchar(20),
-    idPendP int,
+    idPendP varchar(12),
     foreign key (usuario) references Usuarios (usuario),
     foreign key (idPendP) references PendientesP (idPendP)
 );
@@ -66,24 +65,24 @@ create table UsuariosPendientesP
 create table UsuariosEtiquetasP
 (
 	usuario varchar(20),
-    idEtiquetaP int,
+    idEtiquetaP varchar(12),
     foreign key (usuario) references Usuarios (usuario),
     foreign key (idEtiquetaP) references EtiquetasP (idEtiquetaP)
 );
 
 create table PendientesC
 (
-	idPendC int primary key not null,
+	idPendC varchar(12) primary key not null,
     nomPendC varchar(20),
     subPendC varchar(30),
-    descPendC longtext null,
+    descPendC longtext,
     fechaFinalC varchar(10),
     completadoC varchar(2)
 );
 
 create table AgendasC
 (
-	idAgenda int primary key not null,
+	idAgenda varchar(12) primary key not null,
     nomAgenda varchar(20),
     descAgenda text,
     codigoAgenda varchar(6)
@@ -91,15 +90,15 @@ create table AgendasC
 
 create table EtiquetasC
 (
-	idEtiquetaC int primary key not null,
+	idEtiquetaC varchar(12) primary key not null,
     nomEtiquetaC varchar(15)
 );
 
 create table Llevan
 (
-	idLlevan int primary key not null,
+	idLlevan varchar(12) primary key not null,
 	usuario varchar(20),
-    idAgenda int,
+    idAgenda varchar(12),
     rolAgenda varchar(20),
     favorito varchar(2),
     foreign key (usuario) references Usuarios (usuario),
@@ -108,10 +107,10 @@ create table Llevan
 
 create table Tienen
 (
-	idTienen int primary key not null,
+	idTienen varchar(12) primary key not null,
 	usuario varchar(20),
-    idAgenda int,
-    idPendC int,
+    idAgenda varchar(12),
+    idPendC varchar(12),
     autor varchar(20),
     foreign key (usuario) references Usuarios (usuario),
     foreign key (idAgenda) references AgendasC (idAgenda),
@@ -120,8 +119,8 @@ create table Tienen
 
 create table AgendaEtiquetas
 (
-	idAgenda int,
-    idEtiquetaC int,
+	idAgenda varchar(12),
+    idEtiquetaC varchar(12),
     foreign key (idAgenda) references AgendasC (idAgenda),
     foreign key (idEtiquetaC) references EtiquetasC (idEtiquetaC)
 );

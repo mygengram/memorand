@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class PendientesP implements Serializable
 {
-    private Integer idPendP;
+    private String idPendP;
     private String nomPendP;
     private String subPendP;
     private String descPendP;
@@ -15,16 +15,16 @@ public class PendientesP implements Serializable
 
     public PendientesP() {}
     
-    public PendientesP(int idPendP) 
+    public PendientesP(String idPendP) 
     {
         this.idPendP = idPendP;
     }
 
-    public Integer getIdPendP() {
+    public String getIdPendP() {
         return idPendP;
     }
 
-    public void setIdPendP(Integer idPendP) {
+    public void setIdPendP(String idPendP) {
         this.idPendP = idPendP;
     }
 

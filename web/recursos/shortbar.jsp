@@ -17,7 +17,7 @@
                     <a href="login.jsp">
                         <button class="btn btn-outline-secondary me-2 fs-6" data-bs-toggle="modal" type="button">Iniciar sesión</button>
                     </a>
-                    <a href="signup.jsp">
+                    <a href="signup.jsp?a=n">
                         <button class="btn btn-primary fs-6 text-white" data-bs-toggle="modal" type="button">Registrarse</button>
                     </a>
                 </li>

@@ -13,16 +13,14 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
 
     public PendientesPHelper() {}
     
-    public boolean isValidaCamposOk( )
+    public boolean isValidaCamposOk()
     {
-        return isNotNull( t.getIdPendP()) &&
-               isNotNullAndNotEmpty( t.getNomPendP()) &&
-               isNotNullAndNotEmpty( t.getSubPendP()) &&
-               isNotNullAndNotEmpty( t.getDescPendP()) &&
-               isNotNull( t.getFechaInicioP()) &&
-               isNotNull( t.getFechaFinalP()) &&
-               isNotNullAndNotEmpty( t.getColorPendP()) &&
-               isNotNull( t.isCompletadoP());
+        return isNotNullAndNotEmpty(t.getIdPendP()) &&
+               isNotNullAndNotEmpty(t.getNomPendP()) &&
+               isNotNullAndNotEmpty(t.getSubPendP()) &&
+               isNotNullAndNotEmpty(t.getDescPendP()) &&
+               isNotNullAndNotEmpty(t.getFechaFinalP()) &&
+               isNotNullAndNotEmpty(t.getCompletadoP());
     }
 
     @Override
@@ -30,45 +28,40 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
         pendientesPService = new PendientesPService();
         t = new PendientesP();
 
-        t.setIdPendP(Integer.parseInt((getParameter("idPendP"))));
+        t.setIdPendP(codigoAleatorio12());
         t.setNomPendP(getParameter("nomPendP"));
         t.setSubPendP(getParameter("subPendP"));
         t.setDescPendP(getParameter("descPendP"));
-        t.setFechaInicioP(string2Date( getParameter("fechaInicioP")));
-        t.setFehcFinalP(string2Date(getParameter("fechaFinalP")));
-        t.setColorPendP(getParameter("colorPendP"));
-        t.setCompletadoP(Boolean.getBoolean("completadoP"));
+        t.setFechaFinalP(getParameter("fechaFinalP"));
+        t.setCompletadoP("no");
         
-        
-        if( isValidaCamposOk( ) )
-        {
+        if(isValidaCamposOk()) {
             return pendientesPService.addPendientesP(t );
         }
         return false;
     }
 
     @Override
-    public List<PendientesP> getListT() {
+    public List<PendientesP> getListT()
+    {
         pendientesPService = new PendientesPService();
         return pendientesPService.getPendientesPList();
     }
 
     @Override
-    public boolean updateT() {
+    public boolean updateT()
+    {
         pendientesPService = new PendientesPService();
         t = new PendientesP();
         
-        t.setIdPendP(Integer.parseInt((getParameter("idPendP"))));
+        t.setIdPendP(getParameter("idPendP"));
         t.setNomPendP(getParameter("nomPendP"));
         t.setSubPendP(getParameter("subPendP"));
         t.setDescPendP(getParameter("descPendP"));
-        t.setFechaInicioP(string2Date( getParameter("fechaInicioP")));
-        t.setFehcFinalP(string2Date(getParameter("fechaFinalP")));
-        t.setColorPendP(getParameter("colorPendP"));
-        t.setCompletadoP(Boolean.getBoolean("completadoP"));
+        t.setFechaFinalP(getParameter("fechaFinalP"));
+        t.setCompletadoP(getParameter("completadoP"));
         
-        if( isValidaCamposOk( ) )
-        {
+        if(isValidaCamposOk()) {
             return pendientesPService.updatePendientesP(t );
         }
         return false;
@@ -78,32 +71,18 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
     public boolean deleteT() {
         pendientesPService = new PendientesPService();
         t = new PendientesP();
-        t.setIdPendP(Integer.parseInt((getParameter("idPendP"))));
-        int idPendP = t.getIdPendP();
-        String idPendPString = String.valueOf(idPendP);
-        
-        if( idPendPString != null || idPendPString.length() > 0 )
-        {
-            return pendientesPService.deletePendientesP(t);
-        }
-        return false;
+        t.setIdPendP(getParameter("idPendP"));
+        return pendientesPService.deletePendientesP(t);
     }
 
     @Override
     public PendientesP getTByKey() 
     {
-        String idPendP = null;
-        
-        idPendP = getParameter("idPendP");
-        if( idPendP == null || idPendP.length( ) <= 0 )
-        {
+        String idPendP = getParameter("idPendP");
+        if(idPendP == null || idPendP.length( ) <= 0) {
             return null;
         }
-        
-        int idPendPI = Integer.parseInt(idPendP);
         pendientesPService = new PendientesPService();
-        return pendientesPService.getPendientesPByPendientesP(idPendPI);
+        return pendientesPService.getPendientesPByPendientesP(idPendP);
     }
-    
-    
 }

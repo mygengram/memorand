@@ -20,7 +20,7 @@ public class LoginHelper implements Serializable
     private HttpServletRequest httpServletRequest;
     private HttpServletResponse httpServletResponse;
     
-    public boolean login( HttpServletRequest httpServletRequest , HttpServletResponse httpServletResponse )
+    public boolean login (HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
     {
         RolUsuarioService rolUsuarioService = null;
         RolUsuario rolUsuario = null;
@@ -31,67 +31,56 @@ public class LoginHelper implements Serializable
         usuario = httpServletRequest.getParameter("user");
         contrasena = httpServletRequest.getParameter("pass");
         
-        if( !isLoginOk( ) )
-        {
-            return false;
-        }
+        if(!isLoginOk()) { return false; }
         
         rolUsuarioService = new RolUsuarioService();
-        rolUsuario = rolUsuarioService.getRolUsuarioByUsuarioPassword(usuario, contrasena);
+        rolUsuario = rolUsuarioService.getRolUsuarioByContrasena(usuario, contrasena);
         
-        if( rolUsuario == null )
-        {
-            return false;
-        }
+        if(rolUsuario == null) { return false; }
         
-        httpServletRequest.getSession(true ).setAttribute("rol", rolUsuario);
-        switch (rolUsuario.getRol().getRolUsuario()) 
+        httpServletRequest.getSession(true).setAttribute("rol",rolUsuario);
+        switch (rolUsuario.getRol()) 
         {
             case "admin":
                 page = "/feed/admin/index.jsp";
                 break;
             case "usuario":
-                page = "/feed/usuario/index.jsp";
+                page = "/feed/usuario/index.jsp?user="+usuario;
                 break;
             default:
                 return false;
         }
         
-        return redirect( page );
+        return redirect(page);
     }
     
-    public boolean isLoginOk( )
+    public boolean isLoginOk()
     {
-        try 
-        {
-            httpServletRequest.login(usuario, contrasena);
+        try {
+            httpServletRequest.login(usuario,contrasena);
             return true;
         } 
-        catch (ServletException ex) 
-        {
-            Logger.getLogger(LoginHelper.class.getName()).log(Level.SEVERE, null, ex);
+        catch (ServletException ex) {
+            Logger.getLogger(LoginHelper.class.getName()).log(Level.SEVERE,null,ex);
         }
         return false;
     }
     
-    public boolean redirect( String page )
+    public boolean redirect(String page)
     {
-        try 
-        {
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + page );
+        try {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + page);
             return true;
         } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(LoginHelper.class.getName()).log(Level.SEVERE, null, ex);
+        catch (IOException ex) {
+            Logger.getLogger(LoginHelper.class.getName()).log(Level.SEVERE,null,ex);
         }
         return false;
     }
     
-    public boolean logout( HttpSession httpSession )
+    public boolean logout(HttpSession httpSession)
     {
-        if( httpSession == null )
-        {
+        if(httpSession == null) {
             return false;
         }
         httpSession.invalidate();

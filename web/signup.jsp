@@ -1,4 +1,6 @@
 
+<%@page import="com.memorand.helper.RolUsuarioHelper"%>
+<%@page import="com.memorand.helper.Helpers"%>
 <%@page import="com.memorand.helper.UsuariosHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -35,25 +37,14 @@
     </style>
     <body>
         <%
-            String accion = null;
-            UsuariosHelper helper = null;
-            boolean flag = false;
+            String accion = request.getParameter("a");;
+            Helpers usuarioHelper = null;
+            Helpers rolUsuarioHelper = null;
+            boolean flag1 = false;
+            boolean flag2 = false;
             
-            accion = request.getParameter("accion");
-            if(accion != null && "registrar".equals(accion))
+            if(accion != null && "n".equals(accion))
             {
-                helper = new UsuariosHelper();
-                flag = helper.addT();
-                
-                if(flag)
-                {
-        %>
-                    <a href="login.jsp">
-                        <button class="btn btn-primary fs-6 text-white" type="button" style="padding:2%;">Iniciar sesion</button>
-                    </a>    
-        <%
-                }
-            }
         %>
         <!-- Botón regresar -->
         <div class="text-start">
@@ -71,7 +62,7 @@
                     </div>
                     <div class="fw-bold text-center py-5 fs-4" style="color: #18988B">Registrarse</div>
                     <!-- Form -->
-                    <form id="form2" method="GET" action="signup.jsp" onsubmit="return validateForm()">
+                    <form id="form2" method="POST" action="signup.jsp" onsubmit="return validateForm()">
                         <div class="mb-3">
                             <label for="user" class="form-label">Nombre de usuario</label>
                             <input type="text" class="form-control rounded-5 border-success" id="user" name="user"/>
@@ -115,7 +106,7 @@
                             </div>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-light btn-custom rounded-5 "  id="accion" name="accion" value="login">Registar</button>
+                            <button type="submit" class="btn btn-light btn-custom rounded-5 " id="a" name="a" value="r">Registrarse</button>
                         </div>
                         <div class="my3 mt-2 text-center">
                             <span>¿Ya tienes una cuenta? <a href="login.jsp" style="text-decoration: none;">Inicia Sesi&oacute;n</a></span><br>
@@ -124,6 +115,22 @@
                 </div>
             </div>
         </div>
+        <%
+            }   
+            usuarioHelper = new UsuariosHelper().addRequest(request);
+            if(accion != null && "r".equals(accion)) {
+                flag1 = usuarioHelper.addT();
+            }
+            if(flag1) {
+                rolUsuarioHelper = new RolUsuarioHelper().addRequest(request);
+                flag2 = rolUsuarioHelper.addT();
+        %>
+            <jsp:forward page="login.jsp"/>
+        <%
+            }
+        %>
+
+        
         
         <script>
             <!--

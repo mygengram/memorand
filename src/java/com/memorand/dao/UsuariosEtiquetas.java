@@ -6,24 +6,24 @@ import java.io.Serializable;
 
 public class UsuariosEtiquetas implements Serializable
 {
-    private Usuarios usuario;
-    private EtiquetasP idEtiquetaP;
+    private String usuario;
+    private String idEtiquetaP;
 
     public UsuariosEtiquetas() {}
 
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario.getUsuario();
     }
 
-    public EtiquetasP getIdEtiquetaP() {
+    public String getIdEtiquetaP() {
         return idEtiquetaP;
     }
 
     public void setIdEtiquetaP(EtiquetasP idEtiquetaP) {
-        this.idEtiquetaP = idEtiquetaP;
+        this.idEtiquetaP = idEtiquetaP.getIdEtiquetaP();
     }
 }

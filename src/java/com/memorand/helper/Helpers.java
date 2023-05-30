@@ -3,14 +3,8 @@ package com.memorand.helper;
 
 // IMPORTACIONES
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.security.SecureRandom;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class Helpers<T> implements Serializable 
@@ -21,60 +15,69 @@ public abstract class Helpers<T> implements Serializable
 
     public Helpers() {}
     
-    public Helpers addRequest( HttpServletRequest request )
+    public Helpers addRequest(HttpServletRequest request)
     {
         this.request = request;
         return this;
     }
     
-    public String getParameter( String name )
+    public String getParameter(String name)
     {
-        if( request == null || name == null )
-        {
+        if( request == null || name == null ) {
             return null;
         }
-        if( name.length() <0 )
-        {
+        if( name.length() <0 ) {
             return null;
         }
-        return request.getParameter( name );
+        return request.getParameter(name);
     }
     
-    public abstract boolean addT( );
-    public abstract List<T> getListT( );
-    public abstract boolean updateT( );
-    public abstract boolean deleteT( );
-    public abstract T getTByKey( );
+    public abstract boolean addT();
+    public abstract List<T> getListT();
+    public abstract boolean updateT();
+    public abstract boolean deleteT();
+    public abstract T getTByKey();
     
-    public boolean isNullOrEmpty( String valor )
+    public boolean isNullOrEmpty(String valor)
     {
-        return valor == null || valor.length() <= 0;
+        return (valor == null || valor.length() <= 0);
     }
     
-    public boolean isNotNullAndNotEmpty( String valor )
+    public boolean isNotNullAndNotEmpty(String valor)
     {
-        return valor != null && valor.length() > 0;
+        return (valor != null && valor.length() > 0);
     }
 
-    public boolean isNotNull( Object valor )
+    public boolean isNotNull(Object valor)
     {
-        return valor != null;
+        return (valor != null);
     }
     
-    public static Date string2Date (String fecha) {
-        SimpleDateFormat formatoEntrada = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            Date fechaDate = formatoEntrada.parse(fecha);
-            return fechaDate;
-        } catch (ParseException e) {
-            System.out.println("Error al convertir la fecha: " + e.getMessage());
-            return null;
+    public String codigoAleatorio6() {
+        String Caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        int Longitud = 6;
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder(Longitud);
+
+        for (int i = 0; i < Longitud; i++) {
+            int randomIndex = random.nextInt(Caracteres.length());
+            char randomChar = Caracteres.charAt(randomIndex);
+            sb.append(randomChar);
         }
+        return sb.toString();
     }
     
-    public static String date2String(Date fecha) {
-        SimpleDateFormat formatoSalida = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaString = formatoSalida.format(fecha);
-        return fechaString;
+    public String codigoAleatorio12() {
+        String Caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        int Longitud = 12;
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder(Longitud);
+
+        for (int i = 0; i < Longitud; i++) {
+            int randomIndex = random.nextInt(Caracteres.length());
+            char randomChar = Caracteres.charAt(randomIndex);
+            sb.append(randomChar);
+        }
+        return sb.toString();
     }
 }

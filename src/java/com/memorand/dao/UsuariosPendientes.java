@@ -6,24 +6,24 @@ import java.io.Serializable;
 
 public class UsuariosPendientes implements Serializable
 {
-    private Usuarios usuario;
-    private PendientesP idPendP;
+    private String usuario;
+    private String idPendP;
 
     public UsuariosPendientes() {}
     
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario.getUsuario();
     }
 
-    public PendientesP getIdPendP() {
+    public String getIdPendP() {
         return idPendP;
     }
 
     public void setIdPendP(PendientesP idPendP) {
-        this.idPendP = idPendP;
+        this.idPendP = idPendP.getIdPendP();
     }
 }

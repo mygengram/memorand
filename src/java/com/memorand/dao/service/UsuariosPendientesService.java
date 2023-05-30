@@ -35,8 +35,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
                 return null;
             }
             resultSet = statement.executeQuery("SELECT * FROM USUARIOSPENDIENTESP");
-            if (resultSet == null) 
-            {
+            if (resultSet == null) {
                 return null;
             }
             
@@ -45,7 +44,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             {
                 usuariosPendientes = new UsuariosPendientes();
                 usuariosPendientes.setUsuario(new Usuarios(resultSet.getString(1)));
-                usuariosPendientes.setIdPendP(new PendientesP(resultSet.getInt(2)));
+                usuariosPendientes.setIdPendP(new PendientesP(resultSet.getString(2)));
                 usuariosPendientesList.add(usuariosPendientes);
             }
             resultSet.close();
@@ -74,8 +73,8 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1,usuariosPendientes.getUsuario().getUsuario());
-            preparedStatement.setInt(2,usuariosPendientes.getIdPendP().getIdPendP());
+            preparedStatement.setString(1,usuariosPendientes.getUsuario());
+            preparedStatement.setString(2,usuariosPendientes.getIdPendP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -103,7 +102,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1, usuariosPendientes.getUsuario().getUsuario());
+            preparedStatement.setString(1, usuariosPendientes.getUsuario());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -114,7 +113,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
         return false;
     }
     
-    public UsuariosPendientes getUsuariosPendientes (String usuario, int idPendP) 
+    public UsuariosPendientes getUsuariosPendientes (String usuario, String idPendP) 
     {
         UsuariosPendientes aux = null;
         Connection connection = null;
@@ -131,7 +130,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
                 return null;
             }
             preparedStatement.setString(1, usuario);
-            preparedStatement.setInt(2, idPendP);
+            preparedStatement.setString(2, idPendP);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
@@ -140,8 +139,8 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             aux = new UsuariosPendientes();
             while (resultSet.next()) 
             {
-                aux.setUsuario(new Usuarios( resultSet.getString(1)));
-                aux.setIdPendP(new PendientesP( resultSet.getInt(2)));
+                aux.setUsuario(new Usuarios(resultSet.getString(1)));
+                aux.setIdPendP(new PendientesP(resultSet.getString(2)));
             }
             resultSet.close();
             closeConnection(connection);

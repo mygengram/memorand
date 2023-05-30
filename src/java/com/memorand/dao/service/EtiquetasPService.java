@@ -42,7 +42,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             while (resultSet.next()) 
             {
                 etiquetasP = new EtiquetasP();
-                etiquetasP.setIdEtiquetaP(resultSet.getInt(1));
+                etiquetasP.setIdEtiquetaP(resultSet.getString(1));
                 etiquetasP.setNomEtiquetaP(resultSet.getString(2));
                 etiquetasPList.add(etiquetasP);
             }
@@ -73,20 +73,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             if( preparedStatement == null ) {
                 return false;
             }
-            
-            size = getEtiquetasPList().size();
-            if(size < 0) {
-                return false;
-            }
-            else {
-                if(size == 0) {
-                    preparedStatement.setInt(1,1);
-                }
-                else {
-                    preparedStatement.setInt(1,(getEtiquetasPList().get(size-1).getIdEtiquetaP())+1);
-                }
-            }
-            preparedStatement.setInt(1,etiquetasP.getIdEtiquetaP());
+            preparedStatement.setString(1,etiquetasP.getIdEtiquetaP());
             preparedStatement.setString(2,etiquetasP.getNomEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
@@ -114,8 +101,8 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, etiquetasP.getIdEtiquetaP());
-            preparedStatement.setString(2, etiquetasP.getNomEtiquetaP());
+            preparedStatement.setString(1,etiquetasP.getIdEtiquetaP());
+            preparedStatement.setString(2,etiquetasP.getNomEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -142,7 +129,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, etiquetasP.getIdEtiquetaP());
+            preparedStatement.setString(1,etiquetasP.getIdEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -153,7 +140,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
         return false;
     }
     
-    public EtiquetasP getEtiquetasPByEtiquetasP (int idEtiquetaP) 
+    public EtiquetasP getEtiquetasPByEtiquetasP (String idEtiquetaP) 
     {
         EtiquetasP aux = null;
         Connection connection = null;
@@ -169,7 +156,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1,idEtiquetaP);
+            preparedStatement.setString(1,idEtiquetaP);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
@@ -179,7 +166,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             while (resultSet.next()) 
             {
                 aux = new EtiquetasP();
-                aux.setIdEtiquetaP(resultSet.getInt(1));
+                aux.setIdEtiquetaP(resultSet.getString(1));
                 aux.setNomEtiquetaP(resultSet.getString(2));
             }
             resultSet.close();

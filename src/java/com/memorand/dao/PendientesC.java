@@ -14,6 +14,11 @@ public class PendientesC implements Serializable
     private String completadoC;
 
     public PendientesC() {}
+    
+    public PendientesC(int idPendC) 
+    {
+        this.idPendC = idPendC;
+    }
 
     public int getIdPendC() {
         return idPendC;

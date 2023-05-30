@@ -6,21 +6,21 @@ import java.io.Serializable;
 
 public class EtiquetasP implements Serializable
 {
-    private int idEtiquetaP;
+    private String idEtiquetaP;
     private String nomEtiquetaP;
 
     public EtiquetasP() {}
     
-    public EtiquetasP(int idEtiquetaP) 
+    public EtiquetasP(String idEtiquetaP) 
     {
         this.idEtiquetaP = idEtiquetaP;
     }
 
-    public int getIdEtiquetaP() {
+    public String getIdEtiquetaP() {
         return idEtiquetaP;
     }
 
-    public void setIdEtiquetaP(int idEtiquetaP) {
+    public void setIdEtiquetaP(String idEtiquetaP) {
         this.idEtiquetaP = idEtiquetaP;
     }
 

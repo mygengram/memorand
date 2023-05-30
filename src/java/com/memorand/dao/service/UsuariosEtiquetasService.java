@@ -42,8 +42,8 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
             while (resultSet.next()) 
             {
                 usuariosEtiquetas = new UsuariosEtiquetas();
-                usuariosEtiquetas.setUsuario( new Usuarios( resultSet.getString(1) ) );
-                usuariosEtiquetas.setIdEtiquetaP(new EtiquetasP( resultSet.getInt(2) ) );
+                usuariosEtiquetas.setUsuario(new Usuarios(resultSet.getString(1)));
+                usuariosEtiquetas.setIdEtiquetaP(new EtiquetasP(resultSet.getString(2)));
                 usuariosEtiquetasList.add(usuariosEtiquetas);
             }
             resultSet.close();
@@ -62,6 +62,7 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO USUARIOSETIQUETASP (USUARIO,IDETIQUETAP) VALUES (?,?)";
         int row = 0;
+        
         try {
             connection = getConnection( );
             if( connection == null ) {
@@ -71,8 +72,8 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1, usuariosEtiquetas.getUsuario().getUsuario());
-            preparedStatement.setInt(2, usuariosEtiquetas.getIdEtiquetaP().getIdEtiquetaP());
+            preparedStatement.setString(1, usuariosEtiquetas.getUsuario());
+            preparedStatement.setString(2, usuariosEtiquetas.getIdEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -83,26 +84,24 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
         return false;
     }
     
-    public boolean deleteUsuariosEtiquetas ( UsuariosEtiquetas usuariosEtiquetas )
+    public boolean deleteUsuariosEtiquetas (UsuariosEtiquetas usuariosEtiquetas)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM USUARIOSETIQUETASP IDETIQUETAP = ?";
+        String sql = "DELETE FROM USUARIOSETIQUETASP WHERE USUARIO = ? AND IDETIQUETAP = ?";
         int row = 0;
         
         try {
-            connection = getConnection( );
-            if( connection == null )
-            {
+            connection = getConnection();
+            if(connection == null) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null )
-            {
+            if(preparedStatement == null) {
                 return false;
             }
-            preparedStatement.setString(1, usuariosEtiquetas.getUsuario().getUsuario());
-            preparedStatement.setInt(2, usuariosEtiquetas.getIdEtiquetaP().getIdEtiquetaP());
+            preparedStatement.setString(1,usuariosEtiquetas.getUsuario());
+            preparedStatement.setString(2,usuariosEtiquetas.getIdEtiquetaP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -114,7 +113,7 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
         return false;
     }
     
-    public UsuariosEtiquetas getUsuariosEtiquetas (String usuario, int idEtiquetaP) 
+    public UsuariosEtiquetas getUsuariosEtiquetas (String usuario, String idEtiquetaP) 
     {
         UsuariosEtiquetas aux = null;
         Connection connection = null;
@@ -131,15 +130,15 @@ public class UsuariosEtiquetasService extends Conexion<UsuariosEtiquetas>
                 return null;
             }
             preparedStatement.setString(1, usuario);
-            preparedStatement.setInt(2, idEtiquetaP);
+            preparedStatement.setString(2, idEtiquetaP);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
             }
             aux = new UsuariosEtiquetas();
             while (resultSet.next()) {
-                aux.setUsuario( new Usuarios( resultSet.getString(1)));
-                aux.setIdEtiquetaP(new EtiquetasP( resultSet.getInt(2)));
+                aux.setUsuario(new Usuarios(resultSet.getString(1)));
+                aux.setIdEtiquetaP(new EtiquetasP(resultSet.getString(2)));
             }
             resultSet.close();
             closeConnection(connection);

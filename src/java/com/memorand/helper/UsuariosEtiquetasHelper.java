@@ -21,7 +21,7 @@ public class UsuariosEtiquetasHelper extends Helpers<UsuariosEtiquetas> implemen
         usuariosEtiquetasService = new UsuariosEtiquetasService();
         t = new UsuariosEtiquetas();
         t.setUsuario(new Usuarios(getParameter("user")));
-        t.setIdEtiquetaP(new EtiquetasP(Integer.parseInt(getParameter("idEtiquetaP"))));
+        t.setIdEtiquetaP(new EtiquetasP(getParameter("idEtiquetaP")));
         
         return usuariosEtiquetasService.addUsuariosEtiquetas(t);
     }
@@ -41,14 +41,10 @@ public class UsuariosEtiquetasHelper extends Helpers<UsuariosEtiquetas> implemen
     public boolean deleteT() {
         usuariosEtiquetasService = new UsuariosEtiquetasService();
         t = new UsuariosEtiquetas();
-        int idEtiquetaP = t.getIdEtiquetaP().getIdEtiquetaP();
-        String idEtiquetaPString = String.valueOf(idEtiquetaP);
-
         t.setUsuario(new Usuarios(getParameter("user")));
-        t.setIdEtiquetaP(new EtiquetasP(Integer.parseInt(getParameter("idEtiquetaP"))));
-        if( t.getUsuario().getUsuario() != null && t.getUsuario().getUsuario().length() > 0 &&
-            idEtiquetaPString != null && idEtiquetaPString.length() > 0)
-        {
+        t.setIdEtiquetaP(new EtiquetasP(getParameter("idEtiquetaP")));
+        if(t.getUsuario() != null && t.getUsuario().length() > 0 &&
+           t.getIdEtiquetaP() != null && t.getIdEtiquetaP().length() > 0) {
             return usuariosEtiquetasService.deleteUsuariosEtiquetas(t);
         }
         return false;
@@ -56,21 +52,17 @@ public class UsuariosEtiquetasHelper extends Helpers<UsuariosEtiquetas> implemen
 
     @Override
     public UsuariosEtiquetas getTByKey() {
-        String usuario = null;
-        String idEtiquetaP = null;
+        String usuario;
+        String idEtiquetaP;
         
         usuario = getParameter("user");
         idEtiquetaP = getParameter("idEtiquetaP");
         
-        if( usuario == null || usuario.length() <= 0 || usuario == null || usuario.length( ) <= 0)
-        {
+        if( usuario == null || usuario.length() <= 0 || idEtiquetaP == null || idEtiquetaP.length( ) <= 0) {
             return null;
         }
         
-        int idEtiquetaPI = Integer.parseInt(idEtiquetaP);
         usuariosEtiquetasService = new UsuariosEtiquetasService();
-        return usuariosEtiquetasService.getUsuariosEtiquetasByUsuarioIdEtiquetaP(usuario, idEtiquetaPI);
+        return usuariosEtiquetasService.getUsuariosEtiquetas(usuario,idEtiquetaP);
     }
-    
-    
 }
