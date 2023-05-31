@@ -1,3 +1,4 @@
+<%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -108,12 +109,25 @@
           <div class="row">
             <div class="col-1"></div>
             
+            <%  
+                String usuario = request.getParameter("user");
+                UsuariosService usuariosService = new UsuariosService();
+            %>
             <%-- MAIN --%>
             <div class="col-9">
-                <h1 class="text-secondary">{NOMBRE PENDIENTE}</h1>
-                <h4 class="text-tertiary bg-tertiary bg-opacity-10">{SUBTITULO PENDIENTE}</h4>
-                <h6 class="text-tertiary bg-tertiary bg-opacity-10">{DESCRIPCION PENDIENTE}</h6>
-               
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <h1 class="text-secondary">{NOMBRE PENDIENTE}</h1>
+                            <h4 class="text-tertiary bg-tertiary bg-opacity-10">{SUBTITULO PENDIENTE}</h4>
+                            <h6 class="text-tertiary bg-tertiary bg-opacity-10">{DESCRIPCION PENDIENTE}</h6>
+                        </div>
+                        <div class="col-4" style="padding:1%">
+                            <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">Nuevo pendiente</a>
+                            <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">Nueva etiqueta</a>
+                        </div>
+                    </div>
+                </div>
                 <br> <hr> <br> 
 
                 <h2 class="text-secondary">Etiquetas</h2>

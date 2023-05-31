@@ -1,3 +1,4 @@
+<%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -109,12 +110,45 @@
           <div class="row">
             <div class="col-1"></div>
             
+            <%  
+                String usuario = request.getParameter("user");
+                UsuariosService usuariosService = new UsuariosService();
+            %>
             <%-- MAIN --%>
             <div class="col-9">
-                <h1 class="text-secondary">{NOMBRE AGENDA}</h1>
-                <h4 class="text-tertiary bg-tertiary bg-opacity-10">{DESCRIPCION AGENDA}</h4>
-                <div class="col-4">
-                    <h6 class="text-primary bg-primary bg-opacity-10">C&oacute;digo agenda: {CODIGO}</h6>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <h1 class="text-secondary">{NOMBRE AGENDA}</h1>
+                            <div class="col-11">
+                                <h4 class="text-tertiary bg-tertiary bg-opacity-10">{DESCRIPCION AGENDA}</h4>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
+                                <li class="nav-item" style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-clipboard-plus-fill"></i>   Nuevo pendiente
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-key-fill"></i>  Obtener c&oacute;digo
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-tag-fill"></i>  Nueva etiqueta
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-pen-fill"></i>  Editar agenda
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <br> <hr> <br> 
                 

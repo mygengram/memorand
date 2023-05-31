@@ -14,6 +14,7 @@
         <group>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/Helpers.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/Conexion.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/EtiquetasPService.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/META-INF/context.xml</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/UsuariosService.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/RolUsuarioService.java</file>
@@ -21,6 +22,7 @@
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/dao/service/RolesService.java</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/index.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/feed/usuario/comunitarias/a.jsp</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/memorand/helper/LoginHelper.java</file>
         </group>
     </open-files>

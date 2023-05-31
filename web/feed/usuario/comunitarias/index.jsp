@@ -1,3 +1,4 @@
+<%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -109,9 +110,45 @@
           <div class="row">
             <div class="col-1"></div>
             
+            <%  
+                String usuario = request.getParameter("user");
+                UsuariosService usuariosService = new UsuariosService();
+            %>
             <%-- MAIN --%>
             <div class="col-9">
-                <h1 class="text-secondary">Mis agendas comunitarias</h1>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="col-11">
+                                <h1 class="text-secondary">Mis agendas comunitarias</h1>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
+                                <li class="nav-item" style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-clipboard-plus-fill"></i>   Nueva agenda
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-person-fill-add"></i>   Unirse a una
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-tag-fill"></i>  Nueva etiqueta
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-star-fill"></i>  A&ntilde;adir favorita
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <br> <hr> <br> 
                 
                 <h2 class="text-secondary">Mis favoritas</h2>

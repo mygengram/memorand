@@ -1,4 +1,5 @@
-s<%@page import="com.memorand.helper.LoginHelper"%>
+<%@page import="com.memorand.dao.service.UsuariosService"%>
+<%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -109,14 +110,61 @@ s<%@page import="com.memorand.helper.LoginHelper"%>
           <div class="row">
             <div class="col-1"></div>
             
+            <%  
+                String usuario = request.getParameter("user");
+                UsuariosService usuariosService = new UsuariosService();
+                %>
             <%-- MAIN --%>
             <div class="col-9">
-                <h1 class="text-secondary">Mi agenda personal</h1>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8">
+                            <h1 class="text-secondary">Mi agenda personal</h1>
+                        </div>
+                        <div class="col-4">
+                            <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
+                                <li class="nav-item" style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-clipboard-plus-fill"></i>   Nuevo pendiente
+                                    </a>
+                                </li>
+                                <li style="padding:2%">
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                        <i class="bi bi-tag-fill"></i>  Nueva etiqueta
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 <br> <hr> <br> 
                 
                 <h2 class="text-secondary">Mis pendientes</h2>
                 <br>
                 <h4 class="text-tertiary text-center">Sin pendientes</h4>
+                
+                <br>
+                <table class="table table-borderless" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Vencimiento</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td>
+                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpendp=">
+                              <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                              
                 <br> <hr> <br> 
                 
                 <h2 class="text-secondary">Mis etiquetas</h2>
