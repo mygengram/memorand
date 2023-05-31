@@ -33,7 +33,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM ETIQUETASP");
+            resultSet = statement.executeQuery("select * from etiquetasp");
             if (resultSet == null) {
                 return null;
             }
@@ -60,7 +60,7 @@ public class EtiquetasPService extends Conexion<EtiquetasP>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ETIQUETASP (IDETIQUETAP,NOMETIQUETAP) VALUES (?,?)";
+        String sql = "insert into etiquetasp (idetiquetap, nometiquetap) values (?,?)";
         int row;
         int size;
         

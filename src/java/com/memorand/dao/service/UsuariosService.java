@@ -32,7 +32,7 @@ public class UsuariosService extends Conexion<Usuarios>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM USUARIOS");
+            resultSet = statement.executeQuery("select * from usuarios");
             if (resultSet == null) {
                 return null;
             }
@@ -62,7 +62,7 @@ public class UsuariosService extends Conexion<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO USUARIOS (USUARIO,CONTRASENA,NOMUSUARIO,APELLIDOPAT,APELLIDOMAT,FECHANAC) VALUES (?,?,?,?,?,?)";
+        String sql = "insert into usuarios (usuario,contrasena,nomusuario,apellidopat,apellidomat,fechanac) values (?,?,?,?,?,?)";
         int row = 0;
         
         try {
@@ -94,7 +94,7 @@ public class UsuariosService extends Conexion<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE USUARIOS SET CONTRASENA = ?, NOMUSUARIO = ?, APELLIDOPAT = ?, APELLIDOMAT = ?, FECHANAC = ? WHERE USUARIO = ?";
+        String sql = "update usuarios set contrasena = ?, nomusuario = ?, apellidopat = ?, apellidomat = ?, fechanac = ? where usuario = ?";
         int row = 0;
         
         try {
@@ -125,7 +125,7 @@ public class UsuariosService extends Conexion<Usuarios>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM USUARIO WHERE USUARIO = ?";
+        String sql = "delete from usuarios where usuario = ?";
         int row = 0;
         
         try {
@@ -160,7 +160,7 @@ public class UsuariosService extends Conexion<Usuarios>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOS WHERE USUARIO = ?");
+            preparedStatement = connection.prepareStatement("select * from usuarios where usuario = ?");
             if (preparedStatement == null) {
                 return null;
             }

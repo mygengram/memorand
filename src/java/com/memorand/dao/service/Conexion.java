@@ -6,12 +6,11 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Date;
 
 public abstract class Conexion<T> implements Serializable 
 {
     public static String user = "root";
-    public static String password = "1234";
+    public static String password = "n0m3l0";
     public static String db = "memorand";
     public static String port = "3306";
     

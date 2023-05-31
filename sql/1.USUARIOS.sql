@@ -1,17 +1,17 @@
-insert into Usuarios
-(usuario, contrasena, nomUsuario, apellidoPat, apellidoMat, fechaNac)
+insert into usuarios
+(usuario, contrasena, nomusuario, apellidopat, apellidomat, fechanac)
 values
 ("nicojrz","1234","nico","juarez","barrios","2006-07-07"),
 ("nicotest","1234","nico","juarez","barrios","2006-07-07");
 
-insert into Roles
-(rolUsuario)
+insert into roles
+(rolusuario)
 values
 ("admin"),
 ("usuario");
 
-insert into Rol_Usuario
-(usuario, rolUsuario)
+insert into rolusuarios
+(usuario, rolusuario)
 values
 ("nicojrz","admin"),
 ("nicotest","usuario");

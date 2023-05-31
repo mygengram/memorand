@@ -34,7 +34,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM ROL_USUARIO");
+            resultSet = statement.executeQuery("select * from rolusuarios");
             if (resultSet == null) {
                 return null;
             }
@@ -62,7 +62,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO ROL_USUARIO (USUARIO,ROLUSUARIO) VALUES (?,?)";
+        String sql = "insert into rolusuarios (usuario,rolusuario) values (?,?)";
         int row = 0;
         
         try {
@@ -90,7 +90,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM ROL_USUARIO WHERE USUARIO = ?";
+        String sql = "delete from rolusuarios where usuario = ?";
         int row = 0;
         
         try {
@@ -125,7 +125,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM ROL_USUARIO WHERE USUARIO = ?");
+            preparedStatement = connection.prepareStatement("select * from rolusuarios where usuario = ?");
             if (preparedStatement == null) {
                 return null;
             }
@@ -150,7 +150,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
         return null;
     }
     
-    public RolUsuario getRolUsuarioByContrasena (String usuario,String contrasena) 
+    public RolUsuario getRolUsuarioByContrasena (String usuario, String contrasena) 
     {
         RolUsuario aux = null;
         Connection connection = null;
@@ -165,8 +165,8 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             }
             
             stringBuilder = new StringBuilder();
-            stringBuilder.append("SELECT ROL_USUARIO.USUARIO, ROL_USUARIO.ROLUSUARIO FROM ROL_USUARIO INNER JOIN USUARIOS ON ROL_USUARIO.USUARIO = USUARIOS.USUARIO");
-            stringBuilder.append(" WHERE USUARIOS.USUARIO = ? AND USUARIOS.CONTRASENA = ?");
+            stringBuilder.append("select rolusuarios.usuario, rolusuarios.rolusuario from rolusuarios inner join usuarios on rolusuarios.usuario = usuarios.usuario");
+            stringBuilder.append(" where usuarios.usuario = ? and usuarios.contrasena = ?");
             
             preparedStatement = connection.prepareStatement( stringBuilder.toString());
             if (preparedStatement == null) {

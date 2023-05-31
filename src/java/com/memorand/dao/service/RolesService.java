@@ -32,7 +32,7 @@ public class RolesService extends Conexion<Roles>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM ROLES");
+            resultSet = statement.executeQuery("select * from roles");
             if (resultSet == null) {
                 return null;
             }
@@ -67,7 +67,7 @@ public class RolesService extends Conexion<Roles>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM ROLES WHERE ROLUSUARIO = ?");
+            preparedStatement = connection.prepareStatement("select * from roles where rolusuario = ?");
             if (preparedStatement == null) {
                 return null;
             }
