@@ -1,3 +1,5 @@
+<%@page import="com.memorand.helper.PendientesPHelper"%>
+<%@page import="com.memorand.helper.Helpers"%>
 <%@page import="com.memorand.dao.PendientesP"%>
 <%@page import="com.memorand.dao.UsuariosPendientes"%>
 <%@page import="java.util.List"%>
@@ -120,6 +122,8 @@
                 <%  
                 String usuario = request.getParameter("user");
                 UsuariosService usuariosService = new UsuariosService();
+                
+                Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
                 %>
                 <h1 class="text-secondary">Bienvenido <%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%></h1>
                 <h2 class="text-secondary">¿Qué deseas hacer hoy?</h2>
@@ -130,7 +134,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
-                                <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">Nuevo pendiente</a>
+                                <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&a=n" class="btn btn-primary text-white">Nuevo pendiente personal</a>
                               </div>
                             </div>
                         </div>

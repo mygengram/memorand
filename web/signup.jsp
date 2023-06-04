@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="bootstrap/style.css">
         <title>Memorand - Registrarse</title>
     </head>
+    
     <style>
         .btn-custom {
             background-color: #18988B;
@@ -31,17 +32,15 @@
         .bg{
             background-image: url(images/extras/logc.jpg);
             background-position: center center;
-           
         }
-   
     </style>
+    
     <body>
         <%
             String accion = request.getParameter("a");;
             Helpers usuarioHelper = null;
             Helpers rolUsuarioHelper = null;
             boolean flag1 = false;
-            boolean flag2 = false;
             
             if(accion != null && "n".equals(accion))
             {
@@ -123,7 +122,7 @@
             }
             if(flag1) {
                 rolUsuarioHelper = new RolUsuarioHelper().addRequest(request);
-                flag2 = rolUsuarioHelper.addT();
+                rolUsuarioHelper.addT();
         %>
             <jsp:forward page="login.jsp"/>
         <%

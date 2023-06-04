@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public abstract class Conexion<T> implements Serializable 
 {
     public static String user = "root";
-    public static String password = "1234";
+    public static String password = "n0m3l0";
     public static String db = "memorand";
     public static String port = "3306";
     

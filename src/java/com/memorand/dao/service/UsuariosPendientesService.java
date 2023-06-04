@@ -34,7 +34,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM USUARIOSPENDIENTESP");
+            resultSet = statement.executeQuery("select * from usuariospendientesp");
             if (resultSet == null) {
                 return null;
             }
@@ -74,8 +74,8 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             }
             
             stringBuilder = new StringBuilder();
-            stringBuilder.append("SELECT * FROM PENDIENTESP INNER JOIN USUARIOSPENDIENTESP ON USUARIOSPENDIENTESP.IDPENDP = PENDIENTESP.IDPENDP");
-            stringBuilder.append(" WHERE USUARIO = ?");
+            stringBuilder.append("select * from pendientesp inner join usuariospendientesp on usuariospendientesp.idpendp = pendientesp.idpendp");
+            stringBuilder.append(" where usuario = ?");
             
             preparedStatement = connection.prepareStatement(stringBuilder.toString());
             if (preparedStatement == null) {
@@ -115,7 +115,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO USUARIOSPENDIENTESP (USUARIO,IDPENDP) VALUES (?,?)";
+        String sql = "insert into usuariospendientesp (usuario,idpendp) values (?,?)";
         int row = 0;
         try 
         {
@@ -144,7 +144,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM USUARIOSPENDIENTESP WHERE IDPENDP = ?";
+        String sql = "delete from usuariospendientesp where idpendp = ?";
         int row = 0;
         
         try {
@@ -179,7 +179,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM USUARIOSPENDIENTESP WHERE USUARIO = ? AND IDPENDP = ?");
+            preparedStatement = connection.prepareStatement("select * from usuariospendientesp where usuario = ? and idpendp = ?");
             if (preparedStatement == null) {
                 return null;
             }

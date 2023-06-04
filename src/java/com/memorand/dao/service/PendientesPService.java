@@ -32,7 +32,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESP");
+            resultSet = statement.executeQuery("select * from pendientesp");
             if (resultSet == null) {
                 return null;
             }
@@ -78,7 +78,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESP WHERE COMPLETADOP = \"si\"");
+            resultSet = statement.executeQuery("select * from pendientesp where completadop = \"si\"");
             if (resultSet == null) {
                 return null;
             }
@@ -124,7 +124,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESP WHERE COMPLETADOP = \"no\"");
+            resultSet = statement.executeQuery("select * from pendientesp where completadop = \"no\"");
             if (resultSet == null) {
                 return null;
             }
@@ -157,7 +157,7 @@ public class PendientesPService extends Conexion<PendientesP>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO PENDIENTESP (IDPENDP, NOMPENDP, SUBPENDP, DESCPENDP, FECHAFINALP, COMPLETADOP) VALUES (?,?,?,?,?,?)";
+        String sql = "insert into pendientesp (idpendp, nompendp, subpendp, descpendp, fechafinalp, completadop) values (?,?,?,?,?,?)";
         int row;
         
         try {
@@ -189,7 +189,7 @@ public class PendientesPService extends Conexion<PendientesP>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE PENDIENTESP SET NOMPENDP = ?, SUBPENDP = ?, DESCPENDP = ?, FECHAINICIOP = ?, FECHAFINALP = ?, COMPLETADOP = ? WHERE IDPENDP = ?";
+        String sql = "update pendientesp set nompendp = ?, subpendp = ?, descpendp = ?, fechainiciop = ?, fechafinalp = ?, completadop = ? where idpendp = ?";
         int row = 0;
         
         try {
@@ -220,7 +220,7 @@ public class PendientesPService extends Conexion<PendientesP>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM PENDIENTESP WHERE IDPENDP = ?";
+        String sql = "delete from pendientesp where idpendp = ?";
         int row = 0;
         
         try {
@@ -255,7 +255,7 @@ public class PendientesPService extends Conexion<PendientesP>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM PENDIENTESP WHERE IDPENDP = ?");
+            preparedStatement = connection.prepareStatement("select * from pendientesp where idpendp = ?");
             if (preparedStatement == null) {
                 return null;
             }

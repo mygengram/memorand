@@ -1,4 +1,3 @@
-
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -81,9 +80,9 @@
                 if(!loginHelper.login(request,response))
                 {
         %>
-        <script>
-            showCustomAlert();
-        </script>
+                    <script>
+                        showCustomAlert();
+                    </script>
         <%
                 }
             }
@@ -115,7 +114,7 @@
                           <input type="password" class="form-control rounded-5  border-success" id="pass" name="pass"  placeholder="Contraseña">
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-light btn-custom rounded-5 "  id="accion" name="accion" value="login">Iniciar sesión</button>
+                            <button type="submit" class="btn btn-light btn-custom rounded-5"  id="accion" name="accion" value="login">Iniciar sesión</button>
                         </div>
                         <div class="my3 mt-2 text-center">
                             <span>¿No tienes una cuenta? <a href="signup.jsp" style="text-decoration: none;">Reg&iacute;strate</a></span><br>

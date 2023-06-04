@@ -20,7 +20,7 @@ public class UsuariosPendientesHelper extends Helpers<UsuariosPendientes> implem
         usuariosPendientesService = new UsuariosPendientesService();
         t = new UsuariosPendientes();
         t.setUsuario(new Usuarios(getParameter("user")));
-        t.setIdPendP(new PendientesP(getParameter("idPendP")));
+        t.setIdPendP(new PendientesP(getParameter("idpp")));
         
         return usuariosPendientesService.addUsuariosPendientes(t);
     }
@@ -41,7 +41,7 @@ public class UsuariosPendientesHelper extends Helpers<UsuariosPendientes> implem
         usuariosPendientesService = new UsuariosPendientesService();
         t = new UsuariosPendientes();
         t.setUsuario(new Usuarios(getParameter("user")));
-        t.setIdPendP(new PendientesP(getParameter("idPendP")));
+        t.setIdPendP(new PendientesP(getParameter("idpp")));
         
         if( t.getUsuario() != null && t.getUsuario().length() > 0 &&
             t.getIdPendP() != null && t.getIdPendP().length() > 0) {
@@ -56,7 +56,7 @@ public class UsuariosPendientesHelper extends Helpers<UsuariosPendientes> implem
         String idPendP;
         
         usuario = getParameter("user");
-        idPendP = getParameter("idPendP");
+        idPendP = getParameter("idpp");
         
         if( usuario == null || usuario.length() <= 0 || idPendP == null || idPendP.length( ) <= 0) {
             return null;

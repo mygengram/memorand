@@ -1,4 +1,4 @@
-package com.memorand.helper;
+ package com.memorand.helper;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
@@ -22,17 +22,17 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
                isNotNullAndNotEmpty(t.getFechaFinalP()) &&
                isNotNullAndNotEmpty(t.getCompletadoP());
     }
-
+    
     @Override
     public boolean addT() {
         pendientesPService = new PendientesPService();
         t = new PendientesP();
 
-        t.setIdPendP(codigoAleatorio12());
-        t.setNomPendP(getParameter("nomPendP"));
-        t.setSubPendP(getParameter("subPendP"));
-        t.setDescPendP(getParameter("descPendP"));
-        t.setFechaFinalP(getParameter("fechaFinalP"));
+        t.setIdPendP(getParameter("idpp"));
+        t.setNomPendP(getParameter("nmpp"));
+        t.setSubPendP(getParameter("sbpp"));
+        t.setDescPendP(getParameter("dspp"));
+        t.setFechaFinalP(getParameter("ffpp"));
         t.setCompletadoP("no");
         
         if(isValidaCamposOk()) {
@@ -54,12 +54,12 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
         pendientesPService = new PendientesPService();
         t = new PendientesP();
         
-        t.setIdPendP(getParameter("idPendP"));
-        t.setNomPendP(getParameter("nomPendP"));
-        t.setSubPendP(getParameter("subPendP"));
-        t.setDescPendP(getParameter("descPendP"));
-        t.setFechaFinalP(getParameter("fechaFinalP"));
-        t.setCompletadoP(getParameter("completadoP"));
+        t.setIdPendP(getParameter("idpp"));
+        t.setNomPendP(getParameter("nmpp"));
+        t.setSubPendP(getParameter("sbpp"));
+        t.setDescPendP(getParameter("dspp"));
+        t.setFechaFinalP(getParameter("ffpp"));
+        t.setCompletadoP(getParameter("cmpp"));
         
         if(isValidaCamposOk()) {
             return pendientesPService.updatePendientesP(t );
@@ -71,14 +71,14 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
     public boolean deleteT() {
         pendientesPService = new PendientesPService();
         t = new PendientesP();
-        t.setIdPendP(getParameter("idPendP"));
+        t.setIdPendP(getParameter("idpp"));
         return pendientesPService.deletePendientesP(t);
     }
 
     @Override
     public PendientesP getTByKey() 
     {
-        String idPendP = getParameter("idPendP");
+        String idPendP = getParameter("idpp");
         if(idPendP == null || idPendP.length( ) <= 0) {
             return null;
         }

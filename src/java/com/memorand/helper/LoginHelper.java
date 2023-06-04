@@ -22,21 +22,21 @@ public class LoginHelper implements Serializable
     
     public boolean login (HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
     {
-        RolUsuarioService rolUsuarioService = null;
-        RolUsuario rolUsuario = null;
-        String page = null;
+        RolUsuarioService rolUsuarioService;
+        RolUsuario rolUsuario;
+        String page;
         
         this.httpServletRequest = httpServletRequest;
         this.httpServletResponse = httpServletResponse;
         usuario = httpServletRequest.getParameter("user");
         contrasena = httpServletRequest.getParameter("pass");
         
-        if(!isLoginOk()) { return false; }
+        if(!isLoginOk()) {return false;}
         
         rolUsuarioService = new RolUsuarioService();
         rolUsuario = rolUsuarioService.getRolUsuarioByContrasena(usuario, contrasena);
         
-        if(rolUsuario == null) { return false; }
+        if(rolUsuario == null) {return false;}
         
         httpServletRequest.getSession(true).setAttribute("rol",rolUsuario);
         switch (rolUsuario.getRol()) 

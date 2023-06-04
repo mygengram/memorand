@@ -3,7 +3,7 @@
     <display-name>memorand</display-name>
     <session-config>
         <session-timeout>
-            30
+            600
         </session-timeout>
     </session-config>
     <welcome-file-list>
