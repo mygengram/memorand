@@ -1,3 +1,8 @@
+<%@page import="com.memorand.helper.PendientesPHelper"%>
+<%@page import="com.memorand.helper.Helpers"%>
+<%@page import="com.memorand.dao.PendientesP"%>
+<%@page import="java.util.List"%>
+<%@page import="com.memorand.dao.service.UsuariosPendientesService"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,6 +16,11 @@
     </head>
     <body>
         <%
+            String usuario = request.getParameter("user");
+            UsuariosService usuariosService = new UsuariosService();
+
+            Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
+            
             String accion;
             LoginHelper loginHelper;
             
@@ -52,7 +62,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="../cuenta.jsp">Mi cuenta</a>
+                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -86,18 +96,18 @@
           <div class="offcanvas-body" style="margin-top: 2%">
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="../index.jsp" class="nav-link" aria-current="page">
+                  <a href="../index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link" aria-current="page">
                   <i class="bi bi-house-door-fill" style="font-size:14pt">    Inicio</i>
                 </a>
               </li>
               <hr style="opacity: 100; height: 2px;">
               <li>
-                <a href="index.jsp" class="nav-link">
+                <a href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link">
                   <i class="bi bi-person-fill" style="font-size:14pt">    Mi agenda</i>
                 </a>
               </li>
               <li>
-                  <a href="../comunitarias/index.jsp" class="nav-link">
+                  <a href="../comunitarias/index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link">
                   <i class="bi bi-people-fill" style="font-size:14pt">    Agendas comunitarias</i>
                 </a>
               </li>
@@ -109,11 +119,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-1"></div>
-            
-            <%  
-                String usuario = request.getParameter("user");
-                UsuariosService usuariosService = new UsuariosService();
-                %>
+
             <%-- MAIN --%>
             <div class="col-9">
                 <div class="container-fluid">
@@ -124,13 +130,8 @@
                         <div class="col-4">
                             <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
                                 <li class="nav-item" style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
+                                    <a href="../nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&cmpp=no&a=n" class="btn btn-primary text-white">
                                         <i class="bi bi-clipboard-plus-fill"></i>   Nuevo pendiente
-                                    </a>
-                                </li>
-                                <li style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
-                                        <i class="bi bi-tag-fill"></i>  Nueva etiqueta
                                     </a>
                                 </li>
                             </ul>
@@ -141,8 +142,13 @@
                 
                 <h2 class="text-secondary">Mis pendientes</h2>
                 <br>
-                <h4 class="text-tertiary text-center">Sin pendientes</h4>
+                <%  
+                UsuariosPendientesService usuariosPendientesService = new UsuariosPendientesService();
+                List<PendientesP> lista = usuariosPendientesService.getPendientesListByUsuario(usuario);
                 
+                if(!(lista.size() <= 0))
+                {
+                %>
                 <br>
                 <table class="table table-borderless" style="width:100%">
                   <thead>
@@ -153,24 +159,34 @@
                     </tr>
                   </thead>
                   <tbody>
+                <%  
+                    for (int i = 0; i < lista.size(); i++) {
+                %>
                     <tr>
-                      <td></td>
-                      <td></td>
+                      <td><%= lista.get(i).getNomPendP()%></td>
+                      <td><%= lista.get(i).getFechaFinalP()%></td>
                       <td>
-                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpendp=">
+                          <a href="p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>">
                               <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
                           </a>
                       </td>
                     </tr>
+                <%  
+                    }
+                %>
                   </tbody>
                 </table>
-                              
-                <br> <hr> <br> 
-                
-                <h2 class="text-secondary">Mis etiquetas</h2>
+                <%  
+                }
+                else
+                {
+                %>
                 <br>
-                <h4 class="text-tertiary text-center">Sin etiquetas</h4>
-                <br> <br> 
+                <h4 class="text-tertiary text-center">Sin pendientes</h4>
+                <%  
+                }
+                %>
+                <br> <hr> <br> 
             </div>
             
             <div class="col-1"></div>

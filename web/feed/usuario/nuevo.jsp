@@ -1,8 +1,8 @@
-<%@page import="com.memorand.dao.service.PendientesPService"%>
-<%@page import="com.memorand.helper.UsuariosPendientesHelper"%>
-<%@page import="com.memorand.helper.PendientesPHelper"%>
-<%@page import="com.memorand.helper.Helpers"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
+<%@page import="com.memorand.dao.service.PendientesPService"%>
+<%@page import="com.memorand.helper.Helpers"%>
+<%@page import="com.memorand.helper.PendientesPHelper"%>
+<%@page import="com.memorand.helper.UsuariosPendientesHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,7 +60,9 @@
                         <div class="card-body">
                             
                             <!-- Form nuevo pp-->
-                            <form class="row g-3" id="form4" method="POST" action="nuevo.jsp">
+                            <form id="form4" method="GET" action="nuevo.jsp" class="row g-3"  onsubmit="return validateForm()">
+                                <input type="hidden" id="user" name="user" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"/>
+                                <input type="hidden" id="idpp "name="idpp" value="<%=idpp%>"/>
                                 <div class="col-md-6">
                                     <label for="nmpp" class="form-label">T&iacute;tulo</label>
                                     <input type="text" class="form-control rounded-5 border-success" id="nmpp" name="nmpp">
@@ -73,16 +75,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="dspp" class="form-label">Descripci&oacute;n</label>
-                                    <textarea class="form-control rounded-4 border-success" id="dspp" name="dspp" rows="4"></textarea>
+                                    <textarea class="form-control rounded-4 border-success" id="dspp" name="dspp" rows="4" placeholder="Describe tu tarea"></textarea>
                                     <span id="dsppError" style="color:#dc3545"></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="ffpp" class="form-label">Fecha limite</label>
-                                    <input type="date" class="form-control rounded-5 border-success" id="ffpp" name="ffpp" placeholder="dd/mm/aaaa" data-bs-toggle="tooltip" data-bs-placement="left">
+                                    <input type="date" class="form-control rounded-5 border-success" id="ffpp" name="ffpp">
                                     <span id="ffppError" style="color:#dc3545"></span>
                                 </div>
+                                <input type="hidden" id="cmpp" name="cmpp" value="no"/>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-light btn-custom rounded-4" id="a" name="a" value="npp">Guardar</button>
+                                    <button type="submit" class="btn btn-light btn-custom rounded-5" id="a" name="a" value="npp">Guardar</button>
                                 </div>
                             </form>
                         </div>
@@ -99,13 +102,43 @@
             if(flag1) {
                 usuarioPendientePHelper = new UsuariosPendientesHelper().addRequest(request);
                 usuarioPendientePHelper.addT();
-        %>
-            <jsp:forward page="personal/p.jsp">
-                <jsp:param name="user" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"/>
-                <jsp:param name="idpp" value="<%= pendientespService.getPendientesPByPendientesP(idpp).getIdPendP()%>"/>
-            </jsp:forward>
-        <%
+                String redireccionar = "personal/index.jsp?user="+usuariosService.getUsuarioByUsuario(usuario).getUsuario();
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", redireccionar); 
             }
         %>
+        
+        <script>
+            <!--
+                function validateTexto(obj , textoError, campoError )
+                {
+                    if( obj.value === undefined || obj.value.length <= 0 )
+                    {
+                        campoError.innerHTML = "<b>" + textoError + "</b>";
+                        return false;
+                    }
+                    campoError.innerHTML = "";
+                    return true;
+                }
+
+                function validateForm( )
+                {
+                    const arr = ['user','pass','name','ap','am','fn'];
+                    let obj1, obj2;
+
+                    var flag = true;
+                    for( const aux of arr )
+                    {
+                        obj1 = document.getElementById(aux);
+                        obj2 = document.getElementById(aux+'Error');
+                        if(!validateTexto(obj1,"El campo " + aux + " es requerido",obj2))
+                        {
+                            flag = false;
+                        }
+                    }
+                    return flag;
+                }
+            -->
+        </script>
     </body>
 </html>

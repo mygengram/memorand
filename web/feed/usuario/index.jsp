@@ -16,7 +16,12 @@
         <title>Memorand - Inicio</title>
     </head>
     <body>
-        <%
+        <%  
+            String usuario = request.getParameter("user");
+            UsuariosService usuariosService = new UsuariosService();
+
+            Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
+            
             String accion;
             LoginHelper loginHelper;
             
@@ -59,7 +64,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="cuenta.jsp">Mi cuenta</a>
+                                <a class="dropdown-item" href="cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -93,18 +98,18 @@
           <div class="offcanvas-body" style="margin-top: 2%">
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="index.jsp" class="nav-link" aria-current="page">
+                <a href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link" aria-current="page">
                   <i class="bi bi-house-door-fill" style="font-size:14pt">    Inicio</i>
                 </a>
               </li>
               <hr style="opacity: 100; height: 2px;">
               <li>
-                <a href="personal/index.jsp" class="nav-link">
+                <a href="personal/index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link">
                   <i class="bi bi-person-fill" style="font-size:14pt">    Mi agenda</i>
                 </a>
               </li>
               <li>
-                <a href="comunitarias/index.jsp" class="nav-link">
+                <a href="comunitarias/index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="nav-link">
                   <i class="bi bi-people-fill" style="font-size:14pt">    Agendas comunitarias</i>
                 </a>
               </li>
@@ -119,12 +124,6 @@
             
             <%-- MAIN --%>
             <div class="col-9">
-                <%  
-                String usuario = request.getParameter("user");
-                UsuariosService usuariosService = new UsuariosService();
-                
-                Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
-                %>
                 <h1 class="text-secondary">Bienvenido <%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%></h1>
                 <h2 class="text-secondary">¿Qué deseas hacer hoy?</h2>
                 <br> <hr> <br> 
@@ -134,7 +133,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-plus-circle-fill"></i></h1>
-                                <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&a=n" class="btn btn-primary text-white">Nuevo pendiente personal</a>
+                                <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&cmpp=no&a=n" class="btn btn-primary text-white">Nuevo pendiente personal</a>
                               </div>
                             </div>
                         </div>
@@ -150,14 +149,14 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                   <h1 class="card-title text-secondary"><i class="bi bi-person-fill-add"></i></h1>
-                                <a href="unirse.jsp" class="btn btn-primary text-white">Unirse a una agenda</a>
+                                <a href="unirse.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" class="btn btn-primary text-white">Unirse a una agenda</a>
                               </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr> <br>
-                <h2 class="text-secondary">Mis pr&oacute;ximos pendientes</h2>
+                <h2 class="text-secondary">Mis pendientes personales</h2>
                 
                 <%  
                 UsuariosPendientesService usuariosPendientesService = new UsuariosPendientesService();
@@ -176,21 +175,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
                 <%  
                     for (int i = 0; i < lista.size(); i++) {
                 %>
+                    <tr>
                       <td><%= lista.get(i).getNomPendP()%></td>
                       <td><%= lista.get(i).getFechaFinalP()%></td>
                       <td>
-                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpendp=<%=lista.get(i).getIdPendP()%>">
+                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>">
                               <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
                           </a>
                       </td>
+                    </tr>
                 <%  
                     }
                 %>
-                    </tr>
                   </tbody>
                 </table>
                 <%  

@@ -1,3 +1,4 @@
+<%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -96,9 +97,13 @@
             -->
         </script>   
     <body>
+        <%  
+            String usuario = request.getParameter("user");
+            UsuariosService usuariosService = new UsuariosService();
+        %>
         <!-- Botón regresar -->
         <div class="text-start">
-            <a href="index.jsp"><button class="btn btn-light btn-custom border-success rounded-circle shadow mt-3 mx-3"><i class="bi bi-arrow-return-left"></i></button></a>
+            <a href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"><button class="btn btn-light btn-custom border-success rounded-circle shadow mt-3 mx-3"><i class="bi bi-arrow-return-left"></i></button></a>
         </div>
         <section class="container w-75 mt-5 rounded shadow-lg">
             <div class="row align-items-lg-stretch">

@@ -1,3 +1,4 @@
+<%@page import="com.memorand.dao.service.PendientesPService"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,8 +12,11 @@
     </head>
     <body>
         <%
+            UsuariosService usuariosService = new UsuariosService();
+            PendientesPService pendientespService = new PendientesPService();
             String accion;
             LoginHelper loginHelper;
+            String usuario = request.getParameter("user");
             
             accion = request.getParameter("accion");
             if(accion != null && "Salir".equals(accion)) {
@@ -52,7 +56,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="../cuenta.jsp">Mi cuenta</a>
+                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -86,18 +90,18 @@
           <div class="offcanvas-body" style="margin-top: 2%">
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="../index.jsp" class="nav-link" aria-current="page">
+                <a href="../index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"" class="nav-link" aria-current="page">
                   <i class="bi bi-house-door-fill" style="font-size:14pt">    Inicio</i>
                 </a>
               </li>
               <hr style="opacity: 100; height: 2px;">
               <li>
-                <a href="../personal/index.jsp" class="nav-link">
+                <a href="../personal/index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"" class="nav-link">
                   <i class="bi bi-person-fill" style="font-size:14pt">    Mi agenda</i>
                 </a>
               </li>
               <li>
-                  <a href="index.jsp" class="nav-link">
+                  <a href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"" class="nav-link">
                   <i class="bi bi-people-fill" style="font-size:14pt">    Agendas comunitarias</i>
                 </a>
               </li>
@@ -110,10 +114,6 @@
           <div class="row">
             <div class="col-1"></div>
             
-            <%  
-                String usuario = request.getParameter("user");
-                UsuariosService usuariosService = new UsuariosService();
-            %>
             <%-- MAIN --%>
             <div class="col-9">
                 <div class="container-fluid">
@@ -137,11 +137,6 @@
                                 </li>
                                 <li style="padding:2%">
                                     <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
-                                        <i class="bi bi-tag-fill"></i>  Nueva etiqueta
-                                    </a>
-                                </li>
-                                <li style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
                                         <i class="bi bi-star-fill"></i>  A&ntilde;adir favorita
                                     </a>
                                 </li>
@@ -159,12 +154,7 @@
                 <h2 class="text-secondary">Agendas</h2>
                 <br>
                 <h4 class="text-tertiary text-center">Sin agendas</h4>
-                <br> <hr> <br> 
-                
-                <h2 class="text-secondary">Etiquetas</h2>
-                <br>
-                <h4 class="text-tertiary text-center">Sin agendas</h4>
-                <br> <br> 
+                <br> <hr>
             </div>
             
             <div class="col-1"></div>

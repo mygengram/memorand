@@ -33,7 +33,7 @@ public class PendientesPHelper extends Helpers<PendientesP> implements Serializa
         t.setSubPendP(getParameter("sbpp"));
         t.setDescPendP(getParameter("dspp"));
         t.setFechaFinalP(getParameter("ffpp"));
-        t.setCompletadoP("no");
+        t.setCompletadoP(getParameter("cmpp"));
         
         if(isValidaCamposOk()) {
             return pendientesPService.addPendientesP(t );

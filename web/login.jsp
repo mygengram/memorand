@@ -117,7 +117,7 @@
                             <button type="submit" class="btn btn-light btn-custom rounded-5"  id="accion" name="accion" value="login">Iniciar sesión</button>
                         </div>
                         <div class="my3 mt-2 text-center">
-                            <span>¿No tienes una cuenta? <a href="signup.jsp" style="text-decoration: none;">Reg&iacute;strate</a></span><br>
+                            <span>¿No tienes una cuenta? <a href="signup.jsp?a=n" style="text-decoration: none;">Reg&iacute;strate</a></span><br>
                         </div>
                     </form>
                     <br>
