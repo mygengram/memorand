@@ -169,12 +169,12 @@ public class PendientesPService extends Conexion<PendientesP>
             if(preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setString(1, pendientesP.getIdPendP());
-            preparedStatement.setString(2, pendientesP.getNomPendP());
-            preparedStatement.setString(3, pendientesP.getSubPendP());
-            preparedStatement.setString(4, pendientesP.getDescPendP());
-            preparedStatement.setString(5, pendientesP.getFechaFinalP());
-            preparedStatement.setString(6, pendientesP.getCompletadoP());
+            preparedStatement.setString(1,pendientesP.getIdPendP());
+            preparedStatement.setString(2,pendientesP.getNomPendP());
+            preparedStatement.setString(3,pendientesP.getSubPendP());
+            preparedStatement.setString(4,pendientesP.getDescPendP());
+            preparedStatement.setString(5,pendientesP.getFechaFinalP());
+            preparedStatement.setString(6,pendientesP.getCompletadoP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -189,7 +189,7 @@ public class PendientesPService extends Conexion<PendientesP>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "update pendientesp set nompendp = ?, subpendp = ?, descpendp = ?, fechainiciop = ?, fechafinalp = ?, completadop = ? where idpendp = ?";
+        String sql = "update pendientesp set nompendp = ?, subpendp = ?, descpendp = ?, fechafinalp = ?, completadop = ? where idpendp = ?";
         int row = 0;
         
         try {
@@ -206,6 +206,7 @@ public class PendientesPService extends Conexion<PendientesP>
             preparedStatement.setString(3, pendientesP.getDescPendP());
             preparedStatement.setString(4, pendientesP.getFechaFinalP());
             preparedStatement.setString(5, pendientesP.getCompletadoP());
+            preparedStatement.setString(6, pendientesP.getIdPendP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;

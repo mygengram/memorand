@@ -6,49 +6,49 @@ import java.io.Serializable;
 
 public class Tienen implements Serializable
 {
-    private int idTienen;
-    private Usuarios usuario;
-    private AgendasC idAgenda;
-    private PendientesC idPendC;
+    private String idTienen;
+    private String usuario;
+    private String idAgenda;
+    private String idPendC;
     private String autor;
 
     public Tienen() {}
     
-    public Tienen(int idTienen) 
+    public Tienen(String idTienen) 
     {
         this.idTienen = idTienen;
     }
 
-    public int getIdTienen() {
+    public String getIdTienen() {
         return idTienen;
     }
 
-    public void setIdTienen(int idTienen) {
+    public void setIdTienen(String idTienen) {
         this.idTienen = idTienen;
     }
 
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario.getUsuario();
     }
 
-    public AgendasC getIdAgenda() {
+    public String getIdAgenda() {
         return idAgenda;
     }
 
     public void setIdAgenda(AgendasC idAgenda) {
-        this.idAgenda = idAgenda;
+        this.idAgenda = idAgenda.getIdAgenda();
     }
 
-    public PendientesC getIdPendC() {
+    public String getIdPendC() {
         return idPendC;
     }
 
     public void setIdPendC(PendientesC idPendC) {
-        this.idPendC = idPendC;
+        this.idPendC = idPendC.getIdPendC();
     }
 
     public String getAutor() {

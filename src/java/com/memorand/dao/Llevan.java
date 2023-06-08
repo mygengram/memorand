@@ -6,37 +6,37 @@ import java.io.Serializable;
 
 public class Llevan implements Serializable
 {
-    private int idLlevan;
-    private Usuarios usuario;
-    private AgendasC idAgenda;
+    private String idLlevan;
+    private String usuario;
+    private String idAgenda;
     private String rolAgenda;
     private String favorito;
 
     public Llevan() {
     }
 
-    public int getIdLlevan() {
+    public String getIdLlevan() {
         return idLlevan;
     }
 
-    public void setIdLlevan(int idLlevan) {
+    public void setIdLlevan(String idLlevan) {
         this.idLlevan = idLlevan;
     }
 
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario.getUsuario();
     }
 
-    public AgendasC getIdAgenda() {
+    public String getIdAgenda() {
         return idAgenda;
     }
 
     public void setIdAgenda(AgendasC idAgenda) {
-        this.idAgenda = idAgenda;
+        this.idAgenda = idAgenda.getIdAgenda();
     }
 
     public String getRolAgenda() {

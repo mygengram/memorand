@@ -111,6 +111,7 @@ public class UsuariosService extends Conexion<Usuarios>
             preparedStatement.setString(3, usuario.getApellidoPat());
             preparedStatement.setString(4, usuario.getApellidoMat());
             preparedStatement.setString(5, usuario.getFechaNac());
+            preparedStatement.setString(6, usuario.getUsuario());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;

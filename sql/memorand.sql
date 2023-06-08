@@ -41,23 +41,11 @@ create table pendientesp (
     completadop varchar(2)
 );
 
-create table etiquetasp (
-	idetiquetap varchar(12) primary key not null,
-    nometiquetap varchar(15)
-);
-
 create table usuariospendientesp (
 	usuario varchar(20),
     idpendp varchar(12),
     foreign key (usuario) references usuarios (usuario),
     foreign key (idpendp) references pendientesp (idpendp)
-);
-
-create table usuariosetiquetasp (
-	usuario varchar(20),
-    idetiquetap varchar(12),
-    foreign key (usuario) references usuarios (usuario),
-    foreign key (idetiquetap) references etiquetasP (idetiquetap)
 );
 
 create table pendientesc (
@@ -74,11 +62,6 @@ create table agendasc (
     nomagenda varchar(20),
     descagenda text,
     codigoagenda varchar(6)
-);
-
-create table etiquetasc (
-	idetiquetac varchar(12) primary key not null,
-    nometiquetac varchar(15)
 );
 
 create table llevan (
@@ -100,11 +83,4 @@ create table tienen (
     foreign key (usuario) references usuarios (usuario),
     foreign key (idagenda) references agendasc (idagenda),
     foreign key (idpendc) references pendientesc (idpendc)
-);
-
-create table agendaetiquetas (
-	idagenda varchar(12),
-    idetiquetac varchar(12),
-    foreign key (idagenda) references agendasc (idagenda),
-    foreign key (idetiquetac) references etiquetasc (idetiquetac)
 );

@@ -21,6 +21,7 @@
             UsuariosService usuariosService = new UsuariosService();
 
             Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
+            Helpers agendaHelper = new AgendaHelper().addRequest(request);
             
             String accion;
             LoginHelper loginHelper;
@@ -47,7 +48,7 @@
         <%-- Navbar --%>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" style="padding: 1%">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.jsp">
+                <a class="navbar-brand" href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">
                     <img src="../../images/logotypes/me-logoEX.png" alt="Logo de la empresa" width="200" style="margin-left:40%">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="margin-right:15%;">
@@ -64,7 +65,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
+                                <a class="dropdown-item" href="cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&a=v">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -141,7 +142,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
-                                <a href="crear.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&rolag=lider" class="btn btn-primary text-white">Crear una agenda</a>
+                                <a href="crear.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&ida=<%=agendaHelper.codigoAleatorio12()%>" class="btn btn-primary text-white">Crear una agenda</a>
                               </div>
                             </div>
                         </div>
@@ -156,6 +157,8 @@
                     </div>
                 </div>
                 <hr> <br>
+                
+                <%-- TABLA DE PENDIENTES --%>
                 <h2 class="text-secondary">Mis pendientes personales</h2>
                 
                 <%  
@@ -169,9 +172,11 @@
                 <table class="table table-borderless" style="width:100%">
                   <thead>
                     <tr>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Vencimiento</th>
-                      <th scope="col"></th>
+                      <th scope="col" class="col-3"><b>Nombre</b></th>
+                      <th scope="col" class="col-2"><b>Completado</b></th>
+                      <th scope="col" class="col-4"></th>
+                      <th scope="col" class="col-2"><b>Vencimiento</b></th>
+                      <th scope="col" class="col-2"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -179,11 +184,13 @@
                     for (int i = 0; i < lista.size(); i++) {
                 %>
                     <tr>
-                      <td><%= lista.get(i).getNomPendP()%></td>
-                      <td><%= lista.get(i).getFechaFinalP()%></td>
+                      <td class="text-secondary"><%= lista.get(i).getNomPendP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getCompletadoP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getSubPendP()%></td>
+                      <td class="text-secondary"><%= lista.get(i).getFechaFinalP()%></td>
                       <td>
-                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>">
-                              <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
+                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>&a=v">
+                              <button type="button" class="btn btn-primary text-white">Ver</button>
                           </a>
                       </td>
                     </tr>
@@ -202,6 +209,56 @@
                 <%  
                 }
                 %>
+                <br> <hr> <br><br><br>
+                
+                <%-- TABLA DE AGENDAS --%>
+                <h2 class="text-secondary">Mis agendas</h2>
+                <%  
+                if(false)
+                {
+                %>
+                <br>
+                <table class="table table-borderless" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="col-3"><b>Nombre</b></th>
+                      <th scope="col" class="col-2"><b>Completado</b></th>
+                      <th scope="col" class="col-4"></th>
+                      <th scope="col" class="col-2"><b>Vencimiento</b></th>
+                      <th scope="col" class="col-2"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <%  
+                    for (int i = 0; i < lista.size(); i++) {
+                %>
+                    <tr>
+                      <td class="text-secondary"><%= lista.get(i).getNomPendP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getCompletadoP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getSubPendP()%></td>
+                      <td class="text-secondary"><%= lista.get(i).getFechaFinalP()%></td>
+                      <td>
+                          <a href="personal/p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>&a=v">
+                              <button type="button" class="btn btn-primary text-white">Ver</button>
+                          </a>
+                      </td>
+                    </tr>
+                <%  
+                    }
+                %>
+                  </tbody>
+                </table>
+                <%  
+                }
+                else
+                {
+                %>
+                <br>
+                <h4 class="text-tertiary text-center">Sin agendas</h4>
+                <%  
+                }
+                %>
+                <br> <hr> <br><br><br>
             </div>
             
             <div class="col-1"></div>

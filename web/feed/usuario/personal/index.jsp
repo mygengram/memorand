@@ -62,7 +62,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
+                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&a=v">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -130,8 +130,8 @@
                         <div class="col-4">
                             <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
                                 <li class="nav-item" style="padding:2%">
-                                    <a href="../nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&cmpp=no&a=n" class="btn btn-primary text-white">
-                                        <i class="bi bi-clipboard-plus-fill"></i>   Nuevo pendiente
+                                    <a href="../nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=pendienteHelper.codigoAleatorio12()%>&cmpp=no&a=n" class="btn btn-primary text-white d-grid btn-sm">
+                                        <i class="bi bi-clipboard-plus-fill"></i>Nuevo pendiente
                                     </a>
                                 </li>
                             </ul>
@@ -153,9 +153,11 @@
                 <table class="table table-borderless" style="width:100%">
                   <thead>
                     <tr>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Vencimiento</th>
-                      <th scope="col"></th>
+                      <th scope="col" class="col-3">Nombre</th>
+                      <th scope="col" class="col-2">Completado</th>
+                      <th scope="col" class="col-4"></th>
+                      <th scope="col" class="col-2">Vencimiento</th>
+                      <th scope="col" class="col-2"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -163,11 +165,13 @@
                     for (int i = 0; i < lista.size(); i++) {
                 %>
                     <tr>
-                      <td><%= lista.get(i).getNomPendP()%></td>
-                      <td><%= lista.get(i).getFechaFinalP()%></td>
+                      <td class="text-secondary"><%= lista.get(i).getNomPendP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getCompletadoP()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getSubPendP()%></td>
+                      <td class="text-secondary"><%= lista.get(i).getFechaFinalP()%></td>
                       <td>
-                          <a href="p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>">
-                              <button type="button" class="btn btn-primary text-white">Ir a pendiente</button>
+                          <a href="p.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&idpp=<%=lista.get(i).getIdPendP()%>&a=v">
+                              <button type="button" class="btn btn-primary text-white">Ver</button>
                           </a>
                       </td>
                     </tr>

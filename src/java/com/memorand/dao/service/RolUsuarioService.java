@@ -23,7 +23,7 @@ public class RolUsuarioService extends Conexion<RolUsuario>
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        RolUsuario rol_Usuario = null;
+        RolUsuario rolUsuario = null;
 
         try {
             connection = getConnection();
@@ -42,10 +42,10 @@ public class RolUsuarioService extends Conexion<RolUsuario>
             
             while (resultSet.next()) 
             {
-                rol_Usuario = new RolUsuario();
-                rol_Usuario.setUsuario(new Usuarios(resultSet.getString(1)));
-                rol_Usuario.setRol(new Roles(resultSet.getString(2)));
-                rolUsuarioList.add(rol_Usuario);
+                rolUsuario = new RolUsuario();
+                rolUsuario.setUsuario(new Usuarios(resultSet.getString(1)));
+                rolUsuario.setRol(new Roles(resultSet.getString(2)));
+                rolUsuarioList.add(rolUsuario);
             }
             
             resultSet.close();

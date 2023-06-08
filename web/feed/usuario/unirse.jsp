@@ -1,3 +1,6 @@
+<%@page import="com.memorand.helper.LoginHelper"%>
+<%@page import="com.memorand.dao.service.PendientesPService"%>
+<%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,10 +27,15 @@
             border-color: #18988B;
         }
     </style>
+    
+    <%
+            UsuariosService usuariosService = new UsuariosService();
+            String usuario = request.getParameter("user");
+        %>
     <body>
         <!-- Botón regresar -->
         <div class="text-start">
-            <a href="index.jsp"><button class="btn btn-light btn-custom border-success rounded-circle shadow mt-3 mx-3"><i class="bi bi-arrow-return-left"></i></button></a>
+            <a href="index.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"><button class="btn btn-light btn-custom border-success rounded-circle shadow mt-3 mx-3"><i class="bi bi-arrow-return-left"></i></button></a>
         </div>
         <div class="container mt-5 my-5">
             <div class="row justify-content-center">

@@ -56,7 +56,7 @@
                         </a>
                         <ul class="dropdown-menu mt-5 " aria-labelledby="usuario">
                             <li>
-                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>">Mi cuenta</a>
+                                <a class="dropdown-item" href="../cuenta.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&a=v">Mi cuenta</a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -126,18 +126,13 @@
                         <div class="col-4">
                             <ul class="nav nav-pills flex-column mb-auto" style="padding:1%">
                                 <li class="nav-item" style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
-                                        <i class="bi bi-clipboard-plus-fill"></i>   Nueva agenda
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white d-grid btn-sm">
+                                        <i class="bi bi-clipboard-plus-fill"></i>Nueva agenda
                                     </a>
                                 </li>
                                 <li class="nav-item" style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
-                                        <i class="bi bi-person-fill-add"></i>   Unirse a una
-                                    </a>
-                                </li>
-                                <li style="padding:2%">
-                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white">
-                                        <i class="bi bi-star-fill"></i>  A&ntilde;adir favorita
+                                    <a href="nuevo.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&tipo=personal" class="btn btn-primary text-white d-grid btn-sm">
+                                        <i class="bi bi-person-fill-add"></i>Unirse a una agenda
                                     </a>
                                 </li>
                             </ul>
@@ -145,16 +140,10 @@
                     </div>
                 </div>
                 <br> <hr> <br> 
-                
-                <h2 class="text-secondary">Mis favoritas</h2>
-                <br>
-                <h4 class="text-tertiary text-center">Sin favoritas</h4>
-                <br> <hr> <br> 
-                
                 <h2 class="text-secondary">Agendas</h2>
                 <br>
                 <h4 class="text-tertiary text-center">Sin agendas</h4>
-                <br> <hr>
+                <br> <hr> <br> 
             </div>
             
             <div class="col-1"></div>

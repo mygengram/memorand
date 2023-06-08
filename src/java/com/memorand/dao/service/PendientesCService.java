@@ -32,7 +32,7 @@ public class PendientesCService extends Conexion<PendientesC>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESC");
+            resultSet = statement.executeQuery("select * from pendientesc");
             if (resultSet == null) {
                 return null;
             }
@@ -41,7 +41,7 @@ public class PendientesCService extends Conexion<PendientesC>
             while (resultSet.next()) 
             {
                 pendientesC = new PendientesC();
-                pendientesC.setIdPendC(resultSet.getInt(1));
+                pendientesC.setIdPendC(resultSet.getString(1));
                 pendientesC.setNomPendC(resultSet.getString(2));
                 pendientesC.setSubPendC(resultSet.getString(3));
                 pendientesC.setDescPendC(resultSet.getString(4));
@@ -49,6 +49,7 @@ public class PendientesCService extends Conexion<PendientesC>
                 pendientesC.setCompletadoC(resultSet.getString(6));
                 pendientesCList.add(pendientesC);
             }
+            
             resultSet.close();
             closeConnection(connection);
             return pendientesCList;
@@ -76,7 +77,7 @@ public class PendientesCService extends Conexion<PendientesC>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESC WHERE COMPLETADOC = \"si\"");
+            resultSet = statement.executeQuery("select * from pendientes where completadoc = \"si\"");
             if (resultSet == null) {
                 return null;
             }
@@ -85,7 +86,7 @@ public class PendientesCService extends Conexion<PendientesC>
             while (resultSet.next()) 
             {
                 pendientesC = new PendientesC();
-                pendientesC.setIdPendC(resultSet.getInt(1));
+                pendientesC.setIdPendC(resultSet.getString(1));
                 pendientesC.setNomPendC(resultSet.getString(2));
                 pendientesC.setSubPendC(resultSet.getString(3));
                 pendientesC.setDescPendC(resultSet.getString(4));
@@ -93,6 +94,7 @@ public class PendientesCService extends Conexion<PendientesC>
                 pendientesC.setCompletadoC(resultSet.getString(6));
                 pendientesCList.add(pendientesC);
             }
+            
             resultSet.close();
             closeConnection(connection);
             return pendientesCList;
@@ -120,7 +122,7 @@ public class PendientesCService extends Conexion<PendientesC>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM PENDIENTESC WHERE COMPLETADOC = \"no\"");
+            resultSet = statement.executeQuery("select * from pendientesc where completadoc = \"no\"");
             if (resultSet == null) {
                 return null;
             }
@@ -129,7 +131,7 @@ public class PendientesCService extends Conexion<PendientesC>
             while (resultSet.next()) 
             {
                 pendientesC = new PendientesC();
-                pendientesC.setIdPendC(resultSet.getInt(1));
+                pendientesC.setIdPendC(resultSet.getString(1));
                 pendientesC.setNomPendC(resultSet.getString(2));
                 pendientesC.setSubPendC(resultSet.getString(3));
                 pendientesC.setDescPendC(resultSet.getString(4));
@@ -137,6 +139,7 @@ public class PendientesCService extends Conexion<PendientesC>
                 pendientesC.setCompletadoC(resultSet.getString(6));
                 pendientesCList.add(pendientesC);
             }
+            
             resultSet.close();
             closeConnection(connection);
             return pendientesCList;
@@ -147,41 +150,28 @@ public class PendientesCService extends Conexion<PendientesC>
         return null;
     }
     
-    public boolean addPendientesC (PendientesC pendientesC )
+    public boolean addPendientesC (PendientesC pendientesC)
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO PENDIENTESC (IDPENDC, NOMPENDC, SUBPENDC, DESCPENDC, FECHAFINALC, COMPLETADOC) VALUES (?,?,?,?,?,?)";
+        String sql = "insert into pendientesc (idpendc, nompendc, subpendc, descpendc, fechafinalc, completadoc) values (?,?,?,?,?,?)";
         int row;
-        int size;
         
         try {
-            connection = getConnection( );
-            if( connection == null ) {
+            connection = getConnection();
+            if(connection == null ) {
                 return false;
             }
             preparedStatement = connection.prepareStatement(sql);
-            if( preparedStatement == null ) {
+            if(preparedStatement == null ) {
                 return false;
             }
-            
-            size = getPendientesCList().size();
-            if(size < 0) {
-                return false;
-            }
-            else {
-                if(size == 0) {
-                    preparedStatement.setInt(1, 1);
-                }
-                else {
-                    preparedStatement.setInt(1, (getPendientesCList().get(size-1).getIdPendC())+1);
-                }
-            }
-            preparedStatement.setString(2, pendientesC.getNomPendC());
-            preparedStatement.setString(3, pendientesC.getSubPendC());
-            preparedStatement.setString(4, pendientesC.getDescPendC());
-            preparedStatement.setString(5, (pendientesC.getFechaFinalC()));
-            preparedStatement.setString(6, "no");
+            preparedStatement.setString(1,pendientesC.getIdPendC());
+            preparedStatement.setString(2,pendientesC.getNomPendC());
+            preparedStatement.setString(3,pendientesC.getSubPendC());
+            preparedStatement.setString(4,pendientesC.getDescPendC());
+            preparedStatement.setString(5,pendientesC.getFechaFinalC());
+            preparedStatement.setString(6,pendientesC.getCompletadoC());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -196,7 +186,7 @@ public class PendientesCService extends Conexion<PendientesC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE PENDIENTESC SET NOMPENDC = ?, SUBPENDC = ?, DESCPENDC = ?, FECHAFINALC = ?, COMPLETADOC = ? WHERE IDPENDC = ?";
+        String sql = "update pendientesc set nompendc = ?, subpendc = ?, descpendc = ?, fechafinalc = ?, completadoc = ? where idpendc = ?";
         int row = 0;
         
         try {
@@ -211,8 +201,9 @@ public class PendientesCService extends Conexion<PendientesC>
             preparedStatement.setString(1,pendientesC.getNomPendC());
             preparedStatement.setString(2,pendientesC.getSubPendC());
             preparedStatement.setString(3,pendientesC.getDescPendC());
-            preparedStatement.setString(5,pendientesC.getFechaFinalC());
-            preparedStatement.setString(6, pendientesC.getCompletadoC());
+            preparedStatement.setString(4,pendientesC.getFechaFinalC());
+            preparedStatement.setString(5,pendientesC.getCompletadoC());
+            preparedStatement.setString(5,pendientesC.getIdPendC());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -227,7 +218,7 @@ public class PendientesCService extends Conexion<PendientesC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM PENDIENTESC WHERE IDPENDC = ?";
+        String sql = "delete from pendientesc where idpendc = ?";
         int row = 0;
         
         try {
@@ -239,7 +230,7 @@ public class PendientesCService extends Conexion<PendientesC>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, pendientesC.getIdPendC());
+            preparedStatement.setString(1,pendientesC.getIdPendC());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -250,22 +241,23 @@ public class PendientesCService extends Conexion<PendientesC>
         return false;
     }
     
-    public PendientesC getPendientesCByPendientesC (int idPendC) 
+    public PendientesC getPendientesCByPendientesC (String idPendC) 
     {
         PendientesC aux = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        
         try {
             connection = getConnection();
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM PENDIENTESC WHERE IDPENDC = ?");
+            preparedStatement = connection.prepareStatement("select * from pendientesc where idpendc = ?");
             if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1, idPendC );
+            preparedStatement.setString(1,idPendC);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
@@ -275,7 +267,7 @@ public class PendientesCService extends Conexion<PendientesC>
             while (resultSet.next()) 
             {
                 aux = new PendientesC();
-                aux.setIdPendC(resultSet.getInt(1));
+                aux.setIdPendC(resultSet.getString(1));
                 aux.setNomPendC(resultSet.getString(2));
                 aux.setSubPendC(resultSet.getString(3));
                 aux.setDescPendC(resultSet.getString(4));

@@ -13,7 +13,6 @@ import java.util.List;
 
 public class AgendasCService extends Conexion<AgendasC>
 {
-
     public AgendasCService() {}
     
     public List<AgendasC> getAgendasCList() 
@@ -33,7 +32,7 @@ public class AgendasCService extends Conexion<AgendasC>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM AGENDASC");
+            resultSet = statement.executeQuery("select * from agendasc");
             if (resultSet == null) {
                 return null;
             }
@@ -42,7 +41,7 @@ public class AgendasCService extends Conexion<AgendasC>
             while (resultSet.next()) 
             {
                 agendasC = new AgendasC();
-                agendasC.setIdAgenda(resultSet.getInt(1));
+                agendasC.setIdAgenda(resultSet.getString(1));
                 agendasC.setNomAgenda(resultSet.getString(2));
                 agendasC.setDescAgenda(resultSet.getString(3));
                 agendasC.setCodigoAgenda(resultSet.getString(4));
@@ -62,7 +61,7 @@ public class AgendasCService extends Conexion<AgendasC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO AGENDASC (IDAGENDA, NOMAGENDA, DESCAGENDA, CODIGOAGENDA) VALUES (?,?,?,?)";
+        String sql = "insert into agendasc (idagenda, nomagenda, descagenda, codigoagenda) values (?,?,?,?)";
         int row = 0;
         
         try {
@@ -76,7 +75,7 @@ public class AgendasCService extends Conexion<AgendasC>
             {
                 return false;
             }
-            preparedStatement.setInt(1,agendasC.getIdAgenda());
+            preparedStatement.setString(1,agendasC.getIdAgenda());
             preparedStatement.setString(2,agendasC.getNomAgenda());
             preparedStatement.setString(3,agendasC.getDescAgenda());
             preparedStatement.setString(4,agendasC.getCodigoAgenda());
@@ -94,7 +93,7 @@ public class AgendasCService extends Conexion<AgendasC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "UPDATE AGENDASC SET NOMAGENDA = ?, DESCAGENDA = ?, CODIGOAGENDA = ? WHERE IDAGENDA = ?";
+        String sql = "update agendasc set nomagenda = ?, descagenda = ?, codigoagenda = ? where idagenda = ?";
         int row = 0;
         
         try {
@@ -109,6 +108,7 @@ public class AgendasCService extends Conexion<AgendasC>
             preparedStatement.setString(1,agendasC.getNomAgenda());
             preparedStatement.setString(2,agendasC.getDescAgenda());
             preparedStatement.setString(3,agendasC.getCodigoAgenda());
+            preparedStatement.setString(4,agendasC.getIdAgenda());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -123,7 +123,7 @@ public class AgendasCService extends Conexion<AgendasC>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM AGENDASC WHERE IDAGENDA = ? AND NOMAGENDA = ? AND DESCAGENDA = ? AND COLORAGENDA = ? AND CODIGOAGENDA = ?";
+        String sql = "delete from agendasc where idagenda = ?";
         int row = 0;
         
         try {
@@ -135,10 +135,7 @@ public class AgendasCService extends Conexion<AgendasC>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1, agendasC.getIdAgenda());
-            preparedStatement.setString(2, agendasC.getNomAgenda());
-            preparedStatement.setString(3, agendasC.getDescAgenda());
-            preparedStatement.setString(4, agendasC.getCodigoAgenda());
+            preparedStatement.setString(1,agendasC.getIdAgenda());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -149,7 +146,7 @@ public class AgendasCService extends Conexion<AgendasC>
         return false;
     }
     
-    public AgendasC getAgendasCByAgendasC (int idAgenda) 
+    public AgendasC getAgendasCByAgendasC (String idAgenda) 
     {
         AgendasC aux = null;
         Connection connection = null;
@@ -161,21 +158,21 @@ public class AgendasCService extends Conexion<AgendasC>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM AGENDASC WHERE IDAGENDA = ?");
+            preparedStatement = connection.prepareStatement("select * from agendasc where idagenda = ?");
             if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1, idAgenda );
+            preparedStatement.setString(1,idAgenda);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
             }
             
-            aux = new AgendasC ( );
+            aux = new AgendasC();
             while (resultSet.next()) 
             {
                 aux = new AgendasC();
-                aux.setIdAgenda(resultSet.getInt(1));
+                aux.setIdAgenda(resultSet.getString(1));
                 aux.setNomAgenda(resultSet.getString(2));
                 aux.setDescAgenda(resultSet.getString(3));
                 aux.setCodigoAgenda(resultSet.getString(4));

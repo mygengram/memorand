@@ -144,7 +144,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "delete from usuariospendientesp where idpendp = ?";
+        String sql = "delete from usuariospendientesp where usuario = ? and idpendp = ?";
         int row = 0;
         
         try {
@@ -157,6 +157,7 @@ public class UsuariosPendientesService extends Conexion<UsuariosPendientes>
                 return false;
             }
             preparedStatement.setString(1, usuariosPendientes.getUsuario());
+            preparedStatement.setString(2, usuariosPendientes.getIdPendP());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;

@@ -6,23 +6,23 @@ import java.io.Serializable;
 
 public class AgendasC implements Serializable
 {
-    private int idAgenda;
+    private String idAgenda;
     private String nomAgenda;
     private String descAgenda;
     private String codigoAgenda;
 
     public AgendasC() {}
     
-    public AgendasC(int idAgenda) 
+    public AgendasC(String idAgenda) 
     {
         this.idAgenda = idAgenda;
     }
 
-    public int getIdAgenda() {
+    public String getIdAgenda() {
         return idAgenda;
     }
 
-    public void setIdAgenda(int idAgenda) {
+    public void setIdAgenda(String idAgenda) {
         this.idAgenda = idAgenda;
     }
 

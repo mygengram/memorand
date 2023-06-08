@@ -2,10 +2,6 @@ package com.memorand.dao.service;
 // Memorand by Gengram © 2023
 
 // IMPORTACIONES
-import com.memorand.dao.AgendasC;
-import com.memorand.dao.Llevan;
-import com.memorand.dao.PendientesC;
-import com.memorand.dao.Usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import com.memorand.dao.Llevan;
+import com.memorand.dao.Usuarios;
+import com.memorand.dao.AgendasC;
 
 public class LlevanService extends Conexion<Llevan>
 {
@@ -35,16 +34,19 @@ public class LlevanService extends Conexion<Llevan>
             if (statement == null) {
                 return null;
             }
-            resultSet = statement.executeQuery("SELECT * FROM LLEVAN");
+            resultSet = statement.executeQuery("select * from llevan");
             if (resultSet == null) {
                 return null;
             }
+            
             agendaEtiquetasList = new ArrayList<>();
-            while (resultSet.next()) {
+            
+            while (resultSet.next())
+            {
                 llevan = new Llevan();
-                llevan.setIdLlevan(resultSet.getInt(1));
+                llevan.setIdLlevan(resultSet.getString(1));
                 llevan.setUsuario(new Usuarios(resultSet.getString(2)));
-                llevan.setIdAgenda(new AgendasC(resultSet.getInt(3)));
+                llevan.setIdAgenda(new AgendasC(resultSet.getString(3)));
                 llevan.setRolAgenda(resultSet.getString(4));
                 llevan.setFavorito(resultSet.getString(5));
                 agendaEtiquetasList.add(llevan);
@@ -63,7 +65,7 @@ public class LlevanService extends Conexion<Llevan>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "INSERT INTO LLEVAN (IDTIENEN,USUARIO,IDAGENDA,ROLAGENDA,FAVORITO) VALUES (?,?,?,?,?)";
+        String sql = "insert into llevan (idllevan,usuario,idagenda,rolagenda,favorito) values (?,?,?,?,?)";
         int row = 0;
         
         try {
@@ -75,9 +77,9 @@ public class LlevanService extends Conexion<Llevan>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1,llevan.getIdLlevan());
-            preparedStatement.setString(2,llevan.getUsuario().getUsuario());
-            preparedStatement.setInt(3,llevan.getIdAgenda().getIdAgenda());
+            preparedStatement.setString(1,llevan.getIdLlevan());
+            preparedStatement.setString(2,llevan.getUsuario());
+            preparedStatement.setString(3,llevan.getIdAgenda());
             preparedStatement.setString(4,llevan.getRolAgenda());
             preparedStatement.setString(5,llevan.getFavorito());
             row = preparedStatement.executeUpdate();
@@ -94,7 +96,7 @@ public class LlevanService extends Conexion<Llevan>
     {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        String sql = "DELETE FROM TIENEN WHERE IDLLEVAN = ?";
+        String sql = "delete from tienen where idllevan = ?";
         int row = 0;
         
         try {
@@ -106,7 +108,7 @@ public class LlevanService extends Conexion<Llevan>
             if( preparedStatement == null ) {
                 return false;
             }
-            preparedStatement.setInt(1,llevan.getIdLlevan());
+            preparedStatement.setString(1,llevan.getIdLlevan());
             row = preparedStatement.executeUpdate();
             closeConnection(connection);
             return row == 1;
@@ -117,7 +119,7 @@ public class LlevanService extends Conexion<Llevan>
         return false;
     }
     
-    public Llevan getLlevan (int idLlevan) 
+    public Llevan getLlevanByLlevan (String idLlevan) 
     {
         Llevan aux = null;
         Connection connection = null;
@@ -129,11 +131,11 @@ public class LlevanService extends Conexion<Llevan>
             if (connection == null) {
                 return null;
             }
-            preparedStatement = connection.prepareStatement("SELECT * FROM LLEVAN WHERE IDLLEVAN = ?");
+            preparedStatement = connection.prepareStatement("select * from llevan where idllevan = ?");
             if (preparedStatement == null) {
                 return null;
             }
-            preparedStatement.setInt(1,idLlevan);
+            preparedStatement.setString(1,idLlevan);
             resultSet = preparedStatement.executeQuery();
             if (resultSet == null) {
                 return null;
@@ -142,9 +144,9 @@ public class LlevanService extends Conexion<Llevan>
             aux = new Llevan();
             while (resultSet.next()) 
             {
-                aux.setIdLlevan(resultSet.getInt(1));
+                aux.setIdLlevan(resultSet.getString(1));
                 aux.setUsuario(new Usuarios(resultSet.getString(2)));
-                aux.setIdAgenda(new AgendasC(resultSet.getInt(3)));
+                aux.setIdAgenda(new AgendasC(resultSet.getString(3)));
                 aux.setRolAgenda(resultSet.getString(4));
                 aux.setFavorito(resultSet.getString(5));
             }

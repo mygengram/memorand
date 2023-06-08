@@ -1,3 +1,5 @@
+<%@page import="com.memorand.helper.UsuariosHelper"%>
+<%@page import="com.memorand.helper.Helpers"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,44 +28,7 @@
         }
         
     </style>
-    <script>
-        <!--
-        function enableField() {
-            var user = document.getElementById("user");
-            user.disabled = !user.disabled;
-            
-            var pass = document.getElementById("pass");
-            pass.disabled = !pass.disabled;
-            
-            var name = document.getElementById("name");
-            name.disabled = !name.disabled;
-            
-            var ap = document.getElementById("ap");
-            ap.disabled = !ap.disabled;
-            
-            var am = document.getElementById("am");
-            am.disabled = !am.disabled;
-            
-            var fn = document.getElementById("fn");
-            fn.disabled = !fn.disabled;
-          }
 
-          document.getElementById("formC").addEventListener("submit", function(event) {
-            var user = document.getElementById("user");
-            user.disabled = true;
-            var pass = document.getElementById("pass");
-            pass.disabled = true;
-            var name = document.getElementById("name");
-            name.disabled = true;
-            var ap = document.getElementById("ap");
-            ap.disabled = true;
-            var am = document.getElementById("am");
-            am.disabled = true;
-            var fn = document.getElementById("fn");
-            fn.disabled = true;
-          });
-          -->
-    </script>
     <script>
             <!--
                 function validateTexto(obj , textoError, campoError )
@@ -99,7 +64,13 @@
     <body>
         <%  
             String usuario = request.getParameter("user");
+            String accion = request.getParameter("a");
             UsuariosService usuariosService = new UsuariosService();
+            Helpers usuarioHelper = null;
+            boolean flag1;
+            
+            accion = request.getParameter("a");
+            if(accion != null && "v".equals(accion)) {
         %>
         <!-- Botón regresar -->
         <div class="text-start">
@@ -111,34 +82,30 @@
                     <div class="container">
                         <div class="row">
                             <i class="bi bi-person-circle text-center" style="color: white; font-size:45pt;"></i></h1>
-                            <h5 class="text-center text-white">Bienvenido</h5>
+                            <h5 class="text-center text-white"><%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%></h5>
                             <h6 class="text-center text-white"></h6>
                         </div>
                     </div>
                     <br><br><br><br><br><br><br><br><br><br>
-                    <div class="container" >
-                        <div class="row">
-                            <button class="btn btn-light border-white btn-sm text-white" style="width: 75px; height: auto;"><i class="bi bi-box-arrow-left text-white mx-2" style="font-size:10pt;"></i>Salir</button>
-                        </div>
-                    </div>
                 </div>
                 <!-- Col Login -->
                 <div class="col-9 rounded-end-3" >
-                    <div class="fw-bold text-center py-5 fs-4" style="color: #d3d4d5">Informacion Personal</div>
+                    <div class="fw-bold text-center py-5 fs-4" style="color: #d3d4d5">Mi informaci&oacute;n personal</div>
                     <!-- Form -->
-                    <form id="formC" method="GET"  onsubmit="return validateForm()">
+                    <form id="formC" method="GET" onsubmit="return validateForm()" action="cuenta.jsp">
+                        <input type="hidden" id="user" name="user" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"/>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="user" class="form-label">Nombre de usuario</label>
-                                    <input type="text" class="form-control rounded-5 border-success" id="user" name="user" placeholder="Usuario" disabled=""/>
+                                    <input type="text" class="form-control rounded-5 border-success" id="user" name="user" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"/>
                                     <span id="userError" style="color:#dc3545"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="pass" class="form-label">Contrase&ntilde;a</label>
-                                    <input type="password" class="form-control rounded-5 border-success" id="pass" name="pass" placeholder="Contrase&ntilde;a" disabled=""/>
+                                    <input type="password" class="form-control rounded-5 border-success" id="pass" name="pass" placeholder="Contrase&ntilde;a" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getContrasena()%>"/>
                                     <span id="passError" style="color:#dc3545"></span>
                                 </div>
                             </div>
@@ -147,14 +114,14 @@
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nombre</label>
-                                    <input type="text" class="form-control rounded-5 border-success" id="name" name="name" disabled=""/>
+                                    <input type="text" class="form-control rounded-5 border-success" id="name" name="name" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getNomUsuario()%>"/>
                                     <span id="nameError" style="color:#dc3545"></span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="ap" class="form-label">Apellido paterno</label>
-                                    <input type="text" class="form-control rounded-5 border-success" id="ap" name="ap" disabled=""/>
+                                    <input type="text" class="form-control rounded-5 border-success" id="ap" name="ap" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getApellidoPat()%>"/>
                                     <span id="apError" style="color:#dc3545"></span>
                                 </div>
                             </div>
@@ -163,27 +130,116 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="am" class="form-label">Apellido materno</label>
-                                    <input type="text" class="form-control rounded-5 border-success" id="am" name="am" disabled=""/>
+                                    <input type="text" class="form-control rounded-5 border-success" id="am" name="am" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getApellidoMat()%>"/>
                                     <span id="amError" style="color:#dc3545"></span>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="fn" class="form-label">Fecha de nacimiento</label>
-                                    <input type="date" class="form-control rounded-5  border-success" id="fn" name="fn" disabled=""/>
+                                    <input type="date" class="form-control rounded-5  border-success" id="fn" name="fn" disabled="true" value="<%=usuariosService.getUsuarioByUsuario(usuario).getFechaNac()%>"/>
                                     <span id="fnError" style="color:#dc3545"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" onclick="enableField()" class="btn btn-light btn-custom rounded-5 "  id="accion" name="accion" value="login">Editar</button>
-                            <button type="submit" class="btn btn-light btn-custom rounded-5 mx-2"  id="accion" name="accion" value="cambios">Guardar</button>
+                            <button type="submit" class="btn btn-light btn-custom rounded-5" id="a" name="a" value="eu">Editar</button>
                         </div>
                     </form>
                     <br>
                 </div>
             </div>
         </section>
+        <%  
+            }
+            if(accion != null && "eu".equals(accion)) {
+        %>
+        <section class="container w-75 mt-5 rounded shadow-lg">
+            <div class="row align-items-lg-stretch">
+                <div class="col-3 rounded-3 p-4" style="background-color: #18988B;">
+                    <div class="container">
+                        <div class="row">
+                            <i class="bi bi-person-circle text-center" style="color: white; font-size:45pt;"></i></h1>
+                            <h5 class="text-center text-white"><%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%></h5>
+                            <h6 class="text-center text-white"></h6>
+                        </div>
+                    </div>
+                    <br><br><br><br><br><br><br><br><br><br>
+                </div>
+                <!-- Col Login -->
+                <div class="col-9 rounded-end-3" >
+                    <div class="fw-bold text-center py-5 fs-4" style="color: #d3d4d5">Mi informaci&oacute;n personal</div>
+                    <!-- Form -->
+                    <form id="formC" method="GET" onsubmit="return validateForm()" action="cuenta.jsp">
+                        <input type="hidden" id="user" name="user" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>"/>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="user" class="form-label">Usuario (no editable)</label>
+                                    <input type="text" class="form-control rounded-5 border-success" id="user" name="user" value="<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>" disabled="true"/>
+                                    <span id="userError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="pass" class="form-label">Contrase&ntilde;a</label>
+                                    <input type="password" class="form-control rounded-5 border-success" id="pass" name="pass" placeholder="Contrase&ntilde;a" value="<%=usuariosService.getUsuarioByUsuario(usuario).getContrasena()%>"/>
+                                    <span id="passError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control rounded-5 border-success" id="name" name="name" value="<%=usuariosService.getUsuarioByUsuario(usuario).getNomUsuario()%>"/>
+                                    <span id="nameError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="ap" class="form-label">Apellido paterno</label>
+                                    <input type="text" class="form-control rounded-5 border-success" id="ap" name="ap" value="<%=usuariosService.getUsuarioByUsuario(usuario).getApellidoPat()%>"/>
+                                    <span id="apError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="am" class="form-label">Apellido materno</label>
+                                    <input type="text" class="form-control rounded-5 border-success" id="am" name="am" value="<%=usuariosService.getUsuarioByUsuario(usuario).getApellidoMat()%>"/>
+                                    <span id="amError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="fn" class="form-label">Fecha de nacimiento</label>
+                                    <input type="date" class="form-control rounded-5  border-success" id="fn" name="fn" value="<%=usuariosService.getUsuarioByUsuario(usuario).getFechaNac()%>"/>
+                                    <span id="fnError" style="color:#dc3545"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="submit" class="btn btn-light btn-custom rounded-5" id="a" name="a" value="gu">Guardar</button>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </section>
+        <%  
+            }
+            if(accion != null && "gu".equals(accion)) {
+                usuarioHelper = new UsuariosHelper().addRequest(request);
+                flag1 = usuarioHelper.updateT();
+                if(flag1) {
+                    String redireccionar1 = "cuenta.jsp?user="+usuario+"&a=v";
+                    response.setStatus(response.SC_MOVED_TEMPORARILY);
+                    response.setHeader("Location", redireccionar1); 
+                }
+            }
+        %>
     </body>
 </html>
 
