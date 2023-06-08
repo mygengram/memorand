@@ -12,6 +12,7 @@ import java.util.List;
 import com.memorand.dao.Llevan;
 import com.memorand.dao.Usuarios;
 import com.memorand.dao.AgendasC;
+import com.memorand.dao.PendientesP;
 
 public class LlevanService extends Conexion<Llevan>
 {
@@ -60,6 +61,58 @@ public class LlevanService extends Conexion<Llevan>
         }
         return null;
     }
+    
+    public List<AgendasC> getAgendasListByUsuario(String usuario) 
+    {
+        List<AgendasC> AgendasList = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        StringBuilder stringBuilder = null;
+        AgendasC agendas = null;
+
+        try {
+            connection = getConnection();
+            if (connection == null) {
+                return null;
+            }
+            
+            stringBuilder = new StringBuilder();
+            stringBuilder.append("select * from agendasc inner join llevan on llevan.idagenda = agendasc.idagenda");
+            stringBuilder.append(" where usuario = ?");
+            
+            preparedStatement = connection.prepareStatement(stringBuilder.toString());
+            if (preparedStatement == null) {
+                return null;
+            }
+            
+            preparedStatement.setString(1,usuario);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return null;
+            }
+            
+            AgendasList = new ArrayList<>();
+            while (resultSet.next()) 
+            {
+                agendas = new AgendasC();
+                agendas.setIdAgenda(resultSet.getString(1));
+                agendas.setNomAgenda(resultSet.getString(2));
+                agendas.setDescAgenda(resultSet.getString(3));
+                agendas.setCodigoAgenda(resultSet.getString(4));
+                AgendasList.add(agendas);
+            }
+            
+            resultSet.close();
+            closeConnection(connection);
+            return AgendasList;
+        } 
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
     
     public boolean addLlevan (Llevan llevan)
     {

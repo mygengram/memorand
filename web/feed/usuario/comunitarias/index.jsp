@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.memorand.dao.AgendasC"%>
+<%@page import="com.memorand.dao.service.LlevanService"%>
 <%@page import="com.memorand.dao.service.PendientesPService"%>
 <%@page import="com.memorand.dao.service.UsuariosService"%>
 <%@page import="com.memorand.helper.LoginHelper"%>
@@ -142,8 +145,53 @@
                 <br> <hr> <br> 
                 <h2 class="text-secondary">Agendas</h2>
                 <br>
+                
+                <%  
+                LlevanService llevanService = new LlevanService();
+                List<AgendasC> lista = llevanService.getAgendasListByUsuario(usuario);
+                
+                if(!(lista.size() <= 0))
+                {
+                %>
+                <br>
+                <table class="table table-borderless" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="col-3">Nombre</th>
+                      <th scope="col" class="col-7">Descripci&oacute;n</th>
+                      <th scope="col" class="col-2"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <%  
+                    for (int i = 0; i < lista.size(); i++) {
+                %>
+                    <tr>
+                      <td class="text-secondary"><%= lista.get(i).getNomAgenda()%></td>
+                      <td class="text-tertiary"><%= lista.get(i).getDescAgenda()%></td>
+                      <td>
+                          <a href="a.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&ida=<%=lista.get(i).getIdAgenda()%>&a=v">
+                              <button type="button" class="btn btn-primary text-white">Ver</button>
+                          </a>
+                      </td>
+                    </tr>
+                <%  
+                    }
+                %>
+                  </tbody>
+                </table>
+                <%  
+                }
+                else
+                {
+                %>
+                <br>
                 <h4 class="text-tertiary text-center">Sin agendas</h4>
+                <%  
+                }
+                %>
                 <br> <hr> <br> 
+                
             </div>
             
             <div class="col-1"></div>

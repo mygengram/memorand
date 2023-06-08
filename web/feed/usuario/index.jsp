@@ -1,3 +1,4 @@
+<%@page import="com.memorand.helper.AgendasCHelper"%>
 <%@page import="com.memorand.helper.PendientesPHelper"%>
 <%@page import="com.memorand.helper.Helpers"%>
 <%@page import="com.memorand.dao.PendientesP"%>
@@ -21,7 +22,7 @@
             UsuariosService usuariosService = new UsuariosService();
 
             Helpers pendienteHelper = new PendientesPHelper().addRequest(request);
-            Helpers agendaHelper = new AgendaHelper().addRequest(request);
+            Helpers agendaHelper = new AgendasCHelper().addRequest(request);
             
             String accion;
             LoginHelper loginHelper;
@@ -142,7 +143,7 @@
                             <div class="card text-center mb-3 bg-body-secondary">
                               <div class="card-body">
                                 <h1 class="card-title text-secondary"><i class="bi bi-calendar-plus-fill"></i></h1>
-                                <a href="crear.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&ida=<%=agendaHelper.codigoAleatorio12()%>" class="btn btn-primary text-white">Crear una agenda</a>
+                                <a href="crear.jsp?user=<%=usuariosService.getUsuarioByUsuario(usuario).getUsuario()%>&ida=<%=agendaHelper.codigoAleatorio12()%>&idll=<%=agendaHelper.codigoAleatorio12()%>&cga=<%=agendaHelper.codigoAleatorio6()%>&rol=lider&a=n" class="btn btn-primary text-white">Crear una agenda</a>
                               </div>
                             </div>
                         </div>
@@ -209,7 +210,7 @@
                 <%  
                 }
                 %>
-                <br> <hr> <br><br><br>
+                <br> <hr> <br>
                 
                 <%-- TABLA DE AGENDAS --%>
                 <h2 class="text-secondary">Mis agendas</h2>

@@ -186,4 +186,45 @@ public class AgendasCService extends Conexion<AgendasC>
         }
         return null;
     }
+    
+    public AgendasC getAgendasCByCodigoAgenda (String codigoAgenda) 
+    {
+        AgendasC aux = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+            connection = getConnection();
+            if (connection == null) {
+                return null;
+            }
+            preparedStatement = connection.prepareStatement("select * from agendasc where codigoagenda = ?");
+            if (preparedStatement == null) {
+                return null;
+            }
+            preparedStatement.setString(1,codigoAgenda);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet == null) {
+                return null;
+            }
+            
+            aux = new AgendasC();
+            while (resultSet.next()) 
+            {
+                aux = new AgendasC();
+                aux.setIdAgenda(resultSet.getString(1));
+                aux.setNomAgenda(resultSet.getString(2));
+                aux.setDescAgenda(resultSet.getString(3));
+                aux.setCodigoAgenda(resultSet.getString(4));
+            }
+            resultSet.close();
+            closeConnection(connection);
+            return aux;
+        } 
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 }
