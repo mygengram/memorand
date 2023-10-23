@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="shortcut icon" href="images/logotypes/me-logoP.png">
 <link rel="stylesheet" href="bootstrap/style.css">
-<link rel="stylesheet" href="recursos/style1.css">
+
 
 <%-- Tema --%>
 <script src="../assets/js/color-modes.js"></script>

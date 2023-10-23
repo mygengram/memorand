@@ -9,13 +9,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 65%;">
             <!-- BUTTONS -->
             
-            <button class="btn custom-blog btn-sm me-2 fs-6 border-opacity-25 rounded-4" data-bs-toggle="modal" data-bs-target="#loginModal" type="button">Iniciar sesión</button>
-            
             <!-- Modal de inicio de sesión -->
-
-            <a href="signup.jsp?a=n">
-                <button class="btn custom-bsign btn-lg fs-6 border-2 rounded-4" data-bs-toggle="modal" type="button">Registrarse</button>
-            </a>
+            <button class="btn custom-blog btn-sm me-2 fs-6 border-opacity-25 rounded-4" data-bs-toggle="modal" data-bs-target="#modalLogin">Iniciar sesión</button>
+            
+            <!-- Modal registrarse -->
+            
+            <button class="btn custom-bsign btn-sm fs-6 border-2 rounded-4" data-bs-toggle="modal" data-bs-target="#modalSignin">Registrarse</button>
+            
         </div>
     </div>
 </nav>

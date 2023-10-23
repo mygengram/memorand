@@ -16,7 +16,7 @@
         <!-- Barra para buscar -->
         <form class="d-flex" role="search" style="margin-left:40%">
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn custom-bsign" type="submit">Buscar</button>
+            <button class="btn custom-bsign" type="submit"><i class="bi bi-search"></i></button>
         </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 15%;">
             <!-- Noticaciones -->

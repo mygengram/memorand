@@ -10,13 +10,13 @@
     </head>
     <body>
         <jsp:include page="recursos/shortbar.jsp"/>
+        <jsp:include page="recursos/login.jsp"/>
         <div class="container text-center" >
             <div class="row" >
                 <div class="col">
                     <div class="container">
                         <div class="row">
-                            <div class="col-6" style="background-color: #ea868f;">
-                            </div>
+                            <div class="col-6" style="background-color: #ea868f;"></div>
                             <div class="col-6">
                                 <br><br><br>
                                 <div class="row">
