@@ -1,7 +1,7 @@
 <%-- 
     Memorand by Gengram © 2023
 --%>
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" style="padding:1%;">
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm" style="padding:1%;">
     <div class="container-fluid">
         <!-- Barra lateral -->
         <button type="button" class="btn border-0 rounded-circle" style="color: #27988A;" data-bs-toggle="dropdown" aria-expanded="false">

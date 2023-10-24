@@ -11,7 +11,6 @@
 <link rel="shortcut icon" href="images/logotypes/me-logoP.png">
 <link rel="stylesheet" href="bootstrap/style.css">
 
-
 <%-- Tema --%>
 <script src="../assets/js/color-modes.js"></script>
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">

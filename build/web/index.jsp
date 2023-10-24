@@ -11,12 +11,17 @@
     <body>
         <jsp:include page="recursos/shortbar.jsp"/>
         <jsp:include page="recursos/login.jsp"/>
+        <jsp:include page="recursos/signup.jsp"/>
         <div class="container text-center" >
             <div class="row" >
                 <div class="col">
                     <div class="container">
                         <div class="row">
-                            <div class="col-6" style="background-color: #ea868f;"></div>
+                            <div class="col-6">
+                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                <h4 class="mt-5 mb-5 p-2 text-justify text-start">Gestiona tus rutinas, tareas y convive con tus compañeros en todo momento.</h4>
+                                <br><br><br><br>
+                            </div>
                             <div class="col-6">
                                 <br><br><br>
                                 <div class="row">
@@ -33,10 +38,9 @@
                         </div>
                     </div>
                 </div> 
-                    
-                </div>
             </div>
         </div>
+        <jsp:include page="recursos/planes.jsp"/>
         <jsp:include page="recursos/footer.jsp"/>
     </body>
 </html>
