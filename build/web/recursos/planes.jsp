@@ -60,68 +60,40 @@
 </div>
 <div class="container">
     <div class="row">    
-        <h3>
-            <button class="btn custom-bsign" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
-                Instituciones Educativas ...
-            </button>
-        </h3>
         <div style="min-height: 120px;">
-            <div class="collapse collapsed" id="collapseWidthExample">
-                <h6 class="display-6 text-center mb-4" style="font-size: 200%;">
+            <h6 class="display-6 text-center mb-4" style="font-size: 200%;">
                 <i class="bi bi-stars" style="color: yellow;"></i>
                 Instituciones educativas
                 <i class="bi bi-stars" style="color: yellow;"></i>
             </h6>
-                <div class="row  row-cols-md-3 mb-3 text-center">
-                    <div class="col-4"></div>
-                    <div class="col-4">
-                        <div class="card border-primary mb-4 rounded-3 shadow-sm mx-5">
-                            <div class="card-header py-3"  style="background-color: #3ba79c;">
-                                <h4 class="card-title pricing-card-title text-white"><svg width="60" height="60" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M445.055 384.794v-162.93l-26.25 13.125v149.788l-17.504 45.008h61.25l-17.496-44.991zM229.065 306.37 121.3 252.49v53.776c0 36.243 58.764 65.625 131.25 65.625 72.49 0 131.25-29.382 131.25-65.625V252.49l-107.772 53.884c-18.447 7.307-28.515 7.305-46.963-.003Z" fill="#ffffff" class="fill-000000"></path><path d="m264.291 282.897 186.52-93.26c6.459-3.229 6.459-8.51 0-11.74l-186.52-93.26c-6.455-3.229-17.021-3.229-23.48 0l-186.52 93.26c-6.455 3.229-6.455 8.51 0 11.74l186.52 93.26c6.459 3.229 17.025 3.229 23.48 0Z" fill="#ffffff" class="fill-000000"></path></svg></h4>
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled mt-3 mb-4 text-justify text-start mx-5">
-                                    <li ><i class="bi text-primary bi-check-lg"></i> Licencias</li>
-                                    <li ><i class="bi text-primary bi-check-lg"></i> Espacio ilimitados</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Estad&iacute;sticas</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Ideas y apuntes</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Apuntes por voz</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Imagen a texto</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Rutinas</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Tareas</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Calendario</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Compartir QR y NFC</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Personalizaci&oacute;n</li>
-                                    <li><i class="bi text-primary bi-check-lg"></i> Aplicaci&oacute;n m&oacute;vil</li>
-                                </ul>
-                                <button type="button" class="w-100 btn btn-lg custom-bsign"> <i class="bi bi-envelope-fill"></i>     Contactanos</button>
-                            </div>
+            <div class="row  row-cols-md-3 mb-3 text-center">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="card border-primary mb-4 rounded-3 shadow-sm mx-5">
+                        <div class="card-header py-3"  style="background-color: #3ba79c;">
+                            <h4 class="card-title pricing-card-title text-white"><svg width="60" height="60" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M445.055 384.794v-162.93l-26.25 13.125v149.788l-17.504 45.008h61.25l-17.496-44.991zM229.065 306.37 121.3 252.49v53.776c0 36.243 58.764 65.625 131.25 65.625 72.49 0 131.25-29.382 131.25-65.625V252.49l-107.772 53.884c-18.447 7.307-28.515 7.305-46.963-.003Z" fill="#ffffff" class="fill-000000"></path><path d="m264.291 282.897 186.52-93.26c6.459-3.229 6.459-8.51 0-11.74l-186.52-93.26c-6.455-3.229-17.021-3.229-23.48 0l-186.52 93.26c-6.455 3.229-6.455 8.51 0 11.74l186.52 93.26c6.459 3.229 17.025 3.229 23.48 0Z" fill="#ffffff" class="fill-000000"></path></svg></h4>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mt-3 mb-4 text-justify text-start mx-5">
+                                <li ><i class="bi text-primary bi-check-lg"></i> Licencias</li>
+                                <li ><i class="bi text-primary bi-check-lg"></i> Espacio ilimitados</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Estad&iacute;sticas</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Ideas y apuntes</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Apuntes por voz</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Imagen a texto</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Rutinas</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Tareas</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Calendario</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Compartir QR y NFC</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Personalizaci&oacute;n</li>
+                                <li><i class="bi text-primary bi-check-lg"></i> Aplicaci&oacute;n m&oacute;vil</li>
+                            </ul>
+                            <button type="button" class="w-100 btn btn-lg custom-bsign"> <i class="bi bi-envelope-fill"></i>     Contactanos</button>
                         </div>
                     </div>
-                    <div class="col-4"></div>
                 </div>
+                <div class="col-4"></div>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-    .custom-bsign {
-        display: inline-block;
-        padding: 8px 16px;
-        border: 2px solid #27988A; /* Color del contorno */
-        background-color: #27988A; /* Fondo transparente */
-        color: #fff; /* Color del texto */
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    .custom-bsign:hover {
-        background-color: #fff; /* Cambiar el color de fondo al pasar el ratón */
-        color: #27988A; /* Cambiar el color del texto al pasar el ratón */
-        border: 2px solid #27988A; /* Color del contorno */
-    }
-</style>

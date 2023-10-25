@@ -15,3 +15,61 @@
 <script src="../assets/js/color-modes.js"></script>
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+    .custom-blog {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid #27988A; /* Color del contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: #27988A; /* Color del texto */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+
+    .custom-blog:hover {
+        background-color: #27988A; /* Cambiar el color de fondo al pasar el ratón */
+        color: #fff; /* Cambiar el color del texto al pasar el ratón */
+    }
+
+    .custom-bsign {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid #27988A; /* Color del contorno */
+    background-color: #27988A; /* Fondo transparente */
+    color: #fff; /* Color del texto */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    }
+
+    .custom-bsign:hover {
+        background-color: #fff; /* Cambiar el color de fondo al pasar el ratón */
+        color: #27988A; /* Cambiar el color del texto al pasar el ratón */
+        border: 2px solid #27988A; /* Color del contorno */
+    }
+
+    .custom-b1{
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid #27988A; /* Color del contorno */
+    background-color: transparent; /* Fondo transparente */
+    color: #27988A; /* Color del texto */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.custom-b1:hover {
+    background-color: #27988A; /* Cambiar el color de fondo al pasar el ratón */
+    color: #fff; /* Cambiar el color del texto al pasar el ratón */
+}
+
+</style>

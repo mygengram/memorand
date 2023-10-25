@@ -21,7 +21,7 @@
                         <label for="floatingPassword">Contrase&ntilde;a</label>
                     </div>
                     <button class="w-100 mb-2 btn btn-lg rounded-3 custom-bsign" type="submit">Registrarse</button>
-                    <small class="text-body-secondary"> <a type="button" data-bs-target="#modalLogin" data-bs-toggle="modal">¿Ya tienes una cuenta?  Inicia</a></small>
+                    <small class="text-body-secondary"><a type="button" data-bs-target="#modalLogin" data-bs-toggle="modal">¿Ya tienes una cuenta?  Inicia</a></small>
                     <hr class="my-4">
                     <p class="mb-3 text-primary" style="font-size: 70%;">Condiciones de uso | Política de privacidad</p>
                 </form>

@@ -21,7 +21,7 @@
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                     <button class="w-100 mb-2 btn btn-lg rounded-3 custom-bsign" type="submit">Iniciar sesi&oacute;n</button>
-                    <small class="text-body-secondary"> <a type="button" data-bs-target="#modalLogin" data-bs-toggle="modal">¿No tienes cuenta? Reg&iacute;strate</a></small>
+                    <small class="text-body-secondary"> <a type="button" data-bs-target="#modalSignin" data-bs-toggle="modal">¿No tienes cuenta? Reg&iacute;strate</a></small>
                     <hr class="my-4">
                     <p class="mb-3 text-primary" style="font-size: 70%;">Condiciones de uso | Política de privacidad</p>
                 </form>
@@ -29,24 +29,4 @@
         </div>
     </div>
 </div>
-<style>
-    .custom-bsign {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 2px solid #27988A; /* Color del contorno */
-    background-color: #27988A; /* Fondo transparente */
-    color: #fff; /* Color del texto */
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    }
 
-    .custom-bsign:hover {
-        background-color: #fff; /* Cambiar el color de fondo al pasar el ratón */
-        color: #27988A; /* Cambiar el color del texto al pasar el ratón */
-        border: 2px solid #27988A; /* Color del contorno */
-    }
-
-</style>
