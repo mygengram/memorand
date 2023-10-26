@@ -18,27 +18,65 @@
         for (let i = 0; date <= totalDays; i++) {
             let semana = document.createElement("tr");
             for (let j = 0; j < 7; j++) {
+                if (date > totalDays) {
+                    break; // Detener el bucle si date es mayor que totalDays
+                }
                 let dia = document.createElement("td");
                 dia.classList.add("text-center");
                 dia.classList.add("fw-bold");
-                if (j === 0 || j === 6) {
-                    dia.classList.add("text-secondary");
+                dia.classList.add("border-3");
+                dia.classList.add("border-white");
+                calendarBody.style.borderCollapse = "collapse";
+                semana.style.borderBottom = "none";
+
+
+
+                if ((j === 0 || j === 6) && i > 0) {
+                    dia.classList.add("text-white");
+                    dia.style.backgroundColor = "#7BC3BC";
                 }
+
                 if (i === 0 && j < startingDay) {
                     dia.innerText = "";
                 } else if (date <= totalDays) {
                     dia.innerText = date;
+
                     if (year === hoy.getFullYear() && month === hoy.getMonth() && date === hoy.getDate()) {
-                        dia.classList.add("text-primary");
+                        dia.style.backgroundColor = "#7BC3BC";
+                        dia.style.color = "#FAECB0";
+                    } else {
+                        dia.classList.add("text-white"); // Cambiar el color de los números de otros días
+                        dia.style.backgroundColor = "#7BC3BC";
                     }
+
                     date++;
                 }
+                
+
                 semana.appendChild(dia);
             }
             calendarBody.appendChild(semana);
         }
+
     }
 
+    function drawMesesSelector() {
+        let mesSelectorBody = document.getElementById("meses");
+        mesSelectorBody.innerHTML = "";
+        for (let i = 0; i < meses.length; i++) {
+            let mes = document.createElement("tr");
+            let mesName = document.createElement("td");
+            mesName.innerText = meses[i];
+            mes.appendChild(mesName);
+            mes.addEventListener("click", function () {
+                month = i;
+                drawCalendario();
+                document.getElementById("mesSelector").style.display = "none";
+            });
+            mesSelectorBody.appendChild(mes);
+        }
+    }
+    
     function drawMesesSelector() {
         let mesSelectorBody = document.getElementById("meses");
         mesSelectorBody.innerHTML = "";

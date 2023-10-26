@@ -19,7 +19,7 @@
                 transform: scale(1.2);
             }
         </style>
-        <title>Memorand - Inicio</title>
+        <title>Horario</title>
     </head>
     <body>
         <jsp:include page="recursos/navbar.jsp"/>

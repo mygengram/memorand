@@ -18,16 +18,16 @@
 
 <style>
     .custom-blog {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 2px solid #27988A; /* Color del contorno */
-    background-color: transparent; /* Fondo transparente */
-    color: #27988A; /* Color del texto */
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid #27988A; /* Color del contorno */
+        background-color: transparent; /* Fondo transparente */
+        color: #27988A; /* Color del texto */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
     }
 
     .custom-blog:hover {
@@ -35,17 +35,52 @@
         color: #fff; /* Cambiar el color del texto al pasar el ratón */
     }
 
+
+    .custom-b1{
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid #27988A; /* Color del contorno */
+        background-color: transparent; /* Fondo transparente */
+        color: #27988A; /* Color del texto */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .custom-b1:hover {
+        background-color: #27988A; /* Cambiar el color de fondo al pasar el ratón */
+        color: #fff; /* Cambiar el color del texto al pasar el ratón */
+    }
+    .custom-b2 {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid transparent; /* Color del contorno */
+        background-color: transparent; /* Fondo transparente */
+        color: #27988A; /* Color del texto */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .custom-b2:hover {
+        background-color: #27988A; /* Cambiar el color de fondo al pasar el ratón */
+        color: #fff; /* Cambiar el color del texto al pasar el ratón */
+    }
     .custom-bsign {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 2px solid #27988A; /* Color del contorno */
-    background-color: #27988A; /* Fondo transparente */
-    color: #fff; /* Color del texto */
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid #27988A; /* Color del contorno */
+        background-color: #27988A; /* Fondo transparente */
+        color: #fff; /* Color del texto */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
     }
 
     .custom-bsign:hover {
@@ -53,23 +88,35 @@
         color: #27988A; /* Cambiar el color del texto al pasar el ratón */
         border: 2px solid #27988A; /* Color del contorno */
     }
+    .custom-b3 {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 2px solid #7BC3BC; /* Color del contorno */
+        background-color: #7BC3BC; /* Fondo transparente */
+        color: #fff; /* Color del texto */
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
 
-    .custom-b1{
-    display: inline-block;
-    padding: 8px 16px;
-    border: 2px solid #27988A; /* Color del contorno */
-    background-color: transparent; /* Fondo transparente */
-    color: #27988A; /* Color del texto */
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-}
+    .custom-b3:hover {
+        background-color: #fff; /* Cambiar el color de fondo al pasar el ratón */
+        color: #7BC3BC; /* Cambiar el color del texto al pasar el ratón */
+        border: 2px solid #7BC3BC; /* Color del contorno */
+    }
+    .custom-b3:active {
+        background-color: #fff; /* Cambia el color de fondo al presionar */
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
 
-.custom-b1:hover {
-    background-color: #27988A; /* Cambiar el color de fondo al pasar el ratón */
-    color: #fff; /* Cambiar el color del texto al pasar el ratón */
-}
+    a:hover {
+        color: #62646A;
+    }
+
 
 </style>
