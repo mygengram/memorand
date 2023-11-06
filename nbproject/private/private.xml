@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/recursos/import.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/staff/login.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/gengram/dao/service/UsuariosService.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/gengram/web/LoginServlet.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/staff/staff.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/web/index.jsp</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/gengram/dao/Usuarios.java</file>
+            <file>file:/C:/Users/nicojrz/OneDrive/Escritorio/memorand/src/java/com/gengram/dao/service/Connect.java</file>
         </group>
     </open-files>
 </project-private>
